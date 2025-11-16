@@ -10,7 +10,6 @@ export interface Recipe {
   difficulty: 'Fácil' | 'Médio' | 'Difícil';
   image: string;
   category: string;
-  rating: number; // Nota de 0 a 10
 }
 
 export interface Country {
@@ -19,727 +18,14 @@ export interface Country {
   flag: string;
   description: string;
   recipes: Recipe[];
-  cuisineRanking: number; // Posição no ranking mundial de culinária
 }
 
 export const countriesData: Country[] = [
-  {
-    id: 'italia',
-    name: 'Itália',
-    flag: '🇮🇹',
-    description: 'Berço da pizza e da pasta, com tradição milenar em gastronomia.',
-    cuisineRanking: 1,
-    recipes: [
-      {
-        id: 'carbonara',
-        name: 'Spaghetti alla Carbonara',
-        description: 'Massa italiana com molho cremoso de ovos, queijo pecorino, guanciale e pimenta preta.',
-        ingredients: ['400g spaghetti', '150g guanciale', '4 gemas', '100g pecorino romano', 'Pimenta preta', 'Sal'],
-        instructions: ['Cozinhe o spaghetti al dente', 'Frite o guanciale até ficar crocante', 'Misture gemas com pecorino ralado', 'Escorra a massa e misture com guanciale', 'Desligue o fogo e adicione a mistura de ovos', 'Mexa rapidamente até cremoso', 'Finalize com pimenta preta moída na hora'],
-        prepTime: '10 minutos',
-        cookTime: '15 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.8
-      },
-      {
-        id: 'pizza-margherita',
-        name: 'Pizza Margherita',
-        description: 'Pizza clássica napolitana com molho de tomate, mussarela de búfala, manjericão fresco e azeite.',
-        ingredients: ['Massa de pizza', '400g tomate pelado', '250g mussarela de búfala', 'Manjericão fresco', 'Azeite extra virgem', 'Sal'],
-        instructions: ['Abra a massa em formato redondo', 'Espalhe o molho de tomate', 'Distribua a mussarela em pedaços', 'Asse em forno bem quente (250°C) por 10 minutos', 'Finalize com manjericão fresco e azeite'],
-        prepTime: '2 horas (fermentação)',
-        cookTime: '10 minutos',
-        servings: 2,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.9
-      },
-      {
-        id: 'tiramisu',
-        name: 'Tiramisù',
-        description: 'Sobremesa italiana com camadas de biscoito champagne embebido em café, creme de mascarpone e cacau.',
-        ingredients: ['500g mascarpone', '4 ovos', '100g açúcar', '300ml café expresso', '200g biscoito champagne', 'Cacau em pó', 'Marsala'],
-        instructions: ['Separe gemas e claras', 'Bata gemas com açúcar até clarear', 'Adicione mascarpone e misture', 'Bata claras em neve e incorpore delicadamente', 'Mergulhe biscoitos no café com marsala', 'Monte camadas alternadas de biscoito e creme', 'Finalize com cacau peneirado', 'Leve à geladeira por 4 horas'],
-        prepTime: '30 minutos',
-        cookTime: '0 minutos',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.7
-      },
-      {
-        id: 'risotto',
-        name: 'Risotto alla Milanese',
-        description: 'Arroz cremoso cozido lentamente com açafrão, vinho branco, manteiga e parmesão.',
-        ingredients: ['300g arroz arbóreo', '1L caldo de carne', '100ml vinho branco', '1 cebola', '80g manteiga', '100g parmesão', 'Açafrão', 'Sal'],
-        instructions: ['Refogue cebola na manteiga', 'Adicione arroz e torre levemente', 'Adicione vinho e deixe evaporar', 'Adicione caldo aos poucos, mexendo sempre', 'Adicione açafrão dissolvido', 'Finalize com manteiga e parmesão'],
-        prepTime: '10 minutos',
-        cookTime: '25 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1476124369491-c4f6e3e8b5c5?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.6
-      },
-      {
-        id: 'lasagna',
-        name: 'Lasagna alla Bolognese',
-        description: 'Camadas de massa fresca, molho bolonhesa, bechamel e parmesão gratinado.',
-        ingredients: ['Massa para lasanha', '500g carne moída', '400g tomate pelado', '500ml bechamel', '200g parmesão', 'Cebola', 'Cenoura', 'Aipo', 'Vinho tinto'],
-        instructions: ['Prepare o ragù bolonhesa (carne, legumes, tomate, vinho)', 'Cozinhe por 2 horas em fogo baixo', 'Prepare o bechamel', 'Monte camadas: massa, ragù, bechamel, parmesão', 'Repita até acabar os ingredientes', 'Asse a 180°C por 40 minutos'],
-        prepTime: '45 minutos',
-        cookTime: '3 horas',
-        servings: 8,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.8
-      }
-    ]
-  },
-  {
-    id: 'franca',
-    name: 'França',
-    flag: '🇫🇷',
-    description: 'Alta gastronomia com técnicas refinadas e ingredientes de qualidade.',
-    cuisineRanking: 2,
-    recipes: [
-      {
-        id: 'ratatouille',
-        name: 'Ratatouille',
-        description: 'Legumes provençais (berinjela, abobrinha, pimentão, tomate) cozidos lentamente com ervas.',
-        ingredients: ['2 berinjelas', '2 abobrinhas', '2 pimentões', '4 tomates', 'Cebola', 'Alho', 'Tomilho', 'Manjericão', 'Azeite'],
-        instructions: ['Corte todos os legumes em rodelas finas', 'Refogue cebola e alho', 'Adicione molho de tomate', 'Disponha os legumes em camadas', 'Regue com azeite e ervas', 'Asse a 180°C por 45 minutos'],
-        prepTime: '30 minutos',
-        cookTime: '45 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.4
-      },
-      {
-        id: 'croissant',
-        name: 'Croissant',
-        description: 'Pão folhado amanteigado, crocante por fora e macio por dentro.',
-        ingredients: ['500g farinha', '250g manteiga gelada', '10g sal', '50g açúcar', '10g fermento', '250ml leite', '1 ovo'],
-        instructions: ['Prepare a massa e deixe descansar', 'Lamine a manteiga entre a massa', 'Faça 3 voltas duplas', 'Descanse na geladeira entre cada volta', 'Corte triângulos e enrole', 'Deixe crescer por 2 horas', 'Pincele com ovo', 'Asse a 200°C por 20 minutos'],
-        prepTime: '4 horas',
-        cookTime: '20 minutos',
-        servings: 12,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
-        category: 'Pão',
-        rating: 9.7
-      },
-      {
-        id: 'coq-au-vin',
-        name: 'Coq au Vin',
-        description: 'Frango cozido lentamente em vinho tinto com cogumelos, bacon e cebolas pérola.',
-        ingredients: ['1 frango inteiro', '750ml vinho tinto', '200g bacon', '200g cogumelos', 'Cebolas pérola', 'Cenoura', 'Alho', 'Tomilho', 'Louro', 'Farinha'],
-        instructions: ['Doure o frango em pedaços', 'Retire e doure bacon, cebolas e cogumelos', 'Adicione farinha e vinho', 'Retorne o frango', 'Adicione ervas', 'Cozinhe em fogo baixo por 1h30', 'Sirva com batatas'],
-        prepTime: '30 minutos',
-        cookTime: '2 horas',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.5
-      },
-      {
-        id: 'creme-brulee',
-        name: 'Crème Brûlée',
-        description: 'Creme de baunilha assado com crosta caramelizada crocante.',
-        ingredients: ['500ml creme de leite', '6 gemas', '100g açúcar', '1 fava de baunilha', 'Açúcar para caramelizar'],
-        instructions: ['Aqueça o creme com baunilha', 'Bata gemas com açúcar', 'Misture com o creme quente', 'Despeje em ramequins', 'Asse em banho-maria a 150°C por 40 minutos', 'Deixe esfriar', 'Polvilhe açúcar e caramelize com maçarico'],
-        prepTime: '20 minutos',
-        cookTime: '40 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.6
-      },
-      {
-        id: 'bouillabaisse',
-        name: 'Bouillabaisse',
-        description: 'Sopa de peixe provençal com frutos do mar, açafrão e rouille.',
-        ingredients: ['1kg peixes variados', '500g frutos do mar', 'Tomate', 'Alho', 'Cebola', 'Funcho', 'Açafrão', 'Vinho branco', 'Azeite', 'Rouille'],
-        instructions: ['Refogue cebola, alho e funcho', 'Adicione tomate e vinho', 'Adicione açafrão e caldo de peixe', 'Cozinhe os peixes por partes', 'Adicione frutos do mar', 'Sirva com rouille e croutons'],
-        prepTime: '30 minutos',
-        cookTime: '45 minutos',
-        servings: 6,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.3
-      }
-    ]
-  },
-  {
-    id: 'japao',
-    name: 'Japão',
-    flag: '🇯🇵',
-    description: 'Culinária refinada com foco em ingredientes frescos, apresentação e equilíbrio de sabores.',
-    cuisineRanking: 3,
-    recipes: [
-      {
-        id: 'sushi',
-        name: 'Sushi Nigiri',
-        description: 'Bolinho de arroz temperado coberto com fatia de peixe cru fresco.',
-        ingredients: ['400g arroz japonês', '500g peixe fresco (salmão, atum)', '50ml vinagre de arroz', '2 colheres açúcar', '1 colher sal', 'Wasabi', 'Shoyu'],
-        instructions: ['Cozinhe o arroz e tempere com vinagre, açúcar e sal', 'Deixe esfriar até temperatura ambiente', 'Corte o peixe em fatias finas', 'Molde o arroz em formato oval', 'Coloque um pouco de wasabi', 'Cubra com a fatia de peixe', 'Sirva com shoyu'],
-        prepTime: '40 minutos',
-        cookTime: '20 minutos',
-        servings: 4,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.8
-      },
-      {
-        id: 'ramen',
-        name: 'Ramen Tonkotsu',
-        description: 'Sopa de macarrão com caldo cremoso de ossos de porco, chashu, ovo marinado e cebolinha.',
-        ingredients: ['2kg ossos de porco', 'Macarrão ramen', 'Chashu (barriga de porco)', 'Ovos', 'Cebolinha', 'Alho', 'Gengibre', 'Shoyu', 'Mirin', 'Sake'],
-        instructions: ['Ferva os ossos por 12 horas para fazer o caldo', 'Prepare o chashu marinado e assado', 'Cozinhe ovos por 6 minutos e marine em shoyu', 'Cozinhe o macarrão al dente', 'Monte a tigela: macarrão, caldo quente, chashu, ovo, cebolinha'],
-        prepTime: '30 minutos',
-        cookTime: '12 horas',
-        servings: 4,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.7
-      },
-      {
-        id: 'tempura',
-        name: 'Tempura de Camarão',
-        description: 'Camarões empanados em massa leve e crocante, fritos rapidamente.',
-        ingredients: ['500g camarões grandes', '1 xícara farinha de trigo', '1 xícara água gelada', '1 ovo', 'Óleo para fritar', 'Molho tentsuyu'],
-        instructions: ['Limpe os camarões deixando a cauda', 'Misture farinha, ovo e água gelada levemente', 'Aqueça óleo a 180°C', 'Passe camarões na massa', 'Frite rapidamente até dourar', 'Escorra em papel absorvente', 'Sirva imediatamente com molho'],
-        prepTime: '20 minutos',
-        cookTime: '15 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.4
-      },
-      {
-        id: 'takoyaki',
-        name: 'Takoyaki',
-        description: 'Bolinhos de massa com pedaços de polvo, cobertos com molho especial, maionese e katsuobushi.',
-        ingredients: ['200g farinha de trigo', '600ml dashi', '3 ovos', '300g polvo cozido', 'Gengibre em conserva', 'Cebolinha', 'Molho takoyaki', 'Maionese japonesa', 'Katsuobushi', 'Aonori'],
-        instructions: ['Misture farinha, dashi e ovos', 'Aqueça a chapa de takoyaki', 'Despeje a massa nas formas', 'Adicione polvo, gengibre e cebolinha', 'Vire as bolinhas com palitos', 'Cubra com molho, maionese, katsuobushi e aonori'],
-        prepTime: '15 minutos',
-        cookTime: '20 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1606297752170-d45eaace8d70?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 9.2
-      },
-      {
-        id: 'mochi',
-        name: 'Mochi',
-        description: 'Bolinho de arroz glutinoso macio, tradicionalmente recheado com pasta de feijão doce.',
-        ingredients: ['200g farinha de arroz mochiko', '200ml água', '100g açúcar', 'Anko (pasta de feijão azuki)', 'Amido de milho'],
-        instructions: ['Misture mochiko, água e açúcar', 'Cozinhe no microondas por 2 minutos', 'Mexa e cozinhe mais 1 minuto', 'Polvilhe amido em superfície', 'Estenda a massa', 'Corte círculos e recheie com anko', 'Feche as bordas'],
-        prepTime: '20 minutos',
-        cookTime: '10 minutos',
-        servings: 12,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1582716401301-b2407dc7563d?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.0
-      }
-    ]
-  },
-  {
-    id: 'china',
-    name: 'China',
-    flag: '🇨🇳',
-    description: 'Uma das culinárias mais antigas e diversificadas do mundo.',
-    cuisineRanking: 4,
-    recipes: [
-      {
-        id: 'pato-pequim',
-        name: 'Pato à Pequim',
-        description: 'Pato assado com pele crocante, servido com panquecas, molho hoisin, pepino e cebolinha.',
-        ingredients: ['1 pato inteiro', 'Mel', 'Vinagre', 'Molho de soja', 'Vinho de arroz', 'Gengibre', 'Panquecas chinesas', 'Molho hoisin', 'Pepino', 'Cebolinha'],
-        instructions: ['Seque o pato e pincele com mel e vinagre', 'Deixe secar por 24 horas na geladeira', 'Asse a 180°C por 1h30', 'Aumente para 220°C nos últimos 15 minutos', 'Fatie a pele e carne', 'Sirva com panquecas, molho, pepino e cebolinha'],
-        prepTime: '24 horas',
-        cookTime: '2 horas',
-        servings: 6,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1583935909166-be77d3a5e2c0?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.6
-      },
-      {
-        id: 'dim-sum',
-        name: 'Dim Sum Variado',
-        description: 'Seleção de pequenos pratos cozidos no vapor: shumai, har gow, char siu bao.',
-        ingredients: ['Massa de dim sum', 'Camarão', 'Carne de porco', 'Cogumelos shiitake', 'Bambu', 'Gengibre', 'Molho de soja', 'Óleo de gergelim', 'Cebolinha'],
-        instructions: ['Prepare recheios variados', 'Envolva em massa de dim sum', 'Cozinhe no vapor por 8-10 minutos', 'Sirva com molho de soja e gengibre'],
-        prepTime: '1 hora',
-        cookTime: '15 minutos',
-        servings: 20,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 9.5
-      },
-      {
-        id: 'mapo-tofu',
-        name: 'Mapo Tofu',
-        description: 'Tofu em molho picante de pimenta Sichuan, carne moída e pasta de feijão fermentado.',
-        ingredients: ['500g tofu', '200g carne moída', 'Pasta de feijão fermentado', 'Pimenta Sichuan', 'Chile', 'Alho', 'Gengibre', 'Cebolinha', 'Molho de soja', 'Amido de milho'],
-        instructions: ['Corte tofu em cubos', 'Refogue carne com alho e gengibre', 'Adicione pasta de feijão e chiles', 'Adicione tofu e caldo', 'Tempere com pimenta Sichuan', 'Engrosse com amido', 'Finalize com cebolinha'],
-        prepTime: '15 minutos',
-        cookTime: '20 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.3
-      },
-      {
-        id: 'chow-mein',
-        name: 'Chow Mein',
-        description: 'Macarrão salteado com legumes, carne e molho de soja.',
-        ingredients: ['400g macarrão chinês', '300g frango ou carne', 'Repolho', 'Cenoura', 'Broto de feijão', 'Cebola', 'Alho', 'Gengibre', 'Molho de soja', 'Óleo de gergelim'],
-        instructions: ['Cozinhe o macarrão al dente', 'Salteie carne com alho e gengibre', 'Adicione legumes', 'Adicione macarrão', 'Tempere com molho de soja', 'Finalize com óleo de gergelim'],
-        prepTime: '20 minutos',
-        cookTime: '15 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
-      },
-      {
-        id: 'spring-rolls',
-        name: 'Spring Rolls',
-        description: 'Rolinhos fritos crocantes recheados com legumes e carne.',
-        ingredients: ['Massa para spring rolls', 'Repolho', 'Cenoura', 'Cogumelos', 'Carne de porco', 'Gengibre', 'Alho', 'Molho de soja', 'Óleo para fritar'],
-        instructions: ['Refogue legumes e carne', 'Tempere com molho de soja', 'Deixe esfriar', 'Recheie as massas', 'Enrole bem apertado', 'Frite até dourar', 'Sirva com molho agridoce'],
-        prepTime: '30 minutos',
-        cookTime: '20 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 8.9
-      }
-    ]
-  },
-  {
-    id: 'india',
-    name: 'Índia',
-    flag: '🇮🇳',
-    description: 'Culinária rica em especiarias, com grande variedade vegetariana.',
-    cuisineRanking: 5,
-    recipes: [
-      {
-        id: 'butter-chicken',
-        name: 'Butter Chicken',
-        description: 'Frango em molho cremoso de tomate, manteiga, creme de leite e especiarias aromáticas.',
-        ingredients: ['1kg frango', 'Iogurte', 'Garam masala', 'Gengibre', 'Alho', '400g tomate', '200ml creme de leite', 'Manteiga', 'Coentro'],
-        instructions: ['Marine o frango em iogurte e especiarias por 4 horas', 'Grelhe o frango', 'Refogue gengibre e alho na manteiga', 'Adicione tomate e especiarias', 'Adicione creme de leite', 'Adicione o frango', 'Finalize com coentro'],
-        prepTime: '4 horas',
-        cookTime: '40 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.5
-      },
-      {
-        id: 'biryani',
-        name: 'Chicken Biryani',
-        description: 'Arroz basmati aromático cozido com frango marinado em camadas com especiarias.',
-        ingredients: ['500g frango', '400g arroz basmati', 'Iogurte', 'Cebola frita', 'Açafrão', 'Cardamomo', 'Canela', 'Gengibre', 'Alho', 'Hortelã'],
-        instructions: ['Marine o frango em iogurte e especiarias', 'Cozinhe o arroz até meio cozido', 'Refogue o frango', 'Monte camadas: arroz, frango, cebola frita', 'Adicione açafrão dissolvido em leite', 'Cozinhe em fogo baixo por 30 minutos'],
-        prepTime: '2 horas',
-        cookTime: '1 hora',
-        servings: 6,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.4
-      },
-      {
-        id: 'samosa',
-        name: 'Samosa',
-        description: 'Pastel triangular frito recheado com batata temperada, ervilha e especiarias.',
-        ingredients: ['Massa: farinha, água, óleo', 'Recheio: batata, ervilha, cominho, coentro, garam masala, gengibre', 'Óleo para fritar'],
-        instructions: ['Prepare a massa e deixe descansar', 'Cozinhe batatas e ervilhas com especiarias', 'Abra a massa e corte círculos', 'Recheie e dobre em formato triangular', 'Frite até dourar', 'Sirva com chutney'],
-        prepTime: '40 minutos',
-        cookTime: '30 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 9.1
-      },
-      {
-        id: 'naan',
-        name: 'Naan',
-        description: 'Pão indiano macio assado em forno tandoor, pincelado com manteiga.',
-        ingredients: ['500g farinha', '10g fermento', '200ml iogurte', '100ml leite', 'Açúcar', 'Sal', 'Manteiga', 'Alho (opcional)'],
-        instructions: ['Misture todos os ingredientes', 'Sove até ficar elástica', 'Deixe crescer por 2 horas', 'Divida em porções', 'Abra em formato oval', 'Asse em forno bem quente', 'Pincele com manteiga'],
-        prepTime: '2h30',
-        cookTime: '10 minutos',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=800&h=600&fit=crop',
-        category: 'Pão',
-        rating: 9.0
-      },
-      {
-        id: 'gulab-jamun',
-        name: 'Gulab Jamun',
-        description: 'Bolinhos fritos de leite em pó embebidos em calda de açúcar aromática.',
-        ingredients: ['200g leite em pó', '50g farinha', '1 colher fermento', 'Leite', 'Ghee', 'Açúcar', 'Água', 'Cardamomo', 'Água de rosas'],
-        instructions: ['Misture leite em pó, farinha e fermento', 'Adicione leite até formar massa', 'Faça bolinhas', 'Frite em ghee até dourar', 'Prepare calda com açúcar, água, cardamomo', 'Embeba as bolinhas na calda quente', 'Deixe absorver por 2 horas'],
-        prepTime: '30 minutos',
-        cookTime: '30 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1589301773859-34a6b7e0b3e7?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.9
-      }
-    ]
-  },
-  {
-    id: 'tailandia',
-    name: 'Tailândia',
-    flag: '🇹🇭',
-    description: 'Equilíbrio perfeito entre doce, salgado, azedo e picante.',
-    cuisineRanking: 6,
-    recipes: [
-      {
-        id: 'pad-thai',
-        name: 'Pad Thai',
-        description: 'Macarrão de arroz salteado com camarão, ovo, amendoim, brotos de feijão e molho tamarindo.',
-        ingredients: ['200g macarrão de arroz', '300g camarão', '2 ovos', 'Amendoim torrado', 'Brotos de feijão', 'Cebolinha', 'Molho de peixe', 'Tamarindo', 'Açúcar de palma'],
-        instructions: ['Hidrate o macarrão', 'Prepare o molho com tamarindo, molho de peixe e açúcar', 'Salteie camarão', 'Adicione ovo mexido', 'Adicione macarrão e molho', 'Finalize com amendoim, brotos e cebolinha'],
-        prepTime: '20 minutos',
-        cookTime: '15 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.4
-      },
-      {
-        id: 'tom-yum',
-        name: 'Tom Yum Goong',
-        description: 'Sopa picante e azeda com camarão, capim-limão, galanga, folhas de limão kaffir.',
-        ingredients: ['500g camarão', 'Capim-limão', 'Galanga', 'Folhas de limão kaffir', 'Cogumelos', 'Tomate', 'Chiles', 'Molho de peixe', 'Suco de limão', 'Coentro'],
-        instructions: ['Ferva água com capim-limão, galanga e folhas de limão', 'Adicione cogumelos e tomate', 'Adicione camarão', 'Tempere com molho de peixe e chiles', 'Finalize com suco de limão e coentro'],
-        prepTime: '15 minutos',
-        cookTime: '20 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
-        category: 'Sopa',
-        rating: 9.3
-      },
-      {
-        id: 'green-curry',
-        name: 'Green Curry',
-        description: 'Curry verde cremoso com frango, berinjela, manjericão tailandês e leite de coco.',
-        ingredients: ['500g frango', 'Pasta de curry verde', '400ml leite de coco', 'Berinjela', 'Pimentão', 'Manjericão tailandês', 'Folhas de limão kaffir', 'Molho de peixe', 'Açúcar de palma'],
-        instructions: ['Frite a pasta de curry no creme do leite de coco', 'Adicione frango', 'Adicione resto do leite de coco', 'Adicione berinjela e pimentão', 'Tempere com molho de peixe e açúcar', 'Finalize com manjericão e folhas de limão'],
-        prepTime: '15 minutos',
-        cookTime: '25 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.2
-      },
-      {
-        id: 'mango-sticky-rice',
-        name: 'Mango Sticky Rice',
-        description: 'Arroz glutinoso doce com leite de coco servido com manga madura.',
-        ingredients: ['300g arroz glutinoso', '400ml leite de coco', '100g açúcar', 'Sal', '2 mangas maduras', 'Gergelim torrado'],
-        instructions: ['Deixe o arroz de molho por 4 horas', 'Cozinhe no vapor por 30 minutos', 'Aqueça leite de coco com açúcar e sal', 'Misture com o arroz', 'Deixe absorver por 30 minutos', 'Sirva com manga fatiada e gergelim'],
-        prepTime: '4 horas',
-        cookTime: '30 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1604085792782-8d92f276d7d8?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.1
-      },
-      {
-        id: 'som-tam',
-        name: 'Som Tam',
-        description: 'Salada picante de mamão verde com tomate, amendoim, camarão seco e molho de peixe.',
-        ingredients: ['1 mamão verde', 'Tomate cereja', 'Vagem', 'Amendoim torrado', 'Camarão seco', 'Alho', 'Chiles', 'Molho de peixe', 'Suco de limão', 'Açúcar de palma'],
-        instructions: ['Rale o mamão verde em tiras', 'Pilão alho e chiles', 'Adicione vagem e tomate', 'Adicione mamão', 'Tempere com molho de peixe, limão e açúcar', 'Finalize com amendoim e camarão seco'],
-        prepTime: '20 minutos',
-        cookTime: '0 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop',
-        category: 'Salada',
-        rating: 8.8
-      }
-    ]
-  },
-  {
-    id: 'espanha',
-    name: 'Espanha',
-    flag: '🇪🇸',
-    description: 'Culinária mediterrânea com influências árabes e tradição de tapas.',
-    cuisineRanking: 7,
-    recipes: [
-      {
-        id: 'paella',
-        name: 'Paella Valenciana',
-        description: 'Arroz espanhol com frango, coelho, feijão verde, açafrão e pimentão.',
-        ingredients: ['400g arroz', '500g frango', '300g coelho', 'Feijão verde', 'Pimentão', 'Tomate', 'Açafrão', 'Alho', 'Azeite', 'Caldo de galinha'],
-        instructions: ['Doure as carnes na paellera', 'Adicione legumes', 'Adicione tomate e pimentão', 'Adicione arroz e torre', 'Adicione caldo quente com açafrão', 'Cozinhe sem mexer por 20 minutos', 'Deixe descansar 5 minutos'],
-        prepTime: '20 minutos',
-        cookTime: '40 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.3
-      },
-      {
-        id: 'tortilla',
-        name: 'Tortilla Española',
-        description: 'Omelete espanhola grossa com batata e cebola.',
-        ingredients: ['6 ovos', '4 batatas grandes', '1 cebola', 'Azeite', 'Sal'],
-        instructions: ['Frite batatas e cebola em bastante azeite', 'Escorra bem', 'Bata os ovos', 'Misture batatas aos ovos', 'Cozinhe em frigideira até firmar', 'Vire com ajuda de prato', 'Cozinhe o outro lado'],
-        prepTime: '15 minutos',
-        cookTime: '30 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1565299543923-37dd37887442?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.1
-      },
-      {
-        id: 'gazpacho',
-        name: 'Gazpacho',
-        description: 'Sopa fria de tomate, pepino, pimentão e alho, típica do verão andaluz.',
-        ingredients: ['1kg tomate maduro', '1 pepino', '1 pimentão verde', '1 dente alho', 'Pão amanhecido', 'Azeite', 'Vinagre', 'Sal'],
-        instructions: ['Bata todos os ingredientes no liquidificador', 'Passe por peneira', 'Tempere com sal, azeite e vinagre', 'Leve à geladeira por 2 horas', 'Sirva bem gelado com cubos de pão torrado'],
-        prepTime: '15 minutos',
-        cookTime: '0 minutos',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?w=800&h=600&fit=crop',
-        category: 'Sopa',
-        rating: 8.9
-      },
-      {
-        id: 'churros-espanhol',
-        name: 'Churros com Chocolate',
-        description: 'Massa frita em formato de estrela servida com chocolate quente espesso.',
-        ingredients: ['250ml água', '100g manteiga', '150g farinha', 'Sal', 'Açúcar', '200g chocolate amargo', '200ml creme de leite'],
-        instructions: ['Ferva água com manteiga e sal', 'Adicione farinha de uma vez', 'Mexa até desgrudar', 'Coloque em saco de confeitar', 'Frite em óleo quente', 'Passe em açúcar', 'Derreta chocolate com creme para o molho'],
-        prepTime: '15 minutos',
-        cookTime: '20 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1543773495-e75e5d90c8c7?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.0
-      },
-      {
-        id: 'patatas-bravas',
-        name: 'Patatas Bravas',
-        description: 'Batatas fritas com molho picante de tomate e maionese de alho.',
-        ingredients: ['1kg batatas', 'Tomate', 'Pimentão picante', 'Alho', 'Páprica picante', 'Maionese', 'Azeite', 'Vinagre'],
-        instructions: ['Corte batatas em cubos', 'Frite até dourar', 'Prepare molho bravo com tomate, pimentão e páprica', 'Prepare aioli (maionese de alho)', 'Sirva batatas com os dois molhos'],
-        prepTime: '15 minutos',
-        cookTime: '25 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1565299543923-37dd37887442?w=800&h=600&fit=crop',
-        category: 'Tapa',
-        rating: 8.7
-      }
-    ]
-  },
-  {
-    id: 'mexico',
-    name: 'México',
-    flag: '🇲🇽',
-    description: 'Culinária vibrante com sabores intensos, herança asteca e maia.',
-    cuisineRanking: 8,
-    recipes: [
-      {
-        id: 'tacos',
-        name: 'Tacos al Pastor',
-        description: 'Tacos com carne de porco marinada em especiarias, abacaxi, cebola e coentro.',
-        ingredients: ['1kg carne de porco', 'Chiles guajillo', 'Abacaxi', 'Cebola', 'Coentro', 'Limão', 'Tortillas de milho', 'Achiote', 'Cominho'],
-        instructions: ['Marine a carne com chiles, achiote e especiarias por 4 horas', 'Asse a carne em espeto vertical', 'Corte fatias finas', 'Aqueça as tortillas', 'Monte com carne, abacaxi grelhado, cebola e coentro', 'Finalize com limão'],
-        prepTime: '4 horas',
-        cookTime: '2 horas',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.4
-      },
-      {
-        id: 'guacamole',
-        name: 'Guacamole',
-        description: 'Pasta cremosa de abacate com tomate, cebola, coentro, limão e jalapeño.',
-        ingredients: ['3 abacates maduros', '2 tomates', '1 cebola roxa', 'Coentro fresco', '2 limões', '1 jalapeño', 'Sal'],
-        instructions: ['Amasse os abacates com garfo', 'Pique tomate, cebola, coentro e jalapeño', 'Misture tudo', 'Adicione suco de limão e sal', 'Sirva imediatamente com nachos'],
-        prepTime: '15 minutos',
-        cookTime: '0 minutos',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1623961990059-e9d5a7e5b9f5?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 9.2
-      },
-      {
-        id: 'enchiladas',
-        name: 'Enchiladas Verdes',
-        description: 'Tortillas recheadas com frango, cobertas com molho verde de tomatillo e queijo gratinado.',
-        ingredients: ['12 tortillas', '500g frango desfiado', '500g tomatillos', 'Chiles serranos', 'Cebola', 'Alho', 'Coentro', 'Creme de leite', 'Queijo fresco'],
-        instructions: ['Cozinhe tomatillos e chiles', 'Bata com cebola, alho e coentro', 'Refogue o frango temperado', 'Passe tortillas no molho', 'Recheie com frango', 'Enrole e disponha em refratário', 'Cubra com molho e queijo', 'Asse até gratinar'],
-        prepTime: '30 minutos',
-        cookTime: '40 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1599974789516-672445505da0?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.1
-      },
-      {
-        id: 'churros',
-        name: 'Churros Mexicanos',
-        description: 'Massa frita crocante coberta com açúcar e canela, servida com chocolate quente.',
-        ingredients: ['250ml água', '100g manteiga', '150g farinha', '3 ovos', 'Açúcar', 'Canela', 'Chocolate para molho'],
-        instructions: ['Ferva água com manteiga', 'Adicione farinha de uma vez e mexa', 'Deixe esfriar e adicione ovos', 'Coloque em saco de confeitar', 'Frite em óleo quente', 'Passe em açúcar com canela', 'Sirva com chocolate quente'],
-        prepTime: '20 minutos',
-        cookTime: '20 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.0
-      },
-      {
-        id: 'pozole',
-        name: 'Pozole Rojo',
-        description: 'Sopa tradicional com milho hominy, carne de porco e molho vermelho de chiles.',
-        ingredients: ['1kg carne de porco', '800g milho hominy', 'Chiles guajillo', 'Alho', 'Cebola', 'Orégano', 'Repolho', 'Rabanete', 'Limão', 'Tostadas'],
-        instructions: ['Cozinhe a carne até macia', 'Hidrate e bata os chiles com alho', 'Adicione o molho à carne', 'Adicione o milho hominy', 'Cozinhe por 1 hora', 'Sirva com repolho, rabanete, limão e tostadas'],
-        prepTime: '30 minutos',
-        cookTime: '3 horas',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1604152135912-04a022e23696?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.9
-      }
-    ]
-  },
-  {
-    id: 'grecia',
-    name: 'Grécia',
-    flag: '🇬🇷',
-    description: 'Culinária mediterrânea com azeite, queijo feta, azeitonas e ervas frescas.',
-    cuisineRanking: 9,
-    recipes: [
-      {
-        id: 'moussaka',
-        name: 'Moussaka',
-        description: 'Camadas de berinjela, carne moída temperada e molho bechamel gratinado.',
-        ingredients: ['3 berinjelas', '500g carne moída', 'Tomate', 'Cebola', 'Alho', 'Canela', 'Bechamel', 'Queijo', 'Azeite'],
-        instructions: ['Frite fatias de berinjela', 'Prepare molho de carne com tomate e canela', 'Prepare bechamel', 'Monte camadas: berinjela, carne, bechamel', 'Polvilhe queijo', 'Asse a 180°C por 45 minutos'],
-        prepTime: '40 minutos',
-        cookTime: '1 hora',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.2
-      },
-      {
-        id: 'souvlaki',
-        name: 'Souvlaki',
-        description: 'Espetinhos de carne marinada grelhados, servidos com pita, tzatziki e salada.',
-        ingredients: ['800g carne (porco ou frango)', 'Limão', 'Alho', 'Orégano', 'Azeite', 'Pita', 'Tzatziki', 'Tomate', 'Cebola', 'Alface'],
-        instructions: ['Marine a carne por 4 horas', 'Monte espetinhos', 'Grelhe até dourar', 'Aqueça pitas', 'Sirva com tzatziki, salada e batatas fritas'],
-        prepTime: '4 horas',
-        cookTime: '15 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
-      },
-      {
-        id: 'tzatziki',
-        name: 'Tzatziki',
-        description: 'Molho cremoso de iogurte grego com pepino, alho e endro.',
-        ingredients: ['500g iogurte grego', '1 pepino', '3 dentes alho', 'Endro fresco', 'Azeite', 'Vinagre', 'Sal'],
-        instructions: ['Rale o pepino e esprema bem', 'Misture com iogurte', 'Adicione alho picado', 'Adicione endro', 'Tempere com azeite, vinagre e sal', 'Leve à geladeira por 1 hora'],
-        prepTime: '15 minutos',
-        cookTime: '0 minutos',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Molho',
-        rating: 8.8
-      },
-      {
-        id: 'spanakopita',
-        name: 'Spanakopita',
-        description: 'Torta folhada recheada com espinafre, queijo feta e ervas.',
-        ingredients: ['500g espinafre', '300g queijo feta', 'Massa filo', 'Cebola', 'Endro', 'Ovos', 'Azeite', 'Noz-moscada'],
-        instructions: ['Refogue espinafre com cebola', 'Misture com feta esfarelado, ovos e endro', 'Pincele massa filo com azeite', 'Monte camadas de massa e recheio', 'Asse a 180°C por 40 minutos'],
-        prepTime: '30 minutos',
-        cookTime: '40 minutos',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Torta',
-        rating: 8.9
-      },
-      {
-        id: 'baklava',
-        name: 'Baklava',
-        description: 'Doce folhado com nozes, mel e especiarias.',
-        ingredients: ['Massa filo', '400g nozes picadas', '200g manteiga', '300g mel', 'Açúcar', 'Canela', 'Cravo', 'Água'],
-        instructions: ['Misture nozes com canela', 'Pincele massa filo com manteiga', 'Monte camadas de massa e nozes', 'Corte em losangos', 'Asse a 180°C por 45 minutos', 'Prepare calda de mel', 'Despeje calda quente sobre baklava fria'],
-        prepTime: '40 minutos',
-        cookTime: '45 minutos',
-        servings: 24,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1598110750624-207050c4f28c?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.1
-      }
-    ]
-  },
   {
     id: 'brasil',
     name: 'Brasil',
     flag: '🇧🇷',
     description: 'Culinária rica e diversificada, com influências indígenas, africanas e europeias.',
-    cuisineRanking: 10,
     recipes: [
       {
         id: 'feijoada',
@@ -752,8 +38,7 @@ export const countriesData: Country[] = [
         servings: 8,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1633630113851-b2bcbb48f1d9?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.3
+        category: 'Prato Principal'
       },
       {
         id: 'moqueca',
@@ -766,8 +51,7 @@ export const countriesData: Country[] = [
         servings: 6,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1604152135912-04a022e23696?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.1
+        category: 'Prato Principal'
       },
       {
         id: 'brigadeiro',
@@ -780,8 +64,7 @@ export const countriesData: Country[] = [
         servings: 30,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.5
+        category: 'Sobremesa'
       },
       {
         id: 'pao-de-queijo',
@@ -794,8 +77,7 @@ export const countriesData: Country[] = [
         servings: 40,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1618897996318-5a901fa6ca71?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 9.4
+        category: 'Lanche'
       },
       {
         id: 'acaraje',
@@ -808,8 +90,664 @@ export const countriesData: Country[] = [
         servings: 15,
         difficulty: 'Difícil',
         image: 'https://images.unsplash.com/photo-1612871689761-3a1d432e0d1e?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 9.0
+        category: 'Lanche'
+      }
+    ]
+  },
+  {
+    id: 'italia',
+    name: 'Itália',
+    flag: '🇮🇹',
+    description: 'Berço da pizza e da pasta, com tradição milenar em gastronomia.',
+    recipes: [
+      {
+        id: 'carbonara',
+        name: 'Spaghetti alla Carbonara',
+        description: 'Massa italiana com molho cremoso de ovos, queijo pecorino, guanciale e pimenta preta.',
+        ingredients: ['400g spaghetti', '150g guanciale', '4 gemas', '100g pecorino romano', 'Pimenta preta', 'Sal'],
+        instructions: ['Cozinhe o spaghetti al dente', 'Frite o guanciale até ficar crocante', 'Misture gemas com pecorino ralado', 'Escorra a massa e misture com guanciale', 'Desligue o fogo e adicione a mistura de ovos', 'Mexa rapidamente até cremoso', 'Finalize com pimenta preta moída na hora'],
+        prepTime: '10 minutos',
+        cookTime: '15 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'pizza-margherita',
+        name: 'Pizza Margherita',
+        description: 'Pizza clássica napolitana com molho de tomate, mussarela de búfala, manjericão fresco e azeite.',
+        ingredients: ['Massa de pizza', '400g tomate pelado', '250g mussarela de búfala', 'Manjericão fresco', 'Azeite extra virgem', 'Sal'],
+        instructions: ['Abra a massa em formato redondo', 'Espalhe o molho de tomate', 'Distribua a mussarela em pedaços', 'Asse em forno bem quente (250°C) por 10 minutos', 'Finalize com manjericão fresco e azeite'],
+        prepTime: '2 horas (fermentação)',
+        cookTime: '10 minutos',
+        servings: 2,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'tiramisu',
+        name: 'Tiramisù',
+        description: 'Sobremesa italiana com camadas de biscoito champagne embebido em café, creme de mascarpone e cacau.',
+        ingredients: ['500g mascarpone', '4 ovos', '100g açúcar', '300ml café expresso', '200g biscoito champagne', 'Cacau em pó', 'Marsala'],
+        instructions: ['Separe gemas e claras', 'Bata gemas com açúcar até clarear', 'Adicione mascarpone e misture', 'Bata claras em neve e incorpore delicadamente', 'Mergulhe biscoitos no café com marsala', 'Monte camadas alternadas de biscoito e creme', 'Finalize com cacau peneirado', 'Leve à geladeira por 4 horas'],
+        prepTime: '30 minutos',
+        cookTime: '0 minutos',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'risotto',
+        name: 'Risotto alla Milanese',
+        description: 'Arroz cremoso cozido lentamente com açafrão, vinho branco, manteiga e parmesão.',
+        ingredients: ['300g arroz arbóreo', '1L caldo de carne', '100ml vinho branco', '1 cebola', '80g manteiga', '100g parmesão', 'Açafrão', 'Sal'],
+        instructions: ['Refogue cebola na manteiga', 'Adicione arroz e torre levemente', 'Adicione vinho e deixe evaporar', 'Adicione caldo aos poucos, mexendo sempre', 'Adicione açafrão dissolvido', 'Finalize com manteiga e parmesão'],
+        prepTime: '10 minutos',
+        cookTime: '25 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1476124369491-c4f6e3e8b5c5?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'lasagna',
+        name: 'Lasagna alla Bolognese',
+        description: 'Camadas de massa fresca, molho bolonhesa, bechamel e parmesão gratinado.',
+        ingredients: ['Massa para lasanha', '500g carne moída', '400g tomate pelado', '500ml bechamel', '200g parmesão', 'Cebola', 'Cenoura', 'Aipo', 'Vinho tinto'],
+        instructions: ['Prepare o ragù bolonhesa (carne, legumes, tomate, vinho)', 'Cozinhe por 2 horas em fogo baixo', 'Prepare o bechamel', 'Monte camadas: massa, ragù, bechamel, parmesão', 'Repita até acabar os ingredientes', 'Asse a 180°C por 40 minutos'],
+        prepTime: '45 minutos',
+        cookTime: '3 horas',
+        servings: 8,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      }
+    ]
+  },
+  {
+    id: 'japao',
+    name: 'Japão',
+    flag: '🇯🇵',
+    description: 'Culinária refinada com foco em ingredientes frescos, apresentação e equilíbrio de sabores.',
+    recipes: [
+      {
+        id: 'sushi',
+        name: 'Sushi Nigiri',
+        description: 'Bolinho de arroz temperado coberto com fatia de peixe cru fresco.',
+        ingredients: ['400g arroz japonês', '500g peixe fresco (salmão, atum)', '50ml vinagre de arroz', '2 colheres açúcar', '1 colher sal', 'Wasabi', 'Shoyu'],
+        instructions: ['Cozinhe o arroz e tempere com vinagre, açúcar e sal', 'Deixe esfriar até temperatura ambiente', 'Corte o peixe em fatias finas', 'Molde o arroz em formato oval', 'Coloque um pouco de wasabi', 'Cubra com a fatia de peixe', 'Sirva com shoyu'],
+        prepTime: '40 minutos',
+        cookTime: '20 minutos',
+        servings: 4,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'ramen',
+        name: 'Ramen Tonkotsu',
+        description: 'Sopa de macarrão com caldo cremoso de ossos de porco, chashu, ovo marinado e cebolinha.',
+        ingredients: ['2kg ossos de porco', 'Macarrão ramen', 'Chashu (barriga de porco)', 'Ovos', 'Cebolinha', 'Alho', 'Gengibre', 'Shoyu', 'Mirin', 'Sake'],
+        instructions: ['Ferva os ossos por 12 horas para fazer o caldo', 'Prepare o chashu marinado e assado', 'Cozinhe ovos por 6 minutos e marine em shoyu', 'Cozinhe o macarrão al dente', 'Monte a tigela: macarrão, caldo quente, chashu, ovo, cebolinha'],
+        prepTime: '30 minutos',
+        cookTime: '12 horas',
+        servings: 4,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'tempura',
+        name: 'Tempura de Camarão',
+        description: 'Camarões empanados em massa leve e crocante, fritos rapidamente.',
+        ingredients: ['500g camarões grandes', '1 xícara farinha de trigo', '1 xícara água gelada', '1 ovo', 'Óleo para fritar', 'Molho tentsuyu'],
+        instructions: ['Limpe os camarões deixando a cauda', 'Misture farinha, ovo e água gelada levemente', 'Aqueça óleo a 180°C', 'Passe camarões na massa', 'Frite rapidamente até dourar', 'Escorra em papel absorvente', 'Sirva imediatamente com molho'],
+        prepTime: '20 minutos',
+        cookTime: '15 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'takoyaki',
+        name: 'Takoyaki',
+        description: 'Bolinhos de massa com pedaços de polvo, cobertos com molho especial, maionese e katsuobushi.',
+        ingredients: ['200g farinha de trigo', '600ml dashi', '3 ovos', '300g polvo cozido', 'Gengibre em conserva', 'Cebolinha', 'Molho takoyaki', 'Maionese japonesa', 'Katsuobushi', 'Aonori'],
+        instructions: ['Misture farinha, dashi e ovos', 'Aqueça a chapa de takoyaki', 'Despeje a massa nas formas', 'Adicione polvo, gengibre e cebolinha', 'Vire as bolinhas com palitos', 'Cubra com molho, maionese, katsuobushi e aonori'],
+        prepTime: '15 minutos',
+        cookTime: '20 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1606297752170-d45eaace8d70?w=800&h=600&fit=crop',
+        category: 'Lanche'
+      },
+      {
+        id: 'mochi',
+        name: 'Mochi',
+        description: 'Bolinho de arroz glutinoso macio, tradicionalmente recheado com pasta de feijão doce.',
+        ingredients: ['200g farinha de arroz mochiko', '200ml água', '100g açúcar', 'Anko (pasta de feijão azuki)', 'Amido de milho'],
+        instructions: ['Misture mochiko, água e açúcar', 'Cozinhe no microondas por 2 minutos', 'Mexa e cozinhe mais 1 minuto', 'Polvilhe amido em superfície', 'Estenda a massa', 'Corte círculos e recheie com anko', 'Feche as bordas'],
+        prepTime: '20 minutos',
+        cookTime: '10 minutos',
+        servings: 12,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1582716401301-b2407dc7563d?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      }
+    ]
+  },
+  {
+    id: 'mexico',
+    name: 'México',
+    flag: '🇲🇽',
+    description: 'Culinária vibrante com sabores intensos, herança asteca e maia.',
+    recipes: [
+      {
+        id: 'tacos',
+        name: 'Tacos al Pastor',
+        description: 'Tacos com carne de porco marinada em especiarias, abacaxi, cebola e coentro.',
+        ingredients: ['1kg carne de porco', 'Chiles guajillo', 'Abacaxi', 'Cebola', 'Coentro', 'Limão', 'Tortillas de milho', 'Achiote', 'Cominho'],
+        instructions: ['Marine a carne com chiles, achiote e especiarias por 4 horas', 'Asse a carne em espeto vertical', 'Corte fatias finas', 'Aqueça as tortillas', 'Monte com carne, abacaxi grelhado, cebola e coentro', 'Finalize com limão'],
+        prepTime: '4 horas',
+        cookTime: '2 horas',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'guacamole',
+        name: 'Guacamole',
+        description: 'Pasta cremosa de abacate com tomate, cebola, coentro, limão e jalapeño.',
+        ingredients: ['3 abacates maduros', '2 tomates', '1 cebola roxa', 'Coentro fresco', '2 limões', '1 jalapeño', 'Sal'],
+        instructions: ['Amasse os abacates com garfo', 'Pique tomate, cebola, coentro e jalapeño', 'Misture tudo', 'Adicione suco de limão e sal', 'Sirva imediatamente com nachos'],
+        prepTime: '15 minutos',
+        cookTime: '0 minutos',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1623961990059-e9d5a7e5b9f5?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      },
+      {
+        id: 'enchiladas',
+        name: 'Enchiladas Verdes',
+        description: 'Tortillas recheadas com frango, cobertas com molho verde de tomatillo e queijo gratinado.',
+        ingredients: ['12 tortillas', '500g frango desfiado', '500g tomatillos', 'Chiles serranos', 'Cebola', 'Alho', 'Coentro', 'Creme de leite', 'Queijo fresco'],
+        instructions: ['Cozinhe tomatillos e chiles', 'Bata com cebola, alho e coentro', 'Refogue o frango temperado', 'Passe tortillas no molho', 'Recheie com frango', 'Enrole e disponha em refratário', 'Cubra com molho e queijo', 'Asse até gratinar'],
+        prepTime: '30 minutos',
+        cookTime: '40 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1599974789516-672445505da0?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'churros',
+        name: 'Churros Mexicanos',
+        description: 'Massa frita crocante coberta com açúcar e canela, servida com chocolate quente.',
+        ingredients: ['250ml água', '100g manteiga', '150g farinha', '3 ovos', 'Açúcar', 'Canela', 'Chocolate para molho'],
+        instructions: ['Ferva água com manteiga', 'Adicione farinha de uma vez e mexa', 'Deixe esfriar e adicione ovos', 'Coloque em saco de confeitar', 'Frite em óleo quente', 'Passe em açúcar com canela', 'Sirva com chocolate quente'],
+        prepTime: '20 minutos',
+        cookTime: '20 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'pozole',
+        name: 'Pozole Rojo',
+        description: 'Sopa tradicional com milho hominy, carne de porco e molho vermelho de chiles.',
+        ingredients: ['1kg carne de porco', '800g milho hominy', 'Chiles guajillo', 'Alho', 'Cebola', 'Orégano', 'Repolho', 'Rabanete', 'Limão', 'Tostadas'],
+        instructions: ['Cozinhe a carne até macia', 'Hidrate e bata os chiles com alho', 'Adicione o molho à carne', 'Adicione o milho hominy', 'Cozinhe por 1 hora', 'Sirva com repolho, rabanete, limão e tostadas'],
+        prepTime: '30 minutos',
+        cookTime: '3 horas',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1604152135912-04a022e23696?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      }
+    ]
+  },
+  {
+    id: 'franca',
+    name: 'França',
+    flag: '🇫🇷',
+    description: 'Alta gastronomia com técnicas refinadas e ingredientes de qualidade.',
+    recipes: [
+      {
+        id: 'ratatouille',
+        name: 'Ratatouille',
+        description: 'Legumes provençais (berinjela, abobrinha, pimentão, tomate) cozidos lentamente com ervas.',
+        ingredients: ['2 berinjelas', '2 abobrinhas', '2 pimentões', '4 tomates', 'Cebola', 'Alho', 'Tomilho', 'Manjericão', 'Azeite'],
+        instructions: ['Corte todos os legumes em rodelas finas', 'Refogue cebola e alho', 'Adicione molho de tomate', 'Disponha os legumes em camadas', 'Regue com azeite e ervas', 'Asse a 180°C por 45 minutos'],
+        prepTime: '30 minutos',
+        cookTime: '45 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'croissant',
+        name: 'Croissant',
+        description: 'Pão folhado amanteigado, crocante por fora e macio por dentro.',
+        ingredients: ['500g farinha', '250g manteiga gelada', '10g sal', '50g açúcar', '10g fermento', '250ml leite', '1 ovo'],
+        instructions: ['Prepare a massa e deixe descansar', 'Lamine a manteiga entre a massa', 'Faça 3 voltas duplas', 'Descanse na geladeira entre cada volta', 'Corte triângulos e enrole', 'Deixe crescer por 2 horas', 'Pincele com ovo', 'Asse a 200°C por 20 minutos'],
+        prepTime: '4 horas',
+        cookTime: '20 minutos',
+        servings: 12,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Pão'
+      },
+      {
+        id: 'coq-au-vin',
+        name: 'Coq au Vin',
+        description: 'Frango cozido lentamente em vinho tinto com cogumelos, bacon e cebolas pérola.',
+        ingredients: ['1 frango inteiro', '750ml vinho tinto', '200g bacon', '200g cogumelos', 'Cebolas pérola', 'Cenoura', 'Alho', 'Tomilho', 'Louro', 'Farinha'],
+        instructions: ['Doure o frango em pedaços', 'Retire e doure bacon, cebolas e cogumelos', 'Adicione farinha e vinho', 'Retorne o frango', 'Adicione ervas', 'Cozinhe em fogo baixo por 1h30', 'Sirva com batatas'],
+        prepTime: '30 minutos',
+        cookTime: '2 horas',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'creme-brulee',
+        name: 'Crème Brûlée',
+        description: 'Creme de baunilha assado com crosta caramelizada crocante.',
+        ingredients: ['500ml creme de leite', '6 gemas', '100g açúcar', '1 fava de baunilha', 'Açúcar para caramelizar'],
+        instructions: ['Aqueça o creme com baunilha', 'Bata gemas com açúcar', 'Misture com o creme quente', 'Despeje em ramequins', 'Asse em banho-maria a 150°C por 40 minutos', 'Deixe esfriar', 'Polvilhe açúcar e caramelize com maçarico'],
+        prepTime: '20 minutos',
+        cookTime: '40 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'bouillabaisse',
+        name: 'Bouillabaisse',
+        description: 'Sopa de peixe provençal com frutos do mar, açafrão e rouille.',
+        ingredients: ['1kg peixes variados', '500g frutos do mar', 'Tomate', 'Alho', 'Cebola', 'Funcho', 'Açafrão', 'Vinho branco', 'Azeite', 'Rouille'],
+        instructions: ['Refogue cebola, alho e funcho', 'Adicione tomate e vinho', 'Adicione açafrão e caldo de peixe', 'Cozinhe os peixes por partes', 'Adicione frutos do mar', 'Sirva com rouille e croutons'],
+        prepTime: '30 minutos',
+        cookTime: '45 minutos',
+        servings: 6,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      }
+    ]
+  },
+  {
+    id: 'india',
+    name: 'Índia',
+    flag: '🇮🇳',
+    description: 'Culinária rica em especiarias, com grande variedade vegetariana.',
+    recipes: [
+      {
+        id: 'butter-chicken',
+        name: 'Butter Chicken',
+        description: 'Frango em molho cremoso de tomate, manteiga, creme de leite e especiarias aromáticas.',
+        ingredients: ['1kg frango', 'Iogurte', 'Garam masala', 'Gengibre', 'Alho', '400g tomate', '200ml creme de leite', 'Manteiga', 'Coentro'],
+        instructions: ['Marine o frango em iogurte e especiarias por 4 horas', 'Grelhe o frango', 'Refogue gengibre e alho na manteiga', 'Adicione tomate e especiarias', 'Adicione creme de leite', 'Adicione o frango', 'Finalize com coentro'],
+        prepTime: '4 horas',
+        cookTime: '40 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'biryani',
+        name: 'Chicken Biryani',
+        description: 'Arroz basmati aromático cozido com frango marinado em camadas com especiarias.',
+        ingredients: ['500g frango', '400g arroz basmati', 'Iogurte', 'Cebola frita', 'Açafrão', 'Cardamomo', 'Canela', 'Gengibre', 'Alho', 'Hortelã'],
+        instructions: ['Marine o frango em iogurte e especiarias', 'Cozinhe o arroz até meio cozido', 'Refogue o frango', 'Monte camadas: arroz, frango, cebola frita', 'Adicione açafrão dissolvido em leite', 'Cozinhe em fogo baixo por 30 minutos'],
+        prepTime: '2 horas',
+        cookTime: '1 hora',
+        servings: 6,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'samosa',
+        name: 'Samosa',
+        description: 'Pastel triangular frito recheado com batata temperada, ervilha e especiarias.',
+        ingredients: ['Massa: farinha, água, óleo', 'Recheio: batata, ervilha, cominho, coentro, garam masala, gengibre', 'Óleo para fritar'],
+        instructions: ['Prepare a massa e deixe descansar', 'Cozinhe batatas e ervilhas com especiarias', 'Abra a massa e corte círculos', 'Recheie e dobre em formato triangular', 'Frite até dourar', 'Sirva com chutney'],
+        prepTime: '40 minutos',
+        cookTime: '30 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Lanche'
+      },
+      {
+        id: 'naan',
+        name: 'Naan',
+        description: 'Pão indiano macio assado em forno tandoor, pincelado com manteiga.',
+        ingredients: ['500g farinha', '10g fermento', '200ml iogurte', '100ml leite', 'Açúcar', 'Sal', 'Manteiga', 'Alho (opcional)'],
+        instructions: ['Misture todos os ingredientes', 'Sove até ficar elástica', 'Deixe crescer por 2 horas', 'Divida em porções', 'Abra em formato oval', 'Asse em forno bem quente', 'Pincele com manteiga'],
+        prepTime: '2h30',
+        cookTime: '10 minutos',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=800&h=600&fit=crop',
+        category: 'Pão'
+      },
+      {
+        id: 'gulab-jamun',
+        name: 'Gulab Jamun',
+        description: 'Bolinhos fritos de leite em pó embebidos em calda de açúcar aromática.',
+        ingredients: ['200g leite em pó', '50g farinha', '1 colher fermento', 'Leite', 'Ghee', 'Açúcar', 'Água', 'Cardamomo', 'Água de rosas'],
+        instructions: ['Misture leite em pó, farinha e fermento', 'Adicione leite até formar massa', 'Faça bolinhas', 'Frite em ghee até dourar', 'Prepare calda com açúcar, água, cardamomo', 'Embeba as bolinhas na calda quente', 'Deixe absorver por 2 horas'],
+        prepTime: '30 minutos',
+        cookTime: '30 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1589301773859-34a6b7e0b3e7?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      }
+    ]
+  },
+  {
+    id: 'tailandia',
+    name: 'Tailândia',
+    flag: '🇹🇭',
+    description: 'Equilíbrio perfeito entre doce, salgado, azedo e picante.',
+    recipes: [
+      {
+        id: 'pad-thai',
+        name: 'Pad Thai',
+        description: 'Macarrão de arroz salteado com camarão, ovo, amendoim, brotos de feijão e molho tamarindo.',
+        ingredients: ['200g macarrão de arroz', '300g camarão', '2 ovos', 'Amendoim torrado', 'Brotos de feijão', 'Cebolinha', 'Molho de peixe', 'Tamarindo', 'Açúcar de palma'],
+        instructions: ['Hidrate o macarrão', 'Prepare o molho com tamarindo, molho de peixe e açúcar', 'Salteie camarão', 'Adicione ovo mexido', 'Adicione macarrão e molho', 'Finalize com amendoim, brotos e cebolinha'],
+        prepTime: '20 minutos',
+        cookTime: '15 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'tom-yum',
+        name: 'Tom Yum Goong',
+        description: 'Sopa picante e azeda com camarão, capim-limão, galanga, folhas de limão kaffir.',
+        ingredients: ['500g camarão', 'Capim-limão', 'Galanga', 'Folhas de limão kaffir', 'Cogumelos', 'Tomate', 'Chiles', 'Molho de peixe', 'Suco de limão', 'Coentro'],
+        instructions: ['Ferva água com capim-limão, galanga e folhas de limão', 'Adicione cogumelos e tomate', 'Adicione camarão', 'Tempere com molho de peixe e chiles', 'Finalize com suco de limão e coentro'],
+        prepTime: '15 minutos',
+        cookTime: '20 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
+        category: 'Sopa'
+      },
+      {
+        id: 'green-curry',
+        name: 'Green Curry',
+        description: 'Curry verde cremoso com frango, berinjela, manjericão tailandês e leite de coco.',
+        ingredients: ['500g frango', 'Pasta de curry verde', '400ml leite de coco', 'Berinjela', 'Pimentão', 'Manjericão tailandês', 'Folhas de limão kaffir', 'Molho de peixe', 'Açúcar de palma'],
+        instructions: ['Frite a pasta de curry no creme do leite de coco', 'Adicione frango', 'Adicione resto do leite de coco', 'Adicione berinjela e pimentão', 'Tempere com molho de peixe e açúcar', 'Finalize com manjericão e folhas de limão'],
+        prepTime: '15 minutos',
+        cookTime: '25 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'mango-sticky-rice',
+        name: 'Mango Sticky Rice',
+        description: 'Arroz glutinoso doce com leite de coco servido com manga madura.',
+        ingredients: ['300g arroz glutinoso', '400ml leite de coco', '100g açúcar', 'Sal', '2 mangas maduras', 'Gergelim torrado'],
+        instructions: ['Deixe o arroz de molho por 4 horas', 'Cozinhe no vapor por 30 minutos', 'Aqueça leite de coco com açúcar e sal', 'Misture com o arroz', 'Deixe absorver por 30 minutos', 'Sirva com manga fatiada e gergelim'],
+        prepTime: '4 horas',
+        cookTime: '30 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1604085792782-8d92f276d7d8?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'som-tam',
+        name: 'Som Tam',
+        description: 'Salada picante de mamão verde com tomate, amendoim, camarão seco e molho de peixe.',
+        ingredients: ['1 mamão verde', 'Tomate cereja', 'Vagem', 'Amendoim torrado', 'Camarão seco', 'Alho', 'Chiles', 'Molho de peixe', 'Suco de limão', 'Açúcar de palma'],
+        instructions: ['Rale o mamão verde em tiras', 'Pilão alho e chiles', 'Adicione vagem e tomate', 'Adicione mamão', 'Tempere com molho de peixe, limão e açúcar', 'Finalize com amendoim e camarão seco'],
+        prepTime: '20 minutos',
+        cookTime: '0 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop',
+        category: 'Salada'
+      }
+    ]
+  },
+  {
+    id: 'china',
+    name: 'China',
+    flag: '🇨🇳',
+    description: 'Uma das culinárias mais antigas e diversificadas do mundo.',
+    recipes: [
+      {
+        id: 'pato-pequim',
+        name: 'Pato à Pequim',
+        description: 'Pato assado com pele crocante, servido com panquecas, molho hoisin, pepino e cebolinha.',
+        ingredients: ['1 pato inteiro', 'Mel', 'Vinagre', 'Molho de soja', 'Vinho de arroz', 'Gengibre', 'Panquecas chinesas', 'Molho hoisin', 'Pepino', 'Cebolinha'],
+        instructions: ['Seque o pato e pincele com mel e vinagre', 'Deixe secar por 24 horas na geladeira', 'Asse a 180°C por 1h30', 'Aumente para 220°C nos últimos 15 minutos', 'Fatie a pele e carne', 'Sirva com panquecas, molho, pepino e cebolinha'],
+        prepTime: '24 horas',
+        cookTime: '2 horas',
+        servings: 6,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1583935909166-be77d3a5e2c0?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'dim-sum',
+        name: 'Dim Sum Variado',
+        description: 'Seleção de pequenos pratos cozidos no vapor: shumai, har gow, char siu bao.',
+        ingredients: ['Massa de dim sum', 'Camarão', 'Carne de porco', 'Cogumelos shiitake', 'Bambu', 'Gengibre', 'Molho de soja', 'Óleo de gergelim', 'Cebolinha'],
+        instructions: ['Prepare recheios variados', 'Envolva em massa de dim sum', 'Cozinhe no vapor por 8-10 minutos', 'Sirva com molho de soja e gengibre'],
+        prepTime: '1 hora',
+        cookTime: '15 minutos',
+        servings: 20,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      },
+      {
+        id: 'mapo-tofu',
+        name: 'Mapo Tofu',
+        description: 'Tofu em molho picante de pimenta Sichuan, carne moída e pasta de feijão fermentado.',
+        ingredients: ['500g tofu', '200g carne moída', 'Pasta de feijão fermentado', 'Pimenta Sichuan', 'Chile', 'Alho', 'Gengibre', 'Cebolinha', 'Molho de soja', 'Amido de milho'],
+        instructions: ['Corte tofu em cubos', 'Refogue carne com alho e gengibre', 'Adicione pasta de feijão e chiles', 'Adicione tofu e caldo', 'Tempere com pimenta Sichuan', 'Engrosse com amido', 'Finalize com cebolinha'],
+        prepTime: '15 minutos',
+        cookTime: '20 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'chow-mein',
+        name: 'Chow Mein',
+        description: 'Macarrão salteado com legumes, carne e molho de soja.',
+        ingredients: ['400g macarrão chinês', '300g frango ou carne', 'Repolho', 'Cenoura', 'Broto de feijão', 'Cebola', 'Alho', 'Gengibre', 'Molho de soja', 'Óleo de gergelim'],
+        instructions: ['Cozinhe o macarrão al dente', 'Salteie carne com alho e gengibre', 'Adicione legumes', 'Adicione macarrão', 'Tempere com molho de soja', 'Finalize com óleo de gergelim'],
+        prepTime: '20 minutos',
+        cookTime: '15 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'spring-rolls',
+        name: 'Spring Rolls',
+        description: 'Rolinhos fritos crocantes recheados com legumes e carne.',
+        ingredients: ['Massa para spring rolls', 'Repolho', 'Cenoura', 'Cogumelos', 'Carne de porco', 'Gengibre', 'Alho', 'Molho de soja', 'Óleo para fritar'],
+        instructions: ['Refogue legumes e carne', 'Tempere com molho de soja', 'Deixe esfriar', 'Recheie as massas', 'Enrole bem apertado', 'Frite até dourar', 'Sirva com molho agridoce'],
+        prepTime: '30 minutos',
+        cookTime: '20 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      }
+    ]
+  },
+  {
+    id: 'espanha',
+    name: 'Espanha',
+    flag: '🇪🇸',
+    description: 'Culinária mediterrânea com influências árabes e tradição de tapas.',
+    recipes: [
+      {
+        id: 'paella',
+        name: 'Paella Valenciana',
+        description: 'Arroz espanhol com frango, coelho, feijão verde, açafrão e pimentão.',
+        ingredients: ['400g arroz', '500g frango', '300g coelho', 'Feijão verde', 'Pimentão', 'Tomate', 'Açafrão', 'Alho', 'Azeite', 'Caldo de galinha'],
+        instructions: ['Doure as carnes na paellera', 'Adicione legumes', 'Adicione tomate e pimentão', 'Adicione arroz e torre', 'Adicione caldo quente com açafrão', 'Cozinhe sem mexer por 20 minutos', 'Deixe descansar 5 minutos'],
+        prepTime: '20 minutos',
+        cookTime: '40 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'tortilla',
+        name: 'Tortilla Española',
+        description: 'Omelete espanhola grossa com batata e cebola.',
+        ingredients: ['6 ovos', '4 batatas grandes', '1 cebola', 'Azeite', 'Sal'],
+        instructions: ['Frite batatas e cebola em bastante azeite', 'Escorra bem', 'Bata os ovos', 'Misture batatas aos ovos', 'Cozinhe em frigideira até firmar', 'Vire com ajuda de prato', 'Cozinhe o outro lado'],
+        prepTime: '15 minutos',
+        cookTime: '30 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1565299543923-37dd37887442?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'gazpacho',
+        name: 'Gazpacho',
+        description: 'Sopa fria de tomate, pepino, pimentão e alho, típica do verão andaluz.',
+        ingredients: ['1kg tomate maduro', '1 pepino', '1 pimentão verde', '1 dente alho', 'Pão amanhecido', 'Azeite', 'Vinagre', 'Sal'],
+        instructions: ['Bata todos os ingredientes no liquidificador', 'Passe por peneira', 'Tempere com sal, azeite e vinagre', 'Leve à geladeira por 2 horas', 'Sirva bem gelado com cubos de pão torrado'],
+        prepTime: '15 minutos',
+        cookTime: '0 minutos',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?w=800&h=600&fit=crop',
+        category: 'Sopa'
+      },
+      {
+        id: 'churros-espanhol',
+        name: 'Churros com Chocolate',
+        description: 'Massa frita em formato de estrela servida com chocolate quente espesso.',
+        ingredients: ['250ml água', '100g manteiga', '150g farinha', 'Sal', 'Açúcar', '200g chocolate amargo', '200ml creme de leite'],
+        instructions: ['Ferva água com manteiga e sal', 'Adicione farinha de uma vez', 'Mexa até desgrudar', 'Coloque em saco de confeitar', 'Frite em óleo quente', 'Passe em açúcar', 'Derreta chocolate com creme para o molho'],
+        prepTime: '15 minutos',
+        cookTime: '20 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1543773495-e75e5d90c8c7?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'patatas-bravas',
+        name: 'Patatas Bravas',
+        description: 'Batatas fritas com molho picante de tomate e maionese de alho.',
+        ingredients: ['1kg batatas', 'Tomate', 'Pimentão picante', 'Alho', 'Páprica picante', 'Maionese', 'Azeite', 'Vinagre'],
+        instructions: ['Corte batatas em cubos', 'Frite até dourar', 'Prepare molho bravo com tomate, pimentão e páprica', 'Prepare aioli (maionese de alho)', 'Sirva batatas com os dois molhos'],
+        prepTime: '15 minutos',
+        cookTime: '25 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1565299543923-37dd37887442?w=800&h=600&fit=crop',
+        category: 'Tapa'
+      }
+    ]
+  },
+  {
+    id: 'grecia',
+    name: 'Grécia',
+    flag: '🇬🇷',
+    description: 'Culinária mediterrânea com azeite, queijo feta, azeitonas e ervas frescas.',
+    recipes: [
+      {
+        id: 'moussaka',
+        name: 'Moussaka',
+        description: 'Camadas de berinjela, carne moída temperada e molho bechamel gratinado.',
+        ingredients: ['3 berinjelas', '500g carne moída', 'Tomate', 'Cebola', 'Alho', 'Canela', 'Bechamel', 'Queijo', 'Azeite'],
+        instructions: ['Frite fatias de berinjela', 'Prepare molho de carne com tomate e canela', 'Prepare bechamel', 'Monte camadas: berinjela, carne, bechamel', 'Polvilhe queijo', 'Asse a 180°C por 45 minutos'],
+        prepTime: '40 minutos',
+        cookTime: '1 hora',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'souvlaki',
+        name: 'Souvlaki',
+        description: 'Espetinhos de carne marinada grelhados, servidos com pita, tzatziki e salada.',
+        ingredients: ['800g carne (porco ou frango)', 'Limão', 'Alho', 'Orégano', 'Azeite', 'Pita', 'Tzatziki', 'Tomate', 'Cebola', 'Alface'],
+        instructions: ['Marine a carne por 4 horas', 'Monte espetinhos', 'Grelhe até dourar', 'Aqueça pitas', 'Sirva com tzatziki, salada e batatas fritas'],
+        prepTime: '4 horas',
+        cookTime: '15 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'tzatziki',
+        name: 'Tzatziki',
+        description: 'Molho cremoso de iogurte grego com pepino, alho e endro.',
+        ingredients: ['500g iogurte grego', '1 pepino', '3 dentes alho', 'Endro fresco', 'Azeite', 'Vinagre', 'Sal'],
+        instructions: ['Rale o pepino e esprema bem', 'Misture com iogurte', 'Adicione alho picado', 'Adicione endro', 'Tempere com azeite, vinagre e sal', 'Leve à geladeira por 1 hora'],
+        prepTime: '15 minutos',
+        cookTime: '0 minutos',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
+        category: 'Molho'
+      },
+      {
+        id: 'spanakopita',
+        name: 'Spanakopita',
+        description: 'Torta folhada recheada com espinafre, queijo feta e ervas.',
+        ingredients: ['500g espinafre', '300g queijo feta', 'Massa filo', 'Cebola', 'Endro', 'Ovos', 'Azeite', 'Noz-moscada'],
+        instructions: ['Refogue espinafre com cebola', 'Misture com feta esfarelado, ovos e endro', 'Pincele massa filo com azeite', 'Monte camadas de massa e recheio', 'Asse a 180°C por 40 minutos'],
+        prepTime: '30 minutos',
+        cookTime: '40 minutos',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Torta'
+      },
+      {
+        id: 'baklava',
+        name: 'Baklava',
+        description: 'Doce folhado com nozes, mel e especiarias.',
+        ingredients: ['Massa filo', '400g nozes picadas', '200g manteiga', '300g mel', 'Açúcar', 'Canela', 'Cravo', 'Água'],
+        instructions: ['Misture nozes com canela', 'Pincele massa filo com manteiga', 'Monte camadas de massa e nozes', 'Corte em losangos', 'Asse a 180°C por 45 minutos', 'Prepare calda de mel', 'Despeje calda quente sobre baklava fria'],
+        prepTime: '40 minutos',
+        cookTime: '45 minutos',
+        servings: 24,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1598110750624-207050c4f28c?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
       }
     ]
   },
@@ -818,7 +756,6 @@ export const countriesData: Country[] = [
     name: 'Turquia',
     flag: '🇹🇷',
     description: 'Ponte entre Oriente e Ocidente, com sabores ricos e especiarias.',
-    cuisineRanking: 11,
     recipes: [
       {
         id: 'kebab',
@@ -831,8 +768,7 @@ export const countriesData: Country[] = [
         servings: 8,
         difficulty: 'Difícil',
         image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.2
+        category: 'Prato Principal'
       },
       {
         id: 'manti',
@@ -845,8 +781,7 @@ export const countriesData: Country[] = [
         servings: 6,
         difficulty: 'Difícil',
         image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
+        category: 'Prato Principal'
       },
       {
         id: 'borek',
@@ -859,8 +794,7 @@ export const countriesData: Country[] = [
         servings: 12,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 8.9
+        category: 'Lanche'
       },
       {
         id: 'baklava-turco',
@@ -873,8 +807,7 @@ export const countriesData: Country[] = [
         servings: 24,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1598110750624-207050c4f28c?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.1
+        category: 'Sobremesa'
       },
       {
         id: 'lahmacun',
@@ -887,324 +820,7 @@ export const countriesData: Country[] = [
         servings: 8,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
-      }
-    ]
-  },
-  {
-    id: 'coreia',
-    name: 'Coreia do Sul',
-    flag: '🇰🇷',
-    description: 'Culinária com fermentados, picante e banchan (acompanhamentos variados).',
-    cuisineRanking: 12,
-    recipes: [
-      {
-        id: 'kimchi',
-        name: 'Kimchi',
-        description: 'Repolho fermentado com pasta de pimenta coreana, alho e gengibre.',
-        ingredients: ['1 repolho napa', 'Sal grosso', 'Gochugaru (pimenta coreana)', 'Alho', 'Gengibre', 'Molho de peixe', 'Açúcar', 'Cebolinha'],
-        instructions: ['Corte e salgue o repolho por 2 horas', 'Enxágue bem', 'Prepare pasta com gochugaru, alho, gengibre', 'Adicione molho de peixe e açúcar', 'Misture com repolho', 'Fermente por 3-5 dias'],
-        prepTime: '3 horas',
-        cookTime: '0 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1604908815453-7462d2d90a4c?w=800&h=600&fit=crop',
-        category: 'Acompanhamento',
-        rating: 9.1
-      },
-      {
-        id: 'bibimbap',
-        name: 'Bibimbap',
-        description: 'Arroz com legumes variados, carne, ovo frito e gochujang.',
-        ingredients: ['Arroz', 'Carne moída', 'Espinafre', 'Cenoura', 'Broto de feijão', 'Cogumelos', 'Ovo', 'Gochujang', 'Óleo de gergelim', 'Gergelim'],
-        instructions: ['Cozinhe arroz', 'Refogue cada legume separadamente', 'Tempere carne e refogue', 'Monte tigela: arroz, legumes em setores', 'Coloque carne no centro', 'Frite ovo e coloque por cima', 'Sirva com gochujang'],
-        prepTime: '30 minutos',
-        cookTime: '30 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.3
-      },
-      {
-        id: 'bulgogi',
-        name: 'Bulgogi',
-        description: 'Carne marinada em molho doce de soja, grelhada e servida com alface.',
-        ingredients: ['600g carne bovina fatiada', 'Molho de soja', 'Açúcar', 'Alho', 'Gengibre', 'Óleo de gergelim', 'Pera', 'Cebola', 'Cebolinha', 'Alface'],
-        instructions: ['Bata pera, alho, gengibre, molho de soja e açúcar', 'Marine a carne por 4 horas', 'Grelhe em fogo alto', 'Sirva com alface para embrulhar', 'Acompanhe com arroz e kimchi'],
-        prepTime: '4 horas',
-        cookTime: '15 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.2
-      },
-      {
-        id: 'tteokbokki',
-        name: 'Tteokbokki',
-        description: 'Bolinhos de arroz em molho picante e doce de gochujang.',
-        ingredients: ['500g tteok (bolinhos de arroz)', 'Gochujang', 'Gochugaru', 'Açúcar', 'Molho de soja', 'Alho', 'Fishcake', 'Cebola', 'Cebolinha', 'Ovo cozido'],
-        instructions: ['Ferva água com gochujang, açúcar e molho de soja', 'Adicione tteok', 'Adicione fishcake e cebola', 'Cozinhe até engrossar', 'Finalize com cebolinha e ovo'],
-        prepTime: '10 minutos',
-        cookTime: '20 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1604908815453-7462d2d90a4c?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 8.9
-      },
-      {
-        id: 'japchae',
-        name: 'Japchae',
-        description: 'Macarrão de batata-doce salteado com legumes e carne.',
-        ingredients: ['200g macarrão de batata-doce', 'Carne bovina', 'Espinafre', 'Cenoura', 'Cogumelos', 'Cebola', 'Molho de soja', 'Açúcar', 'Óleo de gergelim', 'Gergelim'],
-        instructions: ['Cozinhe o macarrão', 'Salteie carne com molho de soja', 'Salteie cada legume separadamente', 'Misture tudo', 'Tempere com molho de soja, açúcar e óleo de gergelim', 'Finalize com gergelim'],
-        prepTime: '30 minutos',
-        cookTime: '30 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
-      }
-    ]
-  },
-  {
-    id: 'peru',
-    name: 'Peru',
-    flag: '🇵🇪',
-    description: 'Culinária diversificada com influências incas, espanholas e asiáticas.',
-    cuisineRanking: 13,
-    recipes: [
-      {
-        id: 'ceviche',
-        name: 'Ceviche Peruano',
-        description: 'Peixe cru marinado em suco de limão com cebola roxa, ají e coentro.',
-        ingredients: ['500g peixe branco fresco', 'Limão', 'Cebola roxa', 'Ají limo', 'Coentro', 'Milho', 'Batata-doce', 'Sal'],
-        instructions: ['Corte o peixe em cubos', 'Marine com suco de limão por 5 minutos', 'Adicione cebola em juliana', 'Adicione ají e coentro', 'Tempere com sal', 'Sirva com milho e batata-doce'],
-        prepTime: '20 minutos',
-        cookTime: '0 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 9.4
-      },
-      {
-        id: 'lomo-saltado',
-        name: 'Lomo Saltado',
-        description: 'Carne salteada com cebola, tomate, batata frita e molho de soja, servido com arroz.',
-        ingredients: ['600g filé mignon', 'Cebola roxa', 'Tomate', 'Ají amarillo', 'Batatas', 'Molho de soja', 'Vinagre', 'Coentro', 'Arroz'],
-        instructions: ['Corte a carne em tiras', 'Frite batatas em palito', 'Salteie carne em fogo alto', 'Adicione cebola e tomate', 'Adicione molho de soja e vinagre', 'Adicione batatas fritas', 'Finalize com coentro', 'Sirva com arroz'],
-        prepTime: '20 minutos',
-        cookTime: '20 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.2
-      },
-      {
-        id: 'aji-de-gallina',
-        name: 'Ají de Gallina',
-        description: 'Frango desfiado em molho cremoso de ají amarillo, leite e pão.',
-        ingredients: ['1kg frango', 'Ají amarillo', 'Pão de forma', 'Leite', 'Cebola', 'Alho', 'Nozes', 'Queijo parmesão', 'Batata', 'Ovo', 'Azeitona'],
-        instructions: ['Cozinhe e desfie o frango', 'Bata ají, pão, leite e nozes', 'Refogue cebola e alho', 'Adicione o creme de ají', 'Adicione frango', 'Finalize com queijo', 'Sirva com batata, ovo e azeitona'],
-        prepTime: '30 minutos',
-        cookTime: '40 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
-      },
-      {
-        id: 'causa-limena',
-        name: 'Causa Limeña',
-        description: 'Camadas de purê de batata amarela temperado com limão e ají, recheado com frango ou atum.',
-        ingredients: ['1kg batata amarela', 'Limão', 'Ají amarillo', 'Azeite', 'Frango ou atum', 'Maionese', 'Abacate', 'Ovo', 'Azeitona'],
-        instructions: ['Cozinhe e amasse as batatas', 'Tempere com limão, ají e azeite', 'Prepare recheio de frango com maionese', 'Monte camadas em forma', 'Decore com abacate, ovo e azeitona', 'Leve à geladeira'],
-        prepTime: '40 minutos',
-        cookTime: '30 minutos',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 8.9
-      },
-      {
-        id: 'suspiro-limeno',
-        name: 'Suspiro Limeño',
-        description: 'Sobremesa cremosa de dulce de leche coberta com merengue de vinho do Porto.',
-        ingredients: ['Dulce de leche', 'Leite condensado', 'Gemas', 'Claras', 'Açúcar', 'Vinho do Porto', 'Canela'],
-        instructions: ['Cozinhe dulce de leche com leite condensado e gemas', 'Despeje em taças', 'Bata claras em neve com açúcar', 'Adicione vinho do Porto', 'Cubra o doce de leite', 'Polvilhe canela'],
-        prepTime: '20 minutos',
-        cookTime: '30 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.8
-      }
-    ]
-  },
-  {
-    id: 'vietnam',
-    name: 'Vietnã',
-    flag: '🇻🇳',
-    description: 'Culinária leve e aromática com ervas frescas e molho de peixe.',
-    cuisineRanking: 14,
-    recipes: [
-      {
-        id: 'pho',
-        name: 'Phở',
-        description: 'Sopa de macarrão de arroz com caldo aromático de ossos, carne e ervas frescas.',
-        ingredients: ['Ossos de boi', 'Carne bovina', 'Macarrão de arroz', 'Anis estrelado', 'Canela', 'Gengibre', 'Cebola', 'Molho de peixe', 'Manjericão', 'Coentro', 'Limão', 'Broto de feijão'],
-        instructions: ['Ferva ossos por 12 horas com especiarias', 'Coe o caldo', 'Cozinhe macarrão', 'Fatie carne finamente', 'Monte tigela: macarrão, carne crua', 'Despeje caldo fervente', 'Sirva com ervas e limão'],
-        prepTime: '30 minutos',
-        cookTime: '12 horas',
-        servings: 6,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800&h=600&fit=crop',
-        category: 'Sopa',
-        rating: 9.3
-      },
-      {
-        id: 'banh-mi',
-        name: 'Bánh Mì',
-        description: 'Sanduíche vietnamita em baguete com patê, carne, legumes em conserva e coentro.',
-        ingredients: ['Baguete', 'Patê', 'Carne de porco assada', 'Cenoura em conserva', 'Rabanete em conserva', 'Pepino', 'Coentro', 'Pimenta', 'Maionese', 'Molho de soja'],
-        instructions: ['Asse a baguete', 'Passe patê e maionese', 'Adicione carne', 'Adicione legumes em conserva', 'Adicione pepino e coentro', 'Tempere com molho de soja e pimenta'],
-        prepTime: '20 minutos',
-        cookTime: '10 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 9.1
-      },
-      {
-        id: 'bun-cha',
-        name: 'Bún Chả',
-        description: 'Macarrão de arroz com almôndegas de porco grelhadas, servido com molho agridoce.',
-        ingredients: ['Macarrão de arroz', 'Carne de porco moída', 'Barriga de porco', 'Molho de peixe', 'Açúcar', 'Vinagre', 'Alho', 'Cenoura', 'Pepino', 'Ervas frescas'],
-        instructions: ['Faça almôndegas com carne moída', 'Grelhe almôndegas e barriga de porco', 'Prepare molho com molho de peixe, açúcar, vinagre', 'Cozinhe macarrão', 'Sirva com carne, molho, legumes e ervas'],
-        prepTime: '30 minutos',
-        cookTime: '25 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
-      },
-      {
-        id: 'goi-cuon',
-        name: 'Gỏi Cuốn',
-        description: 'Rolinhos frescos de papel de arroz com camarão, carne de porco, legumes e ervas.',
-        ingredients: ['Papel de arroz', 'Camarão cozido', 'Carne de porco cozida', 'Macarrão de arroz', 'Alface', 'Cenoura', 'Pepino', 'Manjericão', 'Hortelã', 'Molho hoisin', 'Amendoim'],
-        instructions: ['Hidrate papel de arroz', 'Disponha ingredientes no centro', 'Enrole bem apertado', 'Prepare molho com hoisin e amendoim', 'Sirva fresco'],
-        prepTime: '30 minutos',
-        cookTime: '20 minutos',
-        servings: 12,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 8.9
-      },
-      {
-        id: 'ca-kho-to',
-        name: 'Cá Kho Tộ',
-        description: 'Peixe caramelizado em panela de barro com molho de peixe e açúcar.',
-        ingredients: ['600g peixe (bagre)', 'Açúcar', 'Molho de peixe', 'Cebola', 'Alho', 'Pimenta', 'Água de coco', 'Cebolinha'],
-        instructions: ['Caramelize açúcar', 'Adicione molho de peixe e água de coco', 'Adicione peixe', 'Adicione cebola, alho e pimenta', 'Cozinhe em fogo baixo por 30 minutos', 'Finalize com cebolinha'],
-        prepTime: '15 minutos',
-        cookTime: '40 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.7
-      }
-    ]
-  },
-  {
-    id: 'libano',
-    name: 'Líbano',
-    flag: '🇱🇧',
-    description: 'Culinária mediterrânea com mezze, grãos, azeite e especiarias.',
-    cuisineRanking: 15,
-    recipes: [
-      {
-        id: 'homus',
-        name: 'Homus',
-        description: 'Pasta cremosa de grão-de-bico com tahine, limão e alho.',
-        ingredients: ['400g grão-de-bico cozido', '3 colheres tahine', '2 limões', '2 dentes alho', 'Azeite', 'Cominho', 'Páprica', 'Sal'],
-        instructions: ['Bata grão-de-bico com tahine, limão e alho', 'Adicione água aos poucos até cremoso', 'Tempere com sal e cominho', 'Sirva com azeite e páprica por cima'],
-        prepTime: '15 minutos',
-        cookTime: '0 minutos',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 9.2
-      },
-      {
-        id: 'tabule',
-        name: 'Tabule',
-        description: 'Salada refrescante de trigo bulgur com tomate, pepino, salsa e hortelã.',
-        ingredients: ['100g trigo bulgur', '3 tomates', '1 pepino', 'Salsa', 'Hortelã', 'Cebola', 'Limão', 'Azeite', 'Sal'],
-        instructions: ['Hidrate o bulgur em água fria', 'Pique tomate, pepino, salsa e hortelã', 'Escorra o bulgur', 'Misture tudo', 'Tempere com limão, azeite e sal'],
-        prepTime: '30 minutos',
-        cookTime: '0 minutos',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop',
-        category: 'Salada',
-        rating: 9.0
-      },
-      {
-        id: 'kafta',
-        name: 'Kafta',
-        description: 'Espetinhos de carne moída temperada com salsa, cebola e especiarias.',
-        ingredients: ['500g carne moída', 'Cebola', 'Salsa', 'Cominho', 'Pimenta síria', 'Canela', 'Sal'],
-        instructions: ['Misture carne com cebola, salsa e especiarias', 'Modele em formato de salsicha nos espetos', 'Grelhe até dourar', 'Sirva com arroz, salada e homus'],
-        prepTime: '20 minutos',
-        cookTime: '15 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.9
-      },
-      {
-        id: 'esfiha',
-        name: 'Esfiha',
-        description: 'Massa fina recheada com carne temperada, aberta ou fechada.',
-        ingredients: ['Massa: farinha, fermento, água, azeite', 'Recheio: carne moída, tomate, cebola, limão, tahine, especiarias'],
-        instructions: ['Prepare massa e deixe crescer', 'Refogue carne com tomate, cebola e especiarias', 'Abra discos de massa', 'Recheie', 'Deixe aberta ou feche', 'Asse a 200°C por 15 minutos'],
-        prepTime: '2 horas',
-        cookTime: '15 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 8.8
-      },
-      {
-        id: 'baklava-libanes',
-        name: 'Baklava Libanês',
-        description: 'Doce folhado com nozes, pistache e calda de água de flor de laranjeira.',
-        ingredients: ['Massa filo', 'Nozes', 'Pistache', 'Manteiga', 'Açúcar', 'Água', 'Água de flor de laranjeira', 'Limão'],
-        instructions: ['Pique nozes e pistache', 'Monte camadas de massa filo com manteiga', 'Adicione camada de nozes', 'Repita até acabar', 'Corte em losangos', 'Asse até dourar', 'Prepare calda e despeje'],
-        prepTime: '45 minutos',
-        cookTime: '50 minutos',
-        servings: 24,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1598110750624-207050c4f28c?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.0
+        category: 'Prato Principal'
       }
     ]
   },
@@ -1213,7 +829,6 @@ export const countriesData: Country[] = [
     name: 'Argentina',
     flag: '🇦🇷',
     description: 'Famosa por suas carnes de qualidade e tradição do churrasco.',
-    cuisineRanking: 16,
     recipes: [
       {
         id: 'asado',
@@ -1226,8 +841,7 @@ export const countriesData: Country[] = [
         servings: 10,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.4
+        category: 'Prato Principal'
       },
       {
         id: 'empanadas',
@@ -1240,8 +854,7 @@ export const countriesData: Country[] = [
         servings: 20,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 9.2
+        category: 'Lanche'
       },
       {
         id: 'chimichurri',
@@ -1254,8 +867,7 @@ export const countriesData: Country[] = [
         servings: 8,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Molho',
-        rating: 9.0
+        category: 'Molho'
       },
       {
         id: 'dulce-de-leche',
@@ -1268,8 +880,7 @@ export const countriesData: Country[] = [
         servings: 20,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.3
+        category: 'Sobremesa'
       },
       {
         id: 'alfajores',
@@ -1282,8 +893,299 @@ export const countriesData: Country[] = [
         servings: 24,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.1
+        category: 'Sobremesa'
+      }
+    ]
+  },
+  {
+    id: 'peru',
+    name: 'Peru',
+    flag: '🇵🇪',
+    description: 'Culinária diversificada com influências incas, espanholas e asiáticas.',
+    recipes: [
+      {
+        id: 'ceviche',
+        name: 'Ceviche Peruano',
+        description: 'Peixe cru marinado em suco de limão com cebola roxa, ají e coentro.',
+        ingredients: ['500g peixe branco fresco', 'Limão', 'Cebola roxa', 'Ají limo', 'Coentro', 'Milho', 'Batata-doce', 'Sal'],
+        instructions: ['Corte o peixe em cubos', 'Marine com suco de limão por 5 minutos', 'Adicione cebola em juliana', 'Adicione ají e coentro', 'Tempere com sal', 'Sirva com milho e batata-doce'],
+        prepTime: '20 minutos',
+        cookTime: '0 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      },
+      {
+        id: 'lomo-saltado',
+        name: 'Lomo Saltado',
+        description: 'Carne salteada com cebola, tomate, batata frita e molho de soja, servido com arroz.',
+        ingredients: ['600g filé mignon', 'Cebola roxa', 'Tomate', 'Ají amarillo', 'Batatas', 'Molho de soja', 'Vinagre', 'Coentro', 'Arroz'],
+        instructions: ['Corte a carne em tiras', 'Frite batatas em palito', 'Salteie carne em fogo alto', 'Adicione cebola e tomate', 'Adicione molho de soja e vinagre', 'Adicione batatas fritas', 'Finalize com coentro', 'Sirva com arroz'],
+        prepTime: '20 minutos',
+        cookTime: '20 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'aji-de-gallina',
+        name: 'Ají de Gallina',
+        description: 'Frango desfiado em molho cremoso de ají amarillo, leite e pão.',
+        ingredients: ['1kg frango', 'Ají amarillo', 'Pão de forma', 'Leite', 'Cebola', 'Alho', 'Nozes', 'Queijo parmesão', 'Batata', 'Ovo', 'Azeitona'],
+        instructions: ['Cozinhe e desfie o frango', 'Bata ají, pão, leite e nozes', 'Refogue cebola e alho', 'Adicione o creme de ají', 'Adicione frango', 'Finalize com queijo', 'Sirva com batata, ovo e azeitona'],
+        prepTime: '30 minutos',
+        cookTime: '40 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'causa-limena',
+        name: 'Causa Limeña',
+        description: 'Camadas de purê de batata amarela temperado com limão e ají, recheado com frango ou atum.',
+        ingredients: ['1kg batata amarela', 'Limão', 'Ají amarillo', 'Azeite', 'Frango ou atum', 'Maionese', 'Abacate', 'Ovo', 'Azeitona'],
+        instructions: ['Cozinhe e amasse as batatas', 'Tempere com limão, ají e azeite', 'Prepare recheio de frango com maionese', 'Monte camadas em forma', 'Decore com abacate, ovo e azeitona', 'Leve à geladeira'],
+        prepTime: '40 minutos',
+        cookTime: '30 minutos',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      },
+      {
+        id: 'suspiro-limeno',
+        name: 'Suspiro Limeño',
+        description: 'Sobremesa cremosa de dulce de leche coberta com merengue de vinho do Porto.',
+        ingredients: ['Dulce de leche', 'Leite condensado', 'Gemas', 'Claras', 'Açúcar', 'Vinho do Porto', 'Canela'],
+        instructions: ['Cozinhe dulce de leche com leite condensado e gemas', 'Despeje em taças', 'Bata claras em neve com açúcar', 'Adicione vinho do Porto', 'Cubra o doce de leite', 'Polvilhe canela'],
+        prepTime: '20 minutos',
+        cookTime: '30 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      }
+    ]
+  },
+  {
+    id: 'coreia',
+    name: 'Coreia do Sul',
+    flag: '🇰🇷',
+    description: 'Culinária com fermentados, picante e banchan (acompanhamentos variados).',
+    recipes: [
+      {
+        id: 'kimchi',
+        name: 'Kimchi',
+        description: 'Repolho fermentado com pasta de pimenta coreana, alho e gengibre.',
+        ingredients: ['1 repolho napa', 'Sal grosso', 'Gochugaru (pimenta coreana)', 'Alho', 'Gengibre', 'Molho de peixe', 'Açúcar', 'Cebolinha'],
+        instructions: ['Corte e salgue o repolho por 2 horas', 'Enxágue bem', 'Prepare pasta com gochugaru, alho, gengibre', 'Adicione molho de peixe e açúcar', 'Misture com repolho', 'Fermente por 3-5 dias'],
+        prepTime: '3 horas',
+        cookTime: '0 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1604908815453-7462d2d90a4c?w=800&h=600&fit=crop',
+        category: 'Acompanhamento'
+      },
+      {
+        id: 'bibimbap',
+        name: 'Bibimbap',
+        description: 'Arroz com legumes variados, carne, ovo frito e gochujang.',
+        ingredients: ['Arroz', 'Carne moída', 'Espinafre', 'Cenoura', 'Broto de feijão', 'Cogumelos', 'Ovo', 'Gochujang', 'Óleo de gergelim', 'Gergelim'],
+        instructions: ['Cozinhe arroz', 'Refogue cada legume separadamente', 'Tempere carne e refogue', 'Monte tigela: arroz, legumes em setores', 'Coloque carne no centro', 'Frite ovo e coloque por cima', 'Sirva com gochujang'],
+        prepTime: '30 minutos',
+        cookTime: '30 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'bulgogi',
+        name: 'Bulgogi',
+        description: 'Carne marinada em molho doce de soja, grelhada e servida com alface.',
+        ingredients: ['600g carne bovina fatiada', 'Molho de soja', 'Açúcar', 'Alho', 'Gengibre', 'Óleo de gergelim', 'Pera', 'Cebola', 'Cebolinha', 'Alface'],
+        instructions: ['Bata pera, alho, gengibre, molho de soja e açúcar', 'Marine a carne por 4 horas', 'Grelhe em fogo alto', 'Sirva com alface para embrulhar', 'Acompanhe com arroz e kimchi'],
+        prepTime: '4 horas',
+        cookTime: '15 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'tteokbokki',
+        name: 'Tteokbokki',
+        description: 'Bolinhos de arroz em molho picante e doce de gochujang.',
+        ingredients: ['500g tteok (bolinhos de arroz)', 'Gochujang', 'Gochugaru', 'Açúcar', 'Molho de soja', 'Alho', 'Fishcake', 'Cebola', 'Cebolinha', 'Ovo cozido'],
+        instructions: ['Ferva água com gochujang, açúcar e molho de soja', 'Adicione tteok', 'Adicione fishcake e cebola', 'Cozinhe até engrossar', 'Finalize com cebolinha e ovo'],
+        prepTime: '10 minutos',
+        cookTime: '20 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1604908815453-7462d2d90a4c?w=800&h=600&fit=crop',
+        category: 'Lanche'
+      },
+      {
+        id: 'japchae',
+        name: 'Japchae',
+        description: 'Macarrão de batata-doce salteado com legumes e carne.',
+        ingredients: ['200g macarrão de batata-doce', 'Carne bovina', 'Espinafre', 'Cenoura', 'Cogumelos', 'Cebola', 'Molho de soja', 'Açúcar', 'Óleo de gergelim', 'Gergelim'],
+        instructions: ['Cozinhe o macarrão', 'Salteie carne com molho de soja', 'Salteie cada legume separadamente', 'Misture tudo', 'Tempere com molho de soja, açúcar e óleo de gergelim', 'Finalize com gergelim'],
+        prepTime: '30 minutos',
+        cookTime: '30 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      }
+    ]
+  },
+  {
+    id: 'vietnam',
+    name: 'Vietnã',
+    flag: '🇻🇳',
+    description: 'Culinária leve e aromática com ervas frescas e molho de peixe.',
+    recipes: [
+      {
+        id: 'pho',
+        name: 'Phở',
+        description: 'Sopa de macarrão de arroz com caldo aromático de ossos, carne e ervas frescas.',
+        ingredients: ['Ossos de boi', 'Carne bovina', 'Macarrão de arroz', 'Anis estrelado', 'Canela', 'Gengibre', 'Cebola', 'Molho de peixe', 'Manjericão', 'Coentro', 'Limão', 'Broto de feijão'],
+        instructions: ['Ferva ossos por 12 horas com especiarias', 'Coe o caldo', 'Cozinhe macarrão', 'Fatie carne finamente', 'Monte tigela: macarrão, carne crua', 'Despeje caldo fervente', 'Sirva com ervas e limão'],
+        prepTime: '30 minutos',
+        cookTime: '12 horas',
+        servings: 6,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800&h=600&fit=crop',
+        category: 'Sopa'
+      },
+      {
+        id: 'banh-mi',
+        name: 'Bánh Mì',
+        description: 'Sanduíche vietnamita em baguete com patê, carne, legumes em conserva e coentro.',
+        ingredients: ['Baguete', 'Patê', 'Carne de porco assada', 'Cenoura em conserva', 'Rabanete em conserva', 'Pepino', 'Coentro', 'Pimenta', 'Maionese', 'Molho de soja'],
+        instructions: ['Asse a baguete', 'Passe patê e maionese', 'Adicione carne', 'Adicione legumes em conserva', 'Adicione pepino e coentro', 'Tempere com molho de soja e pimenta'],
+        prepTime: '20 minutos',
+        cookTime: '10 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
+        category: 'Lanche'
+      },
+      {
+        id: 'bun-cha',
+        name: 'Bún Chả',
+        description: 'Macarrão de arroz com almôndegas de porco grelhadas, servido com molho agridoce.',
+        ingredients: ['Macarrão de arroz', 'Carne de porco moída', 'Barriga de porco', 'Molho de peixe', 'Açúcar', 'Vinagre', 'Alho', 'Cenoura', 'Pepino', 'Ervas frescas'],
+        instructions: ['Faça almôndegas com carne moída', 'Grelhe almôndegas e barriga de porco', 'Prepare molho com molho de peixe, açúcar, vinagre', 'Cozinhe macarrão', 'Sirva com carne, molho, legumes e ervas'],
+        prepTime: '30 minutos',
+        cookTime: '25 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'goi-cuon',
+        name: 'Gỏi Cuốn',
+        description: 'Rolinhos frescos de papel de arroz com camarão, carne de porco, legumes e ervas.',
+        ingredients: ['Papel de arroz', 'Camarão cozido', 'Carne de porco cozida', 'Macarrão de arroz', 'Alface', 'Cenoura', 'Pepino', 'Manjericão', 'Hortelã', 'Molho hoisin', 'Amendoim'],
+        instructions: ['Hidrate papel de arroz', 'Disponha ingredientes no centro', 'Enrole bem apertado', 'Prepare molho com hoisin e amendoim', 'Sirva fresco'],
+        prepTime: '30 minutos',
+        cookTime: '20 minutos',
+        servings: 12,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      },
+      {
+        id: 'ca-kho-to',
+        name: 'Cá Kho Tộ',
+        description: 'Peixe caramelizado em panela de barro com molho de peixe e açúcar.',
+        ingredients: ['600g peixe (bagre)', 'Açúcar', 'Molho de peixe', 'Cebola', 'Alho', 'Pimenta', 'Água de coco', 'Cebolinha'],
+        instructions: ['Caramelize açúcar', 'Adicione molho de peixe e água de coco', 'Adicione peixe', 'Adicione cebola, alho e pimenta', 'Cozinhe em fogo baixo por 30 minutos', 'Finalize com cebolinha'],
+        prepTime: '15 minutos',
+        cookTime: '40 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      }
+    ]
+  },
+  {
+    id: 'libano',
+    name: 'Líbano',
+    flag: '🇱🇧',
+    description: 'Culinária mediterrânea com mezze, grãos, azeite e especiarias.',
+    recipes: [
+      {
+        id: 'homus',
+        name: 'Homus',
+        description: 'Pasta cremosa de grão-de-bico com tahine, limão e alho.',
+        ingredients: ['400g grão-de-bico cozido', '3 colheres tahine', '2 limões', '2 dentes alho', 'Azeite', 'Cominho', 'Páprica', 'Sal'],
+        instructions: ['Bata grão-de-bico com tahine, limão e alho', 'Adicione água aos poucos até cremoso', 'Tempere com sal e cominho', 'Sirva com azeite e páprica por cima'],
+        prepTime: '15 minutos',
+        cookTime: '0 minutos',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      },
+      {
+        id: 'tabule',
+        name: 'Tabule',
+        description: 'Salada refrescante de trigo bulgur com tomate, pepino, salsa e hortelã.',
+        ingredients: ['100g trigo bulgur', '3 tomates', '1 pepino', 'Salsa', 'Hortelã', 'Cebola', 'Limão', 'Azeite', 'Sal'],
+        instructions: ['Hidrate o bulgur em água fria', 'Pique tomate, pepino, salsa e hortelã', 'Escorra o bulgur', 'Misture tudo', 'Tempere com limão, azeite e sal'],
+        prepTime: '30 minutos',
+        cookTime: '0 minutos',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop',
+        category: 'Salada'
+      },
+      {
+        id: 'kafta',
+        name: 'Kafta',
+        description: 'Espetinhos de carne moída temperada com salsa, cebola e especiarias.',
+        ingredients: ['500g carne moída', 'Cebola', 'Salsa', 'Cominho', 'Pimenta síria', 'Canela', 'Sal'],
+        instructions: ['Misture carne com cebola, salsa e especiarias', 'Modele em formato de salsicha nos espetos', 'Grelhe até dourar', 'Sirva com arroz, salada e homus'],
+        prepTime: '20 minutos',
+        cookTime: '15 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'esfiha',
+        name: 'Esfiha',
+        description: 'Massa fina recheada com carne temperada, aberta ou fechada.',
+        ingredients: ['Massa: farinha, fermento, água, azeite', 'Recheio: carne moída, tomate, cebola, limão, tahine, especiarias'],
+        instructions: ['Prepare massa e deixe crescer', 'Refogue carne com tomate, cebola e especiarias', 'Abra discos de massa', 'Recheie', 'Deixe aberta ou feche', 'Asse a 200°C por 15 minutos'],
+        prepTime: '2 horas',
+        cookTime: '15 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Lanche'
+      },
+      {
+        id: 'baklava-libanes',
+        name: 'Baklava Libanês',
+        description: 'Doce folhado com nozes, pistache e calda de água de flor de laranjeira.',
+        ingredients: ['Massa filo', 'Nozes', 'Pistache', 'Manteiga', 'Açúcar', 'Água', 'Água de flor de laranjeira', 'Limão'],
+        instructions: ['Pique nozes e pistache', 'Monte camadas de massa filo com manteiga', 'Adicione camada de nozes', 'Repita até acabar', 'Corte em losangos', 'Asse até dourar', 'Prepare calda e despeje'],
+        prepTime: '45 minutos',
+        cookTime: '50 minutos',
+        servings: 24,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1598110750624-207050c4f28c?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
       }
     ]
   },
@@ -1292,7 +1194,6 @@ export const countriesData: Country[] = [
     name: 'Marrocos',
     flag: '🇲🇦',
     description: 'Culinária aromática com tajines, cuscuz e especiarias exóticas.',
-    cuisineRanking: 17,
     recipes: [
       {
         id: 'tajine',
@@ -1305,8 +1206,7 @@ export const countriesData: Country[] = [
         servings: 6,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.1
+        category: 'Prato Principal'
       },
       {
         id: 'cuscuz-marroquino',
@@ -1319,8 +1219,7 @@ export const countriesData: Country[] = [
         servings: 8,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
+        category: 'Prato Principal'
       },
       {
         id: 'harira',
@@ -1333,8 +1232,7 @@ export const countriesData: Country[] = [
         servings: 8,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
-        category: 'Sopa',
-        rating: 8.9
+        category: 'Sopa'
       },
       {
         id: 'pastilla',
@@ -1347,8 +1245,7 @@ export const countriesData: Country[] = [
         servings: 8,
         difficulty: 'Difícil',
         image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
+        category: 'Prato Principal'
       },
       {
         id: 'cha-marroquino',
@@ -1361,8 +1258,7 @@ export const countriesData: Country[] = [
         servings: 6,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&h=600&fit=crop',
-        category: 'Bebida',
-        rating: 8.7
+        category: 'Bebida'
       }
     ]
   },
@@ -1371,7 +1267,6 @@ export const countriesData: Country[] = [
     name: 'Portugal',
     flag: '🇵🇹',
     description: 'Culinária rica em frutos do mar, bacalhau e doces conventuais.',
-    cuisineRanking: 18,
     recipes: [
       {
         id: 'bacalhau-bras',
@@ -1384,8 +1279,7 @@ export const countriesData: Country[] = [
         servings: 6,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.2
+        category: 'Prato Principal'
       },
       {
         id: 'pastel-nata',
@@ -1398,8 +1292,7 @@ export const countriesData: Country[] = [
         servings: 12,
         difficulty: 'Difícil',
         image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.5
+        category: 'Sobremesa'
       },
       {
         id: 'caldo-verde',
@@ -1412,8 +1305,7 @@ export const countriesData: Country[] = [
         servings: 6,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
-        category: 'Sopa',
-        rating: 9.0
+        category: 'Sopa'
       },
       {
         id: 'francesinha',
@@ -1426,8 +1318,7 @@ export const countriesData: Country[] = [
         servings: 2,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.9
+        category: 'Prato Principal'
       },
       {
         id: 'arroz-marisco',
@@ -1440,87 +1331,7 @@ export const countriesData: Country[] = [
         servings: 6,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.1
-      }
-    ]
-  },
-  {
-    id: 'eua',
-    name: 'Estados Unidos',
-    flag: '🇺🇸',
-    description: 'Culinária diversificada com influências de todo o mundo.',
-    cuisineRanking: 19,
-    recipes: [
-      {
-        id: 'hamburger',
-        name: 'Hambúrguer Clássico',
-        description: 'Hambúrguer suculento com queijo, alface, tomate, cebola e molhos especiais.',
-        ingredients: ['500g carne moída', 'Pão de hambúrguer', 'Queijo cheddar', 'Alface', 'Tomate', 'Cebola', 'Picles', 'Ketchup', 'Mostarda', 'Maionese'],
-        instructions: ['Faça hambúrgueres de 150g', 'Tempere com sal e pimenta', 'Grelhe até o ponto desejado', 'Derreta queijo por cima', 'Torre o pão', 'Monte com todos os ingredientes'],
-        prepTime: '15 minutos',
-        cookTime: '10 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
-      },
-      {
-        id: 'bbq-ribs',
-        name: 'BBQ Ribs',
-        description: 'Costela de porco defumada com molho barbecue.',
-        ingredients: ['2kg costela de porco', 'Dry rub (páprica, açúcar mascavo, alho, cebola, pimenta)', 'Molho barbecue', 'Madeira para defumar'],
-        instructions: ['Tempere costela com dry rub', 'Deixe descansar por 4 horas', 'Defume a 110°C por 5 horas', 'Pincele com molho barbecue', 'Finalize em fogo alto', 'Sirva com mais molho'],
-        prepTime: '4 horas',
-        cookTime: '6 horas',
-        servings: 6,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.2
-      },
-      {
-        id: 'mac-and-cheese',
-        name: 'Mac and Cheese',
-        description: 'Macarrão com molho cremoso de queijo cheddar gratinado.',
-        ingredients: ['500g macarrão', '400g queijo cheddar', '50g manteiga', '50g farinha', '500ml leite', 'Noz-moscada', 'Sal', 'Pimenta', 'Farinha de rosca'],
-        instructions: ['Cozinhe macarrão al dente', 'Prepare molho bechamel', 'Adicione queijo ralado', 'Misture com macarrão', 'Coloque em refratário', 'Cubra com queijo e farinha de rosca', 'Gratine no forno'],
-        prepTime: '15 minutos',
-        cookTime: '30 minutos',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1476124369491-c4f6e3e8b5c5?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
-      },
-      {
-        id: 'apple-pie',
-        name: 'Apple Pie',
-        description: 'Torta de maçã americana com massa amanteigada e canela.',
-        ingredients: ['Massa: farinha, manteiga, açúcar, água', 'Recheio: 8 maçãs, açúcar, canela, noz-moscada, limão, amido'],
-        instructions: ['Prepare massa e deixe descansar', 'Descasque e fatie maçãs', 'Misture com açúcar, canela e amido', 'Forre forma com massa', 'Adicione recheio', 'Cubra com tiras de massa', 'Asse a 180°C por 50 minutos'],
-        prepTime: '40 minutos',
-        cookTime: '50 minutos',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1535920527002-b35e96722eb9?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.1
-      },
-      {
-        id: 'buffalo-wings',
-        name: 'Buffalo Wings',
-        description: 'Asinhas de frango fritas com molho picante de manteiga e pimenta.',
-        ingredients: ['1kg asinhas de frango', 'Molho de pimenta', 'Manteiga', 'Alho', 'Vinagre', 'Sal', 'Molho ranch', 'Aipo'],
-        instructions: ['Tempere e frite as asinhas', 'Derreta manteiga com molho de pimenta', 'Misture asinhas com molho', 'Sirva com molho ranch e aipo'],
-        prepTime: '15 minutos',
-        cookTime: '25 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 8.9
+        category: 'Prato Principal'
       }
     ]
   },
@@ -1529,7 +1340,6 @@ export const countriesData: Country[] = [
     name: 'Alemanha',
     flag: '🇩🇪',
     description: 'Culinária robusta com salsichas, batatas, repolho e cerveja.',
-    cuisineRanking: 20,
     recipes: [
       {
         id: 'schnitzel',
@@ -1542,8 +1352,7 @@ export const countriesData: Country[] = [
         servings: 4,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
+        category: 'Prato Principal'
       },
       {
         id: 'sauerkraut',
@@ -1556,8 +1365,7 @@ export const countriesData: Country[] = [
         servings: 6,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
+        category: 'Prato Principal'
       },
       {
         id: 'pretzel',
@@ -1570,8 +1378,7 @@ export const countriesData: Country[] = [
         servings: 8,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
-        category: 'Pão',
-        rating: 8.9
+        category: 'Pão'
       },
       {
         id: 'black-forest-cake',
@@ -1584,8 +1391,7 @@ export const countriesData: Country[] = [
         servings: 12,
         difficulty: 'Difícil',
         image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.1
+        category: 'Sobremesa'
       },
       {
         id: 'kartoffelsalat',
@@ -1598,166 +1404,591 @@ export const countriesData: Country[] = [
         servings: 6,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop',
-        category: 'Salada',
-        rating: 8.7
+        category: 'Salada'
       }
     ]
   },
   {
-    id: 'indonesia',
-    name: 'Indonésia',
-    flag: '🇮🇩',
-    description: 'Culinária tropical com especiarias, leite de coco e sabores intensos.',
-    cuisineRanking: 21,
+    id: 'eua',
+    name: 'Estados Unidos',
+    flag: '🇺🇸',
+    description: 'Culinária diversificada com influências de todo o mundo.',
     recipes: [
       {
-        id: 'nasi-goreng',
-        name: 'Nasi Goreng',
-        description: 'Arroz frito indonésio com kecap manis, camarão, ovo e vegetais.',
-        ingredients: ['Arroz cozido', 'Camarão', 'Ovo', 'Alho', 'Cebola', 'Kecap manis', 'Pasta de camarão', 'Chile', 'Cebolinha'],
-        instructions: ['Refogue alho, cebola e pasta de camarão', 'Adicione camarão', 'Adicione arroz', 'Tempere com kecap manis', 'Frite ovo separadamente', 'Sirva arroz com ovo por cima'],
-        prepTime: '15 minutos',
-        cookTime: '15 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.9
-      },
-      {
-        id: 'rendang',
-        name: 'Rendang',
-        description: 'Curry seco de carne cozida lentamente em leite de coco e especiarias.',
-        ingredients: ['1kg carne bovina', 'Leite de coco', 'Capim-limão', 'Galanga', 'Folhas de limão', 'Chile', 'Alho', 'Cebola', 'Gengibre', 'Açafrão'],
-        instructions: ['Bata especiarias em pasta', 'Refogue a pasta', 'Adicione carne', 'Adicione leite de coco', 'Cozinhe em fogo baixo por 3 horas até secar', 'Mexa ocasionalmente'],
-        prepTime: '30 minutos',
-        cookTime: '3 horas',
-        servings: 6,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.2
-      },
-      {
-        id: 'satay',
-        name: 'Satay',
-        description: 'Espetinhos de carne marinada grelhados com molho de amendoim.',
-        ingredients: ['Frango ou carne', 'Açafrão', 'Capim-limão', 'Alho', 'Molho de soja', 'Amendoim', 'Leite de coco', 'Kecap manis', 'Chile'],
-        instructions: ['Marine carne com especiarias', 'Monte espetinhos', 'Grelhe até dourar', 'Prepare molho de amendoim', 'Sirva com molho'],
-        prepTime: '2 horas',
-        cookTime: '15 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
-      },
-      {
-        id: 'gado-gado',
-        name: 'Gado-Gado',
-        description: 'Salada indonésia com vegetais, ovo, tofu e molho de amendoim.',
-        ingredients: ['Repolho', 'Vagem', 'Broto de feijão', 'Batata', 'Ovo', 'Tofu', 'Amendoim', 'Kecap manis', 'Tamarindo', 'Chile'],
-        instructions: ['Cozinhe vegetais no vapor', 'Frite tofu', 'Cozinhe ovos', 'Prepare molho de amendoim', 'Monte salada', 'Despeje molho por cima'],
-        prepTime: '20 minutos',
-        cookTime: '25 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop',
-        category: 'Salada',
-        rating: 8.6
-      },
-      {
-        id: 'pisang-goreng',
-        name: 'Pisang Goreng',
-        description: 'Banana frita em massa crocante, sobremesa popular indonésia.',
-        ingredients: ['Bananas', 'Farinha', 'Açúcar', 'Sal', 'Água', 'Óleo para fritar'],
-        instructions: ['Prepare massa com farinha, açúcar e água', 'Corte bananas', 'Passe na massa', 'Frite até dourar', 'Escorra e sirva quente'],
-        prepTime: '10 minutos',
-        cookTime: '15 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.5
-      }
-    ]
-  },
-  {
-    id: 'malasia',
-    name: 'Malásia',
-    flag: '🇲🇾',
-    description: 'Fusão de sabores malaios, chineses e indianos.',
-    cuisineRanking: 22,
-    recipes: [
-      {
-        id: 'nasi-lemak',
-        name: 'Nasi Lemak',
-        description: 'Arroz cozido em leite de coco servido com sambal, anchovas, amendoim e ovo.',
-        ingredients: ['Arroz', 'Leite de coco', 'Folhas de pandan', 'Sambal', 'Anchovas fritas', 'Amendoim', 'Ovo', 'Pepino'],
-        instructions: ['Cozinhe arroz em leite de coco com pandan', 'Prepare sambal', 'Frite anchovas', 'Frite amendoim', 'Frite ovo', 'Monte prato com todos os acompanhamentos'],
-        prepTime: '20 minutos',
-        cookTime: '30 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.9
-      },
-      {
-        id: 'laksa',
-        name: 'Laksa',
-        description: 'Sopa picante de macarrão com leite de coco, frutos do mar e especiarias.',
-        ingredients: ['Macarrão de arroz', 'Leite de coco', 'Pasta de laksa', 'Camarão', 'Tofu', 'Broto de feijão', 'Ovo', 'Coentro'],
-        instructions: ['Prepare caldo com pasta de laksa e leite de coco', 'Cozinhe macarrão', 'Adicione camarão e tofu', 'Monte tigela com macarrão e caldo', 'Adicione brotos, ovo e coentro'],
-        prepTime: '20 minutos',
-        cookTime: '30 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
-        category: 'Sopa',
-        rating: 9.0
-      },
-      {
-        id: 'char-kway-teow',
-        name: 'Char Kway Teow',
-        description: 'Macarrão largo salteado com camarão, linguiça chinesa e broto de feijão.',
-        ingredients: ['Macarrão largo de arroz', 'Camarão', 'Linguiça chinesa', 'Broto de feijão', 'Cebolinha', 'Ovo', 'Molho de soja', 'Molho de ostra'],
-        instructions: ['Aqueça wok em fogo alto', 'Salteie linguiça e camarão', 'Adicione macarrão', 'Adicione molhos', 'Adicione ovo', 'Adicione brotos e cebolinha', 'Mexa rapidamente'],
+        id: 'hamburger',
+        name: 'Hambúrguer Clássico',
+        description: 'Hambúrguer suculento com queijo, alface, tomate, cebola e molhos especiais.',
+        ingredients: ['500g carne moída', 'Pão de hambúrguer', 'Queijo cheddar', 'Alface', 'Tomate', 'Cebola', 'Picles', 'Ketchup', 'Mostarda', 'Maionese'],
+        instructions: ['Faça hambúrgueres de 150g', 'Tempere com sal e pimenta', 'Grelhe até o ponto desejado', 'Derreta queijo por cima', 'Torre o pão', 'Monte com todos os ingredientes'],
         prepTime: '15 minutos',
         cookTime: '10 minutos',
         servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
       },
       {
-        id: 'roti-canai',
-        name: 'Roti Canai',
-        description: 'Pão achatado folhado servido com curry.',
-        ingredients: ['Farinha', 'Água', 'Ghee', 'Sal', 'Curry para acompanhar'],
-        instructions: ['Prepare massa e deixe descansar', 'Divida em porções', 'Estenda bem fino', 'Dobre em camadas', 'Frite em chapa com ghee', 'Sirva com curry'],
-        prepTime: '2 horas',
-        cookTime: '20 minutos',
-        servings: 8,
+        id: 'bbq-ribs',
+        name: 'BBQ Ribs',
+        description: 'Costela de porco defumada com molho barbecue.',
+        ingredients: ['2kg costela de porco', 'Dry rub (páprica, açúcar mascavo, alho, cebola, pimenta)', 'Molho barbecue', 'Madeira para defumar'],
+        instructions: ['Tempere costela com dry rub', 'Deixe descansar por 4 horas', 'Defume a 110°C por 5 horas', 'Pincele com molho barbecue', 'Finalize em fogo alto', 'Sirva com mais molho'],
+        prepTime: '4 horas',
+        cookTime: '6 horas',
+        servings: 6,
         difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
-        category: 'Pão',
-        rating: 8.7
+        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
       },
       {
-        id: 'cendol',
-        name: 'Cendol',
-        description: 'Sobremesa gelada com gelatina de pandan, leite de coco e açúcar de palma.',
-        ingredients: ['Farinha de arroz', 'Pandan', 'Leite de coco', 'Açúcar de palma', 'Gelo', 'Feijão vermelho'],
-        instructions: ['Prepare gelatina de pandan', 'Passe por peneira para formar fios', 'Prepare calda de açúcar de palma', 'Monte copo com gelo, gelatina, feijão', 'Adicione leite de coco e calda'],
+        id: 'mac-and-cheese',
+        name: 'Mac and Cheese',
+        description: 'Macarrão com molho cremoso de queijo cheddar gratinado.',
+        ingredients: ['500g macarrão', '400g queijo cheddar', '50g manteiga', '50g farinha', '500ml leite', 'Noz-moscada', 'Sal', 'Pimenta', 'Farinha de rosca'],
+        instructions: ['Cozinhe macarrão al dente', 'Prepare molho bechamel', 'Adicione queijo ralado', 'Misture com macarrão', 'Coloque em refratário', 'Cubra com queijo e farinha de rosca', 'Gratine no forno'],
+        prepTime: '15 minutos',
+        cookTime: '30 minutos',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1476124369491-c4f6e3e8b5c5?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'apple-pie',
+        name: 'Apple Pie',
+        description: 'Torta de maçã americana com massa amanteigada e canela.',
+        ingredients: ['Massa: farinha, manteiga, açúcar, água', 'Recheio: 8 maçãs, açúcar, canela, noz-moscada, limão, amido'],
+        instructions: ['Prepare massa e deixe descansar', 'Descasque e fatie maçãs', 'Misture com açúcar, canela e amido', 'Forre forma com massa', 'Adicione recheio', 'Cubra com tiras de massa', 'Asse a 180°C por 50 minutos'],
+        prepTime: '40 minutos',
+        cookTime: '50 minutos',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1535920527002-b35e96722eb9?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'buffalo-wings',
+        name: 'Buffalo Wings',
+        description: 'Asinhas de frango fritas com molho picante de manteiga e pimenta.',
+        ingredients: ['1kg asinhas de frango', 'Molho de pimenta', 'Manteiga', 'Alho', 'Vinagre', 'Sal', 'Molho ranch', 'Aipo'],
+        instructions: ['Tempere e frite as asinhas', 'Derreta manteiga com molho de pimenta', 'Misture asinhas com molho', 'Sirva com molho ranch e aipo'],
+        prepTime: '15 minutos',
+        cookTime: '25 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      }
+    ]
+  },
+  {
+    id: 'australia',
+    name: 'Austrália',
+    flag: '🇦🇺',
+    description: 'Culinária multicultural com influências britânicas, asiáticas e mediterrâneas.',
+    recipes: [
+      {
+        id: 'meat-pie',
+        name: 'Meat Pie',
+        description: 'Torta individual de carne moída com molho rico, coberta com massa folhada.',
+        ingredients: ['500g carne moída', 'Cebola', 'Cenoura', 'Molho inglês', 'Ketchup', 'Caldo de carne', 'Massa folhada', 'Ovo'],
+        instructions: ['Refogue carne com cebola e cenoura', 'Adicione molhos e caldo', 'Cozinhe até engrossar', 'Coloque em forminhas', 'Cubra com massa folhada', 'Pincele com ovo', 'Asse a 200°C por 25 minutos'],
         prepTime: '30 minutos',
-        cookTime: '20 minutos',
+        cookTime: '40 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'pavlova',
+        name: 'Pavlova',
+        description: 'Merengue crocante por fora e macio por dentro, coberto com chantilly e frutas.',
+        ingredients: ['4 claras', '250g açúcar', 'Vinagre', 'Amido de milho', 'Chantilly', 'Frutas frescas (morango, kiwi, maracujá)'],
+        instructions: ['Bata claras em neve', 'Adicione açúcar aos poucos', 'Adicione vinagre e amido', 'Modele disco em assadeira', 'Asse a 120°C por 1h30', 'Deixe esfriar no forno', 'Cubra com chantilly e frutas'],
+        prepTime: '20 minutos',
+        cookTime: '1h30',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'lamington',
+        name: 'Lamington',
+        description: 'Cubos de bolo cobertos com chocolate e coco ralado.',
+        ingredients: ['Bolo de baunilha', 'Chocolate', 'Manteiga', 'Leite', 'Açúcar de confeiteiro', 'Coco ralado'],
+        instructions: ['Corte bolo em cubos', 'Prepare cobertura de chocolate', 'Mergulhe cubos no chocolate', 'Passe no coco ralado', 'Deixe secar'],
+        prepTime: '30 minutos',
+        cookTime: '30 minutos',
+        servings: 16,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'barramundi',
+        name: 'Barramundi Grelhado',
+        description: 'Peixe australiano grelhado com limão e ervas.',
+        ingredients: ['4 filés de barramundi', 'Limão', 'Alho', 'Tomilho', 'Azeite', 'Sal', 'Pimenta'],
+        instructions: ['Tempere o peixe com limão, alho e ervas', 'Deixe marinar por 30 minutos', 'Grelhe por 4 minutos de cada lado', 'Sirva com legumes grelhados'],
+        prepTime: '35 minutos',
+        cookTime: '10 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'vegemite-toast',
+        name: 'Vegemite on Toast',
+        description: 'Torrada com manteiga e vegemite, café da manhã australiano clássico.',
+        ingredients: ['Pão', 'Manteiga', 'Vegemite'],
+        instructions: ['Torrar o pão', 'Passar manteiga generosamente', 'Passar uma fina camada de vegemite', 'Servir imediatamente'],
+        prepTime: '5 minutos',
+        cookTime: '2 minutos',
+        servings: 2,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Café da Manhã'
+      }
+    ]
+  },
+  {
+    id: 'russia',
+    name: 'Rússia',
+    flag: '🇷🇺',
+    description: 'Culinária robusta adaptada ao clima frio, com sopas, carnes e fermentados.',
+    recipes: [
+      {
+        id: 'borscht',
+        name: 'Borscht',
+        description: 'Sopa de beterraba com carne, repolho e creme azedo.',
+        ingredients: ['500g carne bovina', '3 beterrabas', 'Repolho', 'Batata', 'Cenoura', 'Cebola', 'Tomate', 'Alho', 'Vinagre', 'Creme azedo', 'Endro'],
+        instructions: ['Cozinhe a carne', 'Adicione beterraba ralada', 'Adicione legumes picados', 'Adicione repolho', 'Tempere com vinagre e alho', 'Sirva com creme azedo e endro'],
+        prepTime: '30 minutos',
+        cookTime: '2 horas',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
+        category: 'Sopa'
+      },
+      {
+        id: 'beef-stroganoff',
+        name: 'Beef Stroganoff',
+        description: 'Tiras de carne em molho cremoso de cogumelos e creme azedo.',
+        ingredients: ['600g filé mignon', 'Cogumelos', 'Cebola', 'Alho', 'Mostarda', 'Creme azedo', 'Vinho branco', 'Manteiga', 'Farinha'],
+        instructions: ['Corte carne em tiras', 'Doure a carne', 'Refogue cogumelos e cebola', 'Adicione vinho e mostarda', 'Adicione creme azedo', 'Engrosse com farinha', 'Sirva com arroz ou batata'],
+        prepTime: '20 minutos',
+        cookTime: '30 minutos',
         servings: 4,
         difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.6
+        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'pelmeni',
+        name: 'Pelmeni',
+        description: 'Pequenos pastéis recheados com carne, servidos com creme azedo.',
+        ingredients: ['Massa: farinha, ovo, água', 'Recheio: carne moída, cebola, alho, sal, pimenta', 'Creme azedo', 'Endro'],
+        instructions: ['Prepare massa fina', 'Misture carne com cebola e temperos', 'Corte círculos de massa', 'Recheie e feche', 'Cozinhe em água fervente', 'Sirva com creme azedo e endro'],
+        prepTime: '1 hora',
+        cookTime: '15 minutos',
+        servings: 6,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'blini',
+        name: 'Blini',
+        description: 'Panquecas russas servidas com caviar, salmão defumado ou creme azedo.',
+        ingredients: ['Farinha', 'Leite', 'Ovos', 'Fermento', 'Açúcar', 'Sal', 'Manteiga', 'Caviar ou salmão', 'Creme azedo'],
+        instructions: ['Misture ingredientes da massa', 'Deixe descansar por 1 hora', 'Frite pequenas panquecas', 'Sirva com caviar, salmão e creme azedo'],
+        prepTime: '1h15',
+        cookTime: '20 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      },
+      {
+        id: 'medovik',
+        name: 'Medovik',
+        description: 'Bolo de mel russo com camadas finas e creme de leite condensado.',
+        ingredients: ['Mel', 'Açúcar', 'Ovos', 'Farinha', 'Bicarbonato', 'Manteiga', 'Creme de leite', 'Leite condensado'],
+        instructions: ['Prepare massa com mel aquecido', 'Asse camadas finas', 'Prepare creme com leite condensado', 'Monte camadas alternadas', 'Deixe descansar por 12 horas', 'Decore com migalhas'],
+        prepTime: '1 hora',
+        cookTime: '40 minutos',
+        servings: 12,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      }
+    ]
+  },
+  {
+    id: 'egito',
+    name: 'Egito',
+    flag: '🇪🇬',
+    description: 'Culinária milenar com leguminosas, especiarias e pães tradicionais.',
+    recipes: [
+      {
+        id: 'koshari',
+        name: 'Koshari',
+        description: 'Prato nacional com arroz, lentilha, macarrão, grão-de-bico e molho de tomate picante.',
+        ingredients: ['Arroz', 'Lentilha', 'Macarrão', 'Grão-de-bico', 'Tomate', 'Cebola frita', 'Alho', 'Cominho', 'Vinagre', 'Pimenta'],
+        instructions: ['Cozinhe arroz, lentilha, macarrão e grão-de-bico separadamente', 'Prepare molho de tomate com especiarias', 'Frite cebola até crocante', 'Monte camadas: arroz, lentilha, macarrão, grão-de-bico', 'Cubra com molho e cebola frita'],
+        prepTime: '30 minutos',
+        cookTime: '45 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'ful-medames',
+        name: 'Ful Medames',
+        description: 'Fava cozida lentamente com alho, limão e cominho, servida com pão.',
+        ingredients: ['500g fava', 'Alho', 'Limão', 'Cominho', 'Azeite', 'Sal', 'Tomate', 'Cebola', 'Salsa', 'Pão pita'],
+        instructions: ['Cozinhe fava até macia', 'Amasse parcialmente', 'Adicione alho, limão e cominho', 'Regue com azeite', 'Sirva com tomate, cebola e pão'],
+        prepTime: '12 horas (molho)',
+        cookTime: '2 horas',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'mahshi',
+        name: 'Mahshi',
+        description: 'Legumes recheados com arroz, carne e especiarias.',
+        ingredients: ['Abobrinha', 'Berinjela', 'Pimentão', 'Folhas de uva', 'Arroz', 'Carne moída', 'Tomate', 'Cebola', 'Especiarias'],
+        instructions: ['Esvazie os legumes', 'Prepare recheio com arroz, carne e especiarias', 'Recheie os legumes', 'Disponha em panela', 'Cubra com molho de tomate', 'Cozinhe por 1 hora'],
+        prepTime: '1 hora',
+        cookTime: '1 hora',
+        servings: 8,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'basbousa',
+        name: 'Basbousa',
+        description: 'Bolo de sêmolina embebido em calda de açúcar aromática.',
+        ingredients: ['Sêmolina', 'Açúcar', 'Iogurte', 'Manteiga', 'Coco ralado', 'Fermento', 'Amêndoas', 'Calda: açúcar, água, limão, água de rosas'],
+        instructions: ['Misture sêmolina, açúcar, iogurte, manteiga e coco', 'Adicione fermento', 'Despeje em forma', 'Corte em losangos', 'Coloque amêndoa em cada pedaço', 'Asse até dourar', 'Despeje calda quente'],
+        prepTime: '20 minutos',
+        cookTime: '35 minutos',
+        servings: 16,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'ta-meya',
+        name: "Ta'meya (Falafel Egípcio)",
+        description: 'Bolinho frito de fava com ervas, diferente do falafel de grão-de-bico.',
+        ingredients: ['500g fava', 'Cebola', 'Alho', 'Coentro', 'Salsa', 'Cominho', 'Coentro em pó', 'Pimenta', 'Bicarbonato', 'Gergelim'],
+        instructions: ['Deixe fava de molho por 12 horas', 'Bata com ervas e especiarias', 'Adicione bicarbonato', 'Faça bolinhas', 'Passe em gergelim', 'Frite até dourar', 'Sirva com tahine'],
+        prepTime: '12 horas',
+        cookTime: '20 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1612871689761-3a1d432e0d1e?w=800&h=600&fit=crop',
+        category: 'Lanche'
+      }
+    ]
+  },
+  {
+    id: 'canada',
+    name: 'Canadá',
+    flag: '🇨🇦',
+    description: 'Culinária diversificada com influências britânicas, francesas e indígenas.',
+    recipes: [
+      {
+        id: 'poutine',
+        name: 'Poutine',
+        description: 'Batatas fritas cobertas com queijo coalho e molho gravy quente.',
+        ingredients: ['Batatas', 'Queijo coalho', 'Caldo de carne', 'Farinha', 'Manteiga', 'Sal', 'Pimenta'],
+        instructions: ['Frite batatas até crocantes', 'Prepare gravy com caldo, farinha e manteiga', 'Coloque batatas em tigela', 'Adicione queijo coalho', 'Despeje gravy quente', 'Sirva imediatamente'],
+        prepTime: '15 minutos',
+        cookTime: '25 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'tourtiere',
+        name: 'Tourtière',
+        description: 'Torta quebequense de carne moída com especiarias.',
+        ingredients: ['Massa: farinha, manteiga, água', 'Recheio: carne moída, cebola, alho, batata, canela, cravo, sal, pimenta'],
+        instructions: ['Prepare massa e deixe descansar', 'Refogue carne com cebola e especiarias', 'Adicione batata cozida e amassada', 'Forre forma com massa', 'Adicione recheio', 'Cubra com massa', 'Asse a 190°C por 45 minutos'],
+        prepTime: '40 minutos',
+        cookTime: '45 minutos',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'butter-tarts',
+        name: 'Butter Tarts',
+        description: 'Tortinhas doces com recheio caramelizado de manteiga, açúcar e ovos.',
+        ingredients: ['Massa quebrada', 'Manteiga', 'Açúcar mascavo', 'Ovos', 'Xarope de bordo', 'Vinagre', 'Baunilha', 'Passas (opcional)'],
+        instructions: ['Forre forminhas com massa', 'Misture manteiga derretida, açúcar, ovos, xarope', 'Adicione vinagre e baunilha', 'Adicione passas se desejar', 'Despeje nas forminhas', 'Asse a 180°C por 20 minutos'],
+        prepTime: '30 minutos',
+        cookTime: '20 minutos',
+        servings: 12,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'bannock',
+        name: 'Bannock',
+        description: 'Pão indígena canadense frito ou assado.',
+        ingredients: ['Farinha', 'Fermento', 'Sal', 'Açúcar', 'Manteiga', 'Leite'],
+        instructions: ['Misture ingredientes secos', 'Adicione manteiga e leite', 'Sove levemente', 'Modele discos', 'Frite em óleo ou asse no forno', 'Sirva quente com manteiga e mel'],
+        prepTime: '15 minutos',
+        cookTime: '20 minutos',
+        servings: 8,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Pão'
+      },
+      {
+        id: 'nanaimo-bars',
+        name: 'Nanaimo Bars',
+        description: 'Sobremesa em camadas: base de biscoito, creme de manteiga e cobertura de chocolate.',
+        ingredients: ['Base: biscoito triturado, coco, cacau, manteiga', 'Meio: manteiga, creme de leite, açúcar de confeiteiro, baunilha', 'Topo: chocolate'],
+        instructions: ['Misture ingredientes da base e comprima em forma', 'Prepare creme e espalhe sobre base', 'Leve à geladeira', 'Derreta chocolate e cubra', 'Deixe firmar', 'Corte em quadrados'],
+        prepTime: '30 minutos',
+        cookTime: '0 minutos',
+        servings: 16,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      }
+    ]
+  },
+  {
+    id: 'suecia',
+    name: 'Suécia',
+    flag: '🇸🇪',
+    description: 'Culinária escandinava com peixes, batatas, pães e doces.',
+    recipes: [
+      {
+        id: 'kottbullar',
+        name: 'Köttbullar',
+        description: 'Almôndegas suecas servidas com molho cremoso, purê de batata e geleia de lingonberry.',
+        ingredients: ['500g carne moída mista', 'Cebola', 'Pão ralado', 'Leite', 'Ovo', 'Noz-moscada', 'Creme de leite', 'Caldo de carne', 'Geleia de lingonberry'],
+        instructions: ['Misture carne com pão embebido em leite, ovo, cebola e especiarias', 'Faça bolinhas pequenas', 'Frite até dourar', 'Prepare molho com creme e caldo', 'Sirva com purê e geleia'],
+        prepTime: '30 minutos',
+        cookTime: '25 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'gravlax',
+        name: 'Gravlax',
+        description: 'Salmão curado com sal, açúcar, endro e especiarias.',
+        ingredients: ['1kg salmão fresco', 'Sal grosso', 'Açúcar', 'Endro fresco', 'Pimenta', 'Vodka ou aquavit'],
+        instructions: ['Misture sal, açúcar, endro e pimenta', 'Cubra salmão com a mistura', 'Adicione vodka', 'Embrulhe bem', 'Deixe curar na geladeira por 48 horas', 'Vire a cada 12 horas', 'Fatie fino e sirva'],
+        prepTime: '20 minutos',
+        cookTime: '0 minutos',
+        servings: 12,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      },
+      {
+        id: 'kanelbullar',
+        name: 'Kanelbullar',
+        description: 'Pãezinhos doces de canela suecos.',
+        ingredients: ['Farinha', 'Leite', 'Fermento', 'Açúcar', 'Manteiga', 'Cardamomo', 'Canela', 'Açúcar pérola'],
+        instructions: ['Prepare massa doce com cardamomo', 'Deixe crescer', 'Abra retângulo', 'Espalhe manteiga, açúcar e canela', 'Enrole e corte', 'Deixe crescer novamente', 'Pincele com ovo', 'Polvilhe açúcar pérola', 'Asse a 200°C'],
+        prepTime: '2h30',
+        cookTime: '15 minutos',
+        servings: 20,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Pão'
+      },
+      {
+        id: 'princess-cake',
+        name: 'Prinsesstårta',
+        description: 'Bolo de princesa com camadas de pão de ló, creme e cobertura de marzipan verde.',
+        ingredients: ['Pão de ló', 'Creme de baunilha', 'Geleia de framboesa', 'Chantilly', 'Marzipan verde', 'Rosa de marzipan'],
+        instructions: ['Corte pão de ló em 3 camadas', 'Recheie com geleia e creme', 'Cubra com chantilly em formato de domo', 'Cubra com marzipan verde', 'Decore com rosa de marzipan'],
+        prepTime: '1 hora',
+        cookTime: '30 minutos',
+        servings: 12,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'janssons-frestelse',
+        name: 'Janssons Frestelse',
+        description: 'Gratinado de batata com anchovas e creme.',
+        ingredients: ['1kg batata', 'Anchovas', 'Cebola', 'Creme de leite', 'Manteiga', 'Farinha de rosca'],
+        instructions: ['Corte batatas em palitos', 'Refogue cebola', 'Monte camadas: batata, cebola, anchovas', 'Despeje creme', 'Polvilhe farinha de rosca', 'Asse a 200°C por 1 hora'],
+        prepTime: '20 minutos',
+        cookTime: '1 hora',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      }
+    ]
+  },
+  {
+    id: 'etiopia',
+    name: 'Etiópia',
+    flag: '🇪🇹',
+    description: 'Culinária única com injera, berbere e pratos compartilhados.',
+    recipes: [
+      {
+        id: 'doro-wat',
+        name: 'Doro Wat',
+        description: 'Ensopado picante de frango com ovos cozidos e berbere.',
+        ingredients: ['1 frango', 'Cebola', 'Alho', 'Gengibre', 'Berbere', 'Manteiga clarificada', 'Ovos', 'Vinho tinto', 'Tomate'],
+        instructions: ['Refogue cebola até caramelizar', 'Adicione alho, gengibre e berbere', 'Adicione frango', 'Adicione tomate e vinho', 'Cozinhe por 1 hora', 'Adicione ovos cozidos', 'Sirva com injera'],
+        prepTime: '30 minutos',
+        cookTime: '1h30',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'injera',
+        name: 'Injera',
+        description: 'Pão esponjoso e azedo feito de teff fermentado.',
+        ingredients: ['Farinha de teff', 'Água', 'Sal'],
+        instructions: ['Misture teff com água', 'Deixe fermentar por 3 dias', 'Adicione sal', 'Despeje em frigideira quente', 'Cozinhe apenas um lado até formar bolhas', 'Deixe esfriar'],
+        prepTime: '3 dias',
+        cookTime: '5 minutos por unidade',
+        servings: 10,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Pão'
+      },
+      {
+        id: 'kitfo',
+        name: 'Kitfo',
+        description: 'Carne bovina crua ou mal passada temperada com mitmita e manteiga clarificada.',
+        ingredients: ['500g carne bovina magra', 'Manteiga clarificada', 'Mitmita (pimenta etíope)', 'Cardamomo', 'Queijo cottage etíope'],
+        instructions: ['Pique a carne finamente', 'Misture com manteiga clarificada morna', 'Tempere com mitmita e cardamomo', 'Sirva crua ou levemente aquecida', 'Acompanhe com queijo e injera'],
+        prepTime: '20 minutos',
+        cookTime: '0 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'shiro',
+        name: 'Shiro',
+        description: 'Ensopado cremoso de grão-de-bico ou fava em pó.',
+        ingredients: ['Shiro (farinha de grão-de-bico)', 'Cebola', 'Alho', 'Gengibre', 'Tomate', 'Berbere', 'Óleo', 'Água'],
+        instructions: ['Refogue cebola, alho e gengibre', 'Adicione tomate e berbere', 'Adicione água', 'Adicione shiro aos poucos mexendo', 'Cozinhe até engrossar', 'Sirva com injera'],
+        prepTime: '10 minutos',
+        cookTime: '25 minutos',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1604152135912-04a022e23696?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'tibs',
+        name: 'Tibs',
+        description: 'Carne salteada com legumes e especiarias.',
+        ingredients: ['600g carne (bovina ou cordeiro)', 'Cebola', 'Pimentão', 'Tomate', 'Alho', 'Gengibre', 'Berbere', 'Manteiga clarificada'],
+        instructions: ['Corte carne em cubos', 'Salteie em manteiga bem quente', 'Adicione cebola e pimentão', 'Adicione alho, gengibre e berbere', 'Adicione tomate', 'Sirva com injera'],
+        prepTime: '20 minutos',
+        cookTime: '20 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      }
+    ]
+  },
+  {
+    id: 'noruega',
+    name: 'Noruega',
+    flag: '🇳🇴',
+    description: 'Culinária escandinava com foco em peixes, frutos do mar e conservas.',
+    recipes: [
+      {
+        id: 'rakfisk',
+        name: 'Rakfisk',
+        description: 'Truta fermentada servida com cebola, creme azedo e flatbrød.',
+        ingredients: ['Truta fresca', 'Sal', 'Açúcar', 'Cebola roxa', 'Creme azedo', 'Flatbrød', 'Endro'],
+        instructions: ['Limpe a truta', 'Cubra com sal e açúcar', 'Fermente por 2-3 meses em local frio', 'Fatie finamente', 'Sirva com cebola, creme azedo e flatbrød'],
+        prepTime: '30 minutos',
+        cookTime: '0 minutos',
+        servings: 8,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
+        category: 'Entrada'
+      },
+      {
+        id: 'farikal',
+        name: 'Fårikål',
+        description: 'Ensopado tradicional de cordeiro com repolho e pimenta preta.',
+        ingredients: ['1kg cordeiro', '1 repolho', 'Farinha', 'Pimenta preta em grão', 'Sal', 'Água'],
+        instructions: ['Corte cordeiro em pedaços', 'Corte repolho em fatias grossas', 'Monte camadas em panela: cordeiro, repolho, pimenta', 'Adicione água', 'Cozinhe em fogo baixo por 2 horas', 'Sirva com batatas'],
+        prepTime: '20 minutos',
+        cookTime: '2 horas',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'brunost',
+        name: 'Brunost',
+        description: 'Queijo marrom norueguês de soro de leite caramelizado.',
+        ingredients: ['Soro de leite', 'Creme de leite', 'Leite'],
+        instructions: ['Ferva soro, creme e leite', 'Cozinhe mexendo por 3-4 horas', 'Continue até caramelizar e engrossar', 'Despeje em forma', 'Deixe esfriar e firmar', 'Sirva em fatias finas com pão'],
+        prepTime: '15 minutos',
+        cookTime: '4 horas',
+        servings: 20,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=800&h=600&fit=crop',
+        category: 'Queijo'
+      },
+      {
+        id: 'lefse',
+        name: 'Lefse',
+        description: 'Panqueca macia de batata, servida com manteiga e açúcar.',
+        ingredients: ['Batata', 'Farinha', 'Manteiga', 'Creme de leite', 'Sal', 'Açúcar'],
+        instructions: ['Cozinhe e amasse batatas', 'Misture com farinha, manteiga e creme', 'Abra discos finos', 'Cozinhe em frigideira quente', 'Passe manteiga e açúcar', 'Enrole e sirva'],
+        prepTime: '1 hora',
+        cookTime: '30 minutos',
+        servings: 12,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Pão'
+      },
+      {
+        id: 'krumkake',
+        name: 'Krumkake',
+        description: 'Biscoito fino enrolado em formato de cone.',
+        ingredients: ['Ovos', 'Açúcar', 'Manteiga', 'Farinha', 'Creme de leite', 'Baunilha', 'Cardamomo'],
+        instructions: ['Bata ovos com açúcar', 'Adicione manteiga derretida', 'Adicione farinha, creme e especiarias', 'Asse em ferro especial', 'Enrole imediatamente em cone', 'Deixe esfriar'],
+        prepTime: '20 minutos',
+        cookTime: '30 minutos',
+        servings: 24,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
       }
     ]
   },
@@ -1766,77 +1997,363 @@ export const countriesData: Country[] = [
     name: 'Filipinas',
     flag: '🇵🇭',
     description: 'Culinária com influências espanholas, chinesas e malaias.',
-    cuisineRanking: 23,
     recipes: [
       {
         id: 'adobo',
-        name: 'Adobo Filipino',
-        description: 'Frango ou porco marinado em vinagre, molho de soja, alho e louro.',
+        name: 'Adobo',
+        description: 'Frango ou porco marinado e cozido em vinagre, molho de soja e alho.',
         ingredients: ['1kg frango ou porco', 'Vinagre', 'Molho de soja', 'Alho', 'Louro', 'Pimenta preta', 'Açúcar'],
-        instructions: ['Marine carne com todos os ingredientes', 'Cozinhe em fogo baixo por 40 minutos', 'Retire a carne', 'Reduza o molho', 'Retorne a carne e doure', 'Sirva com arroz'],
-        prepTime: '15 minutos',
-        cookTime: '50 minutos',
+        instructions: ['Marine carne com vinagre, molho de soja e alho', 'Deixe por 1 hora', 'Cozinhe com o marinado', 'Adicione louro e pimenta', 'Cozinhe até carne ficar macia', 'Reduza o molho', 'Sirva com arroz'],
+        prepTime: '1 hora',
+        cookTime: '45 minutos',
         servings: 6,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
+        category: 'Prato Principal'
       },
       {
         id: 'sinigang',
         name: 'Sinigang',
-        description: 'Sopa azeda com carne ou frutos do mar, tamarindo e vegetais.',
-        ingredients: ['Carne ou camarão', 'Tamarindo', 'Tomate', 'Cebola', 'Rabanete', 'Vagem', 'Espinafre', 'Chile'],
-        instructions: ['Ferva água com tamarindo', 'Adicione carne', 'Adicione tomate e cebola', 'Adicione vegetais duros', 'Adicione vegetais macios', 'Tempere com molho de peixe'],
-        prepTime: '15 minutos',
+        description: 'Sopa azeda com carne, frutos do mar ou peixe, e legumes.',
+        ingredients: ['Porco ou peixe', 'Tamarindo', 'Tomate', 'Cebola', 'Rabanete', 'Kangkong (espinafre d\'água)', 'Pimenta', 'Molho de peixe'],
+        instructions: ['Ferva água com tamarindo', 'Adicione carne', 'Adicione tomate e cebola', 'Adicione rabanete', 'Tempere com molho de peixe', 'Adicione kangkong no final', 'Sirva quente'],
+        prepTime: '20 minutos',
         cookTime: '40 minutos',
         servings: 6,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
-        category: 'Sopa',
-        rating: 8.7
+        category: 'Sopa'
       },
       {
         id: 'lumpia',
         name: 'Lumpia',
-        description: 'Rolinhos primavera filipinos fritos com recheio de carne e vegetais.',
-        ingredients: ['Massa para lumpia', 'Carne moída', 'Cenoura', 'Repolho', 'Cebola', 'Alho', 'Molho de soja'],
-        instructions: ['Refogue carne com vegetais', 'Tempere com molho de soja', 'Deixe esfriar', 'Recheie as massas', 'Enrole bem apertado', 'Frite até dourar'],
-        prepTime: '30 minutos',
+        description: 'Rolinhos primavera filipinos fritos, recheados com legumes e carne.',
+        ingredients: ['Massa para lumpia', 'Carne moída', 'Cenoura', 'Repolho', 'Cebola', 'Alho', 'Molho de soja', 'Óleo para fritar'],
+        instructions: ['Refogue carne com legumes', 'Tempere com molho de soja', 'Deixe esfriar', 'Recheie as massas', 'Enrole bem apertado', 'Frite até dourar', 'Sirva com molho agridoce'],
+        prepTime: '40 minutos',
         cookTime: '20 minutos',
         servings: 20,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 8.6
+        category: 'Entrada'
       },
       {
         id: 'lechon',
         name: 'Lechon',
-        description: 'Leitão assado inteiro com pele crocante, prato festivo filipino.',
-        ingredients: ['1 leitão', 'Capim-limão', 'Alho', 'Cebola', 'Louro', 'Sal', 'Pimenta'],
-        instructions: ['Tempere leitão por dentro e por fora', 'Recheie com ervas', 'Asse em espeto girando por 4 horas', 'Pincele com óleo para pele crocante', 'Sirva com molho de fígado'],
+        description: 'Leitão assado inteiro com pele crocante.',
+        ingredients: ['1 leitão', 'Capim-limão', 'Cebola', 'Alho', 'Louro', 'Pimenta', 'Sal'],
+        instructions: ['Tempere leitão por dentro e por fora', 'Recheie com ervas aromáticas', 'Asse em espeto girando por 4-5 horas', 'Pincele com óleo para pele crocante', 'Sirva com molho de fígado'],
         prepTime: '2 horas',
-        cookTime: '4 horas',
+        cookTime: '5 horas',
         servings: 20,
         difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
+        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
       },
       {
         id: 'halo-halo',
         name: 'Halo-Halo',
-        description: 'Sobremesa gelada com frutas, feijões, leite condensado e sorvete.',
-        ingredients: ['Gelo raspado', 'Feijão vermelho', 'Feijão branco', 'Nata de coco', 'Geleia', 'Banana', 'Leite condensado', 'Sorvete de ube'],
-        instructions: ['Coloque ingredientes em camadas em copo alto', 'Adicione gelo raspado', 'Despeje leite condensado', 'Coloque sorvete por cima', 'Misture tudo antes de comer'],
-        prepTime: '15 minutos',
+        description: 'Sobremesa gelada com gelo raspado, leite condensado, frutas e sorvete.',
+        ingredients: ['Gelo raspado', 'Leite condensado', 'Feijão doce', 'Nata de coco', 'Geleia', 'Banana', 'Jaca', 'Ube (inhame roxo)', 'Sorvete', 'Leche flan'],
+        instructions: ['Coloque ingredientes em camadas em copo alto', 'Cubra com gelo raspado', 'Despeje leite condensado', 'Adicione sorvete e leche flan', 'Misture tudo antes de comer'],
+        prepTime: '20 minutos',
         cookTime: '0 minutos',
         servings: 4,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.5
+        category: 'Sobremesa'
+      }
+    ]
+  },
+  {
+    id: 'belgica',
+    name: 'Bélgica',
+    flag: '🇧🇪',
+    description: 'Culinária conhecida por batatas fritas, waffles, chocolate e cerveja.',
+    recipes: [
+      {
+        id: 'moules-frites',
+        name: 'Moules-Frites',
+        description: 'Mexilhões cozidos em vinho branco com ervas, servidos com batatas fritas.',
+        ingredients: ['2kg mexilhões', 'Vinho branco', 'Cebola', 'Alho', 'Aipo', 'Salsa', 'Manteiga', 'Batatas', 'Óleo para fritar'],
+        instructions: ['Limpe os mexilhões', 'Refogue cebola, alho e aipo', 'Adicione vinho e mexilhões', 'Cozinhe até abrirem', 'Finalize com salsa', 'Frite batatas em palito', 'Sirva junto'],
+        prepTime: '30 minutos',
+        cookTime: '20 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'carbonnade',
+        name: 'Carbonnade Flamande',
+        description: 'Ensopado de carne com cerveja escura, cebola e pão de especiarias.',
+        ingredients: ['1kg carne bovina', 'Cerveja escura', 'Cebola', 'Pão de especiarias', 'Mostarda', 'Açúcar mascavo', 'Tomilho', 'Louro'],
+        instructions: ['Doure a carne', 'Caramelize cebolas', 'Adicione cerveja', 'Adicione pão de especiarias, mostarda e açúcar', 'Adicione ervas', 'Cozinhe em fogo baixo por 2 horas', 'Sirva com batatas fritas'],
+        prepTime: '30 minutos',
+        cookTime: '2h30',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'waffles-belgas',
+        name: 'Waffles Belgas',
+        description: 'Waffles grossos e crocantes servidos com chantilly e frutas.',
+        ingredients: ['Farinha', 'Leite', 'Ovos', 'Manteiga', 'Açúcar', 'Fermento', 'Baunilha', 'Chantilly', 'Frutas', 'Chocolate'],
+        instructions: ['Misture ingredientes da massa', 'Deixe descansar por 30 minutos', 'Asse em máquina de waffle', 'Sirva com chantilly, frutas e chocolate'],
+        prepTime: '40 minutos',
+        cookTime: '20 minutos',
+        servings: 8,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      },
+      {
+        id: 'waterzooi',
+        name: 'Waterzooi',
+        description: 'Ensopado cremoso de frango ou peixe com legumes.',
+        ingredients: ['Frango ou peixe', 'Alho-poró', 'Cenoura', 'Aipo', 'Batata', 'Creme de leite', 'Gemas', 'Salsa', 'Louro'],
+        instructions: ['Cozinhe frango com legumes e ervas', 'Retire frango e desosse', 'Coe o caldo', 'Adicione creme e gemas', 'Retorne frango', 'Sirva com pão'],
+        prepTime: '30 minutos',
+        cookTime: '1 hora',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
+        category: 'Sopa'
+      },
+      {
+        id: 'speculoos',
+        name: 'Speculoos',
+        description: 'Biscoitos de especiarias belgas crocantes.',
+        ingredients: ['Farinha', 'Açúcar mascavo', 'Manteiga', 'Canela', 'Noz-moscada', 'Cravo', 'Gengibre', 'Bicarbonato'],
+        instructions: ['Misture manteiga com açúcar', 'Adicione especiarias', 'Adicione farinha e bicarbonato', 'Deixe descansar por 2 horas', 'Abra massa fina', 'Corte biscoitos', 'Asse a 180°C por 12 minutos'],
+        prepTime: '2h30',
+        cookTime: '12 minutos',
+        servings: 40,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      }
+    ]
+  },
+  {
+    id: 'irlanda',
+    name: 'Irlanda',
+    flag: '🇮🇪',
+    description: 'Culinária reconfortante com batatas, cordeiro e ensopados.',
+    recipes: [
+      {
+        id: 'irish-stew',
+        name: 'Irish Stew',
+        description: 'Ensopado tradicional de cordeiro com batata, cebola e cenoura.',
+        ingredients: ['1kg cordeiro', 'Batata', 'Cebola', 'Cenoura', 'Tomilho', 'Salsa', 'Caldo de carne', 'Sal', 'Pimenta'],
+        instructions: ['Doure o cordeiro', 'Adicione cebola', 'Adicione batata e cenoura', 'Adicione caldo e ervas', 'Cozinhe em fogo baixo por 2 horas', 'Sirva com pão de soda'],
+        prepTime: '20 minutos',
+        cookTime: '2 horas',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'colcannon',
+        name: 'Colcannon',
+        description: 'Purê de batata com couve e cebola.',
+        ingredients: ['1kg batata', 'Couve', 'Cebola', 'Leite', 'Manteiga', 'Sal', 'Pimenta'],
+        instructions: ['Cozinhe batatas', 'Refogue couve com cebola', 'Amasse batatas com leite e manteiga', 'Misture com couve', 'Tempere', 'Sirva com manteiga derretida no centro'],
+        prepTime: '15 minutos',
+        cookTime: '30 minutos',
+        servings: 6,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
+        category: 'Acompanhamento'
+      },
+      {
+        id: 'soda-bread',
+        name: 'Irish Soda Bread',
+        description: 'Pão rápido feito com bicarbonato de sódio em vez de fermento.',
+        ingredients: ['Farinha integral', 'Farinha branca', 'Bicarbonato', 'Sal', 'Buttermilk'],
+        instructions: ['Misture ingredientes secos', 'Adicione buttermilk', 'Sove levemente', 'Modele bola', 'Faça corte em cruz', 'Asse a 200°C por 40 minutos'],
+        prepTime: '10 minutos',
+        cookTime: '40 minutos',
+        servings: 8,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Pão'
+      },
+      {
+        id: 'boxty',
+        name: 'Boxty',
+        description: 'Panqueca de batata irlandesa.',
+        ingredients: ['Batata crua ralada', 'Purê de batata', 'Farinha', 'Bicarbonato', 'Buttermilk', 'Sal'],
+        instructions: ['Esprema batata ralada', 'Misture com purê', 'Adicione farinha, bicarbonato e buttermilk', 'Frite em frigideira', 'Sirva com manteiga'],
+        prepTime: '20 minutos',
+        cookTime: '20 minutos',
+        servings: 8,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Acompanhamento'
+      },
+      {
+        id: 'baileys-cheesecake',
+        name: 'Baileys Cheesecake',
+        description: 'Cheesecake cremoso com licor Baileys.',
+        ingredients: ['Biscoito triturado', 'Manteiga', 'Cream cheese', 'Açúcar', 'Ovos', 'Baileys', 'Creme de leite', 'Chocolate'],
+        instructions: ['Prepare base com biscoito e manteiga', 'Bata cream cheese com açúcar', 'Adicione ovos e Baileys', 'Despeje sobre base', 'Asse em banho-maria', 'Deixe esfriar', 'Decore com chocolate'],
+        prepTime: '30 minutos',
+        cookTime: '1 hora',
+        servings: 12,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1533134242820-b4f3f2d5e3b5?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      }
+    ]
+  },
+  {
+    id: 'indonesia',
+    name: 'Indonésia',
+    flag: '🇮🇩',
+    description: 'Culinária diversificada com especiarias, coco e sambal.',
+    recipes: [
+      {
+        id: 'nasi-goreng',
+        name: 'Nasi Goreng',
+        description: 'Arroz frito indonésio com kecap manis, ovo e camarão.',
+        ingredients: ['Arroz cozido', 'Camarão', 'Ovo', 'Alho', 'Cebola', 'Pimenta', 'Kecap manis', 'Molho de peixe', 'Cebolinha'],
+        instructions: ['Refogue alho, cebola e pimenta', 'Adicione camarão', 'Adicione arroz', 'Tempere com kecap manis e molho de peixe', 'Frite ovo separadamente', 'Sirva arroz com ovo por cima'],
+        prepTime: '15 minutos',
+        cookTime: '15 minutos',
+        servings: 4,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'rendang',
+        name: 'Rendang',
+        description: 'Curry seco de carne cozido lentamente com leite de coco e especiarias.',
+        ingredients: ['1kg carne bovina', 'Leite de coco', 'Capim-limão', 'Galanga', 'Folhas de limão kaffir', 'Chiles', 'Cebola', 'Alho', 'Gengibre', 'Açafrão'],
+        instructions: ['Bata especiarias em pasta', 'Refogue pasta aromática', 'Adicione carne', 'Adicione leite de coco', 'Cozinhe em fogo baixo por 3 horas', 'Continue até secar e escurecer'],
+        prepTime: '30 minutos',
+        cookTime: '3 horas',
+        servings: 8,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'satay',
+        name: 'Satay',
+        description: 'Espetinhos de carne marinada grelhados com molho de amendoim.',
+        ingredients: ['Frango ou carne', 'Açafrão', 'Capim-limão', 'Alho', 'Gengibre', 'Molho de soja', 'Amendoim', 'Leite de coco', 'Kecap manis', 'Pimenta'],
+        instructions: ['Marine carne por 4 horas', 'Monte espetinhos', 'Grelhe até dourar', 'Prepare molho de amendoim', 'Sirva com molho, pepino e cebola'],
+        prepTime: '4 horas',
+        cookTime: '15 minutos',
+        servings: 6,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'gado-gado',
+        name: 'Gado-Gado',
+        description: 'Salada de legumes cozidos com molho de amendoim.',
+        ingredients: ['Repolho', 'Vagem', 'Broto de feijão', 'Batata', 'Ovo', 'Tofu', 'Tempeh', 'Amendoim', 'Leite de coco', 'Kecap manis', 'Tamarindo'],
+        instructions: ['Cozinhe legumes separadamente', 'Frite tofu e tempeh', 'Prepare molho de amendoim', 'Disponha legumes em prato', 'Despeje molho', 'Adicione ovo cozido'],
+        prepTime: '30 minutos',
+        cookTime: '30 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop',
+        category: 'Salada'
+      },
+      {
+        id: 'pisang-goreng',
+        name: 'Pisang Goreng',
+        description: 'Banana frita empanada crocante.',
+        ingredients: ['Bananas', 'Farinha', 'Açúcar', 'Sal', 'Água', 'Óleo para fritar'],
+        instructions: ['Prepare massa com farinha, açúcar e água', 'Corte bananas ao meio', 'Passe na massa', 'Frite até dourar', 'Escorra', 'Sirva quente'],
+        prepTime: '10 minutos',
+        cookTime: '15 minutos',
+        servings: 8,
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1587132117816-5a4e8f6c3e0d?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
+      }
+    ]
+  },
+  {
+    id: 'malasia',
+    name: 'Malásia',
+    flag: '🇲🇾',
+    description: 'Fusão de culinárias malaia, chinesa e indiana.',
+    recipes: [
+      {
+        id: 'nasi-lemak',
+        name: 'Nasi Lemak',
+        description: 'Arroz cozido em leite de coco servido com sambal, amendoim, anchovas e ovo.',
+        ingredients: ['Arroz', 'Leite de coco', 'Folhas de pandan', 'Sambal', 'Amendoim torrado', 'Anchovas fritas', 'Ovo', 'Pepino'],
+        instructions: ['Cozinhe arroz com leite de coco e pandan', 'Prepare sambal', 'Frite anchovas', 'Frite ovo', 'Monte prato com todos os componentes'],
+        prepTime: '20 minutos',
+        cookTime: '30 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'laksa',
+        name: 'Laksa',
+        description: 'Sopa picante de macarrão com leite de coco e frutos do mar.',
+        ingredients: ['Macarrão de arroz', 'Camarão', 'Tofu puffs', 'Leite de coco', 'Pasta de laksa', 'Broto de feijão', 'Hortelã', 'Limão'],
+        instructions: ['Prepare caldo com pasta de laksa', 'Adicione leite de coco', 'Cozinhe camarão', 'Cozinhe macarrão', 'Monte tigela com macarrão, camarão, tofu', 'Despeje caldo', 'Finalize com brotos e ervas'],
+        prepTime: '20 minutos',
+        cookTime: '30 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800&h=600&fit=crop',
+        category: 'Sopa'
+      },
+      {
+        id: 'char-kway-teow',
+        name: 'Char Kway Teow',
+        description: 'Macarrão largo salteado com camarão, linguiça chinesa e broto de feijão.',
+        ingredients: ['Macarrão de arroz largo', 'Camarão', 'Linguiça chinesa', 'Broto de feijão', 'Cebolinha', 'Ovo', 'Molho de soja escuro', 'Molho de peixe'],
+        instructions: ['Aqueça wok em fogo alto', 'Salteie linguiça e camarão', 'Adicione macarrão', 'Adicione molhos', 'Adicione ovo', 'Adicione brotos e cebolinha', 'Sirva imediatamente'],
+        prepTime: '15 minutos',
+        cookTime: '10 minutos',
+        servings: 2,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
+      },
+      {
+        id: 'roti-canai',
+        name: 'Roti Canai',
+        description: 'Pão achatado folhado servido com curry.',
+        ingredients: ['Farinha', 'Água', 'Ghee', 'Sal', 'Curry de frango ou dhal'],
+        instructions: ['Prepare massa e deixe descansar', 'Divida em porções', 'Estique bem fino', 'Dobre em camadas', 'Frite em chapa com ghee', 'Sirva com curry'],
+        prepTime: '2 horas',
+        cookTime: '20 minutos',
+        servings: 8,
+        difficulty: 'Difícil',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Pão'
+      },
+      {
+        id: 'cendol',
+        name: 'Cendol',
+        description: 'Sobremesa gelada com gelo raspado, leite de coco, geleia de pandan e gula melaka.',
+        ingredients: ['Gelo raspado', 'Leite de coco', 'Geleia de pandan', 'Gula melaka (açúcar de palma)', 'Feijão vermelho'],
+        instructions: ['Prepare geleia de pandan em formato de fios', 'Coloque gelo raspado em tigela', 'Adicione geleia, feijão e gula melaka', 'Despeje leite de coco', 'Misture antes de comer'],
+        prepTime: '30 minutos',
+        cookTime: '20 minutos',
+        servings: 4,
+        difficulty: 'Médio',
+        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
       }
     ]
   },
@@ -1845,235 +2362,71 @@ export const countriesData: Country[] = [
     name: 'Singapura',
     flag: '🇸🇬',
     description: 'Melting pot culinário com influências chinesas, malaias e indianas.',
-    cuisineRanking: 24,
     recipes: [
       {
-        id: 'chili-crab',
-        name: 'Chili Crab',
-        description: 'Caranguejo em molho picante e doce de tomate, prato icônico de Singapura.',
-        ingredients: ['2 caranguejos', 'Ketchup', 'Molho de chile', 'Alho', 'Gengibre', 'Ovo', 'Açúcar', 'Vinagre', 'Cebolinha'],
-        instructions: ['Limpe e corte caranguejos', 'Refogue alho e gengibre', 'Adicione molhos', 'Adicione caranguejos', 'Cozinhe até ficarem vermelhos', 'Adicione ovo batido', 'Finalize com cebolinha'],
-        prepTime: '20 minutos',
+        id: 'chilli-crab',
+        name: 'Chilli Crab',
+        description: 'Caranguejo em molho picante e doce de tomate.',
+        ingredients: ['2 caranguejos', 'Tomate', 'Chiles', 'Alho', 'Gengibre', 'Ketchup', 'Molho de chile', 'Açúcar', 'Ovo', 'Cebolinha'],
+        instructions: ['Limpe e corte caranguejos', 'Refogue alho, gengibre e chiles', 'Adicione tomate e molhos', 'Adicione caranguejos', 'Cozinhe até ficarem vermelhos', 'Adicione ovo batido', 'Finalize com cebolinha', 'Sirva com pão frito'],
+        prepTime: '30 minutos',
         cookTime: '25 minutos',
         servings: 4,
-        difficulty: 'Médio',
+        difficulty: 'Difícil',
         image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.1
+        category: 'Prato Principal'
       },
       {
         id: 'hainanese-chicken-rice',
         name: 'Hainanese Chicken Rice',
-        description: 'Frango pochê servido com arroz aromático cozido em caldo de frango.',
-        ingredients: ['1 frango inteiro', 'Arroz', 'Gengibre', 'Alho', 'Cebolinha', 'Molho de soja', 'Óleo de gergelim', 'Chile'],
-        instructions: ['Cozinhe frango com gengibre', 'Use caldo para cozinhar arroz', 'Frite alho no óleo', 'Adicione arroz e refogue', 'Cozinhe arroz no caldo', 'Sirva frango fatiado com arroz e molhos'],
+        description: 'Frango pochê servido com arroz aromático cozido na gordura do frango.',
+        ingredients: ['1 frango', 'Arroz', 'Gengibre', 'Alho', 'Cebola', 'Molho de soja', 'Óleo de gergelim', 'Molho de chile', 'Pepino'],
+        instructions: ['Cozinhe frango com gengibre', 'Reserve caldo', 'Refogue arroz com gordura do frango', 'Cozinhe arroz no caldo', 'Fatie frango', 'Sirva com arroz, molhos e pepino'],
         prepTime: '20 minutos',
-        cookTime: '50 minutos',
-        servings: 6,
+        cookTime: '1 hora',
+        servings: 4,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 9.0
+        category: 'Prato Principal'
       },
       {
-        id: 'laksa-singapura',
-        name: 'Laksa de Singapura',
-        description: 'Sopa cremosa de macarrão com leite de coco e curry.',
-        ingredients: ['Macarrão', 'Leite de coco', 'Pasta de laksa', 'Camarão', 'Tofu pok', 'Broto de feijão', 'Ovo', 'Coentro'],
-        instructions: ['Prepare caldo com pasta de laksa', 'Adicione leite de coco', 'Cozinhe camarão', 'Cozinhe macarrão', 'Monte tigela', 'Adicione toppings'],
+        id: 'bak-kut-teh',
+        name: 'Bak Kut Teh',
+        description: 'Sopa de costela de porco com ervas chinesas.',
+        ingredients: ['Costela de porco', 'Alho', 'Pimenta preta', 'Anis estrelado', 'Canela', 'Cravo', 'Molho de soja', 'Molho de ostra'],
+        instructions: ['Ferva costela para limpar', 'Prepare caldo com especiarias', 'Adicione costela', 'Cozinhe por 2 horas', 'Tempere com molhos', 'Sirva com arroz e you tiao'],
         prepTime: '20 minutos',
-        cookTime: '30 minutos',
+        cookTime: '2 horas',
         servings: 4,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
-        category: 'Sopa',
-        rating: 8.9
-      },
-      {
-        id: 'satay-singapura',
-        name: 'Satay de Singapura',
-        description: 'Espetinhos de carne grelhados com molho de amendoim.',
-        ingredients: ['Frango ou carne', 'Açafrão', 'Capim-limão', 'Amendoim', 'Leite de coco', 'Kecap manis', 'Chile'],
-        instructions: ['Marine carne', 'Monte espetinhos', 'Grelhe', 'Prepare molho de amendoim', 'Sirva com pepino e cebola'],
-        prepTime: '2 horas',
-        cookTime: '15 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
+        category: 'Sopa'
       },
       {
         id: 'kaya-toast',
         name: 'Kaya Toast',
-        description: 'Torrada com geleia de coco e ovo pochê, café da manhã típico.',
-        ingredients: ['Pão de forma', 'Kaya (geleia de coco)', 'Manteiga', 'Ovos', 'Molho de soja'],
-        instructions: ['Torre pão', 'Passe manteiga e kaya', 'Cozinhe ovos pochê', 'Sirva com ovos e molho de soja'],
+        description: 'Torrada com kaya (geleia de coco e ovo) e manteiga.',
+        ingredients: ['Pão de forma', 'Kaya', 'Manteiga', 'Ovos', 'Molho de soja', 'Pimenta branca'],
+        instructions: ['Torre pão até crocante', 'Passe manteiga fria', 'Passe kaya', 'Sirva com ovos moles temperados'],
         prepTime: '5 minutos',
         cookTime: '10 minutos',
         servings: 2,
         difficulty: 'Fácil',
         image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
-        category: 'Café da Manhã',
-        rating: 8.5
-      }
-    ]
-  },
-  {
-    id: 'australia',
-    name: 'Austrália',
-    flag: '🇦🇺',
-    description: 'Culinária moderna com ingredientes frescos e influências multiculturais.',
-    cuisineRanking: 25,
-    recipes: [
-      {
-        id: 'meat-pie',
-        name: 'Meat Pie Australiana',
-        description: 'Torta de carne moída em molho, clássico australiano.',
-        ingredients: ['Massa folhada', 'Carne moída', 'Cebola', 'Molho inglês', 'Ketchup', 'Caldo de carne', 'Farinha'],
-        instructions: ['Refogue carne com cebola', 'Adicione molhos e caldo', 'Engrosse com farinha', 'Forre forminhas com massa', 'Adicione recheio', 'Cubra com massa', 'Asse até dourar'],
-        prepTime: '30 minutos',
-        cookTime: '40 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.7
+        category: 'Café da Manhã'
       },
       {
-        id: 'barramundi',
-        name: 'Barramundi Grelhado',
-        description: 'Peixe australiano grelhado com limão e ervas.',
-        ingredients: ['Filés de barramundi', 'Limão', 'Alho', 'Ervas frescas', 'Azeite', 'Sal', 'Pimenta'],
-        instructions: ['Tempere peixe com limão, alho e ervas', 'Deixe marinar por 30 minutos', 'Grelhe por 4 minutos cada lado', 'Sirva com salada e batatas'],
-        prepTime: '35 minutos',
-        cookTime: '10 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
-      },
-      {
-        id: 'lamington',
-        name: 'Lamington',
-        description: 'Bolo de chocolate coberto com coco ralado.',
-        ingredients: ['Pão de ló', 'Chocolate', 'Creme de leite', 'Coco ralado'],
-        instructions: ['Corte pão de ló em cubos', 'Derreta chocolate com creme', 'Passe cubos no chocolate', 'Passe no coco ralado', 'Deixe secar'],
-        prepTime: '30 minutos',
-        cookTime: '10 minutos',
-        servings: 16,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.6
-      },
-      {
-        id: 'pavlova',
-        name: 'Pavlova',
-        description: 'Merengue crocante com chantilly e frutas frescas.',
-        ingredients: ['Claras', 'Açúcar', 'Vinagre', 'Amido de milho', 'Chantilly', 'Frutas frescas'],
-        instructions: ['Bata claras em neve', 'Adicione açúcar aos poucos', 'Adicione vinagre e amido', 'Modele disco em assadeira', 'Asse a 120°C por 1h30', 'Cubra com chantilly e frutas'],
-        prepTime: '20 minutos',
-        cookTime: '1h30',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.9
-      },
-      {
-        id: 'vegemite-toast',
-        name: 'Vegemite Toast',
-        description: 'Torrada com manteiga e vegemite, café da manhã australiano.',
-        ingredients: ['Pão', 'Manteiga', 'Vegemite'],
-        instructions: ['Torre pão', 'Passe manteiga generosamente', 'Passe fina camada de vegemite', 'Sirva quente'],
-        prepTime: '2 minutos',
-        cookTime: '3 minutos',
-        servings: 1,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
-        category: 'Café da Manhã',
-        rating: 7.5
-      }
-    ]
-  },
-  {
-    id: 'etiopia',
-    name: 'Etiópia',
-    flag: '🇪🇹',
-    description: 'Culinária única com injera e wat (ensopados picantes).',
-    cuisineRanking: 26,
-    recipes: [
-      {
-        id: 'doro-wat',
-        name: 'Doro Wat',
-        description: 'Ensopado picante de frango com berbere, prato nacional etíope.',
-        ingredients: ['Frango', 'Cebola', 'Berbere', 'Alho', 'Gengibre', 'Manteiga clarificada', 'Ovos cozidos', 'Vinho'],
-        instructions: ['Refogue cebola até caramelizar', 'Adicione berbere', 'Adicione frango', 'Adicione líquidos', 'Cozinhe por 1 hora', 'Adicione ovos', 'Sirva com injera'],
-        prepTime: '30 minutos',
-        cookTime: '1h30',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
-      },
-      {
-        id: 'injera',
-        name: 'Injera',
-        description: 'Pão fermentado esponjoso de teff, base da culinária etíope.',
-        ingredients: ['Farinha de teff', 'Água', 'Sal'],
-        instructions: ['Misture teff com água', 'Deixe fermentar por 3 dias', 'Adicione sal', 'Cozinhe em chapa quente', 'Cubra até formar bolhas', 'Não vire'],
-        prepTime: '3 dias',
-        cookTime: '5 minutos',
-        servings: 10,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
-        category: 'Pão',
-        rating: 8.5
-      },
-      {
-        id: 'kitfo',
-        name: 'Kitfo',
-        description: 'Carne crua temperada com manteiga e especiarias.',
-        ingredients: ['Carne bovina moída', 'Manteiga clarificada', 'Mitmita', 'Cardamomo', 'Queijo cottage'],
-        instructions: ['Misture carne crua com manteiga', 'Adicione mitmita', 'Tempere com cardamomo', 'Sirva com queijo e injera'],
+        id: 'ice-kacang',
+        name: 'Ice Kacang',
+        description: 'Sobremesa gelada com gelo raspado, feijão vermelho, geleia e xaropes coloridos.',
+        ingredients: ['Gelo raspado', 'Feijão vermelho', 'Milho doce', 'Geleia', 'Attap chee', 'Xaropes coloridos', 'Leite condensado', 'Leite evaporado'],
+        instructions: ['Coloque ingredientes em tigela', 'Cubra com gelo raspado em formato de montanha', 'Despeje xaropes coloridos', 'Adicione leite condensado e evaporado', 'Misture tudo antes de comer'],
         prepTime: '15 minutos',
         cookTime: '0 minutos',
-        servings: 4,
+        servings: 2,
         difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.3
-      },
-      {
-        id: 'shiro',
-        name: 'Shiro',
-        description: 'Ensopado vegetariano de grão-de-bico em pó.',
-        ingredients: ['Farinha de grão-de-bico', 'Cebola', 'Alho', 'Gengibre', 'Berbere', 'Tomate', 'Óleo'],
-        instructions: ['Refogue cebola', 'Adicione especiarias', 'Adicione farinha de grão-de-bico', 'Adicione água aos poucos', 'Cozinhe até engrossar', 'Sirva com injera'],
-        prepTime: '10 minutos',
-        cookTime: '30 minutos',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.4
-      },
-      {
-        id: 'cafe-etiope',
-        name: 'Café Etíope',
-        description: 'Cerimônia tradicional de café etíope.',
-        ingredients: ['Grãos de café verde', 'Água', 'Açúcar (opcional)'],
-        instructions: ['Torre grãos de café', 'Moa os grãos', 'Ferva água em jebena', 'Adicione café', 'Sirva em xícaras pequenas', 'Repita 3 vezes'],
-        prepTime: '10 minutos',
-        cookTime: '30 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&h=600&fit=crop',
-        category: 'Bebida',
-        rating: 8.7
+        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
+        category: 'Sobremesa'
       }
     ]
   },
@@ -2081,710 +2434,72 @@ export const countriesData: Country[] = [
     id: 'jamaica',
     name: 'Jamaica',
     flag: '🇯🇲',
-    description: 'Culinária caribenha com jerk spice e sabores tropicais.',
-    cuisineRanking: 27,
+    description: 'Culinária caribenha com jerk, frutas tropicais e especiarias.',
     recipes: [
       {
         id: 'jerk-chicken',
         name: 'Jerk Chicken',
-        description: 'Frango marinado em especiarias jamaicanas e grelhado.',
-        ingredients: ['Frango', 'Pimenta scotch bonnet', 'Pimenta da Jamaica', 'Tomilho', 'Alho', 'Gengibre', 'Cebolinha', 'Limão', 'Açúcar mascavo'],
-        instructions: ['Bata especiarias em pasta', 'Marine frango por 12 horas', 'Grelhe em fogo baixo', 'Vire frequentemente', 'Sirva com arroz e feijão'],
+        description: 'Frango marinado em tempero jerk picante e defumado.',
+        ingredients: ['Frango', 'Pimenta scotch bonnet', 'Pimenta da Jamaica', 'Tomilho', 'Alho', 'Gengibre', 'Cebola', 'Limão', 'Açúcar mascavo', 'Molho de soja'],
+        instructions: ['Bata todos os temperos em pasta', 'Marine frango por 12 horas', 'Grelhe em fogo baixo com fumaça', 'Vire frequentemente', 'Sirva com arroz e feijão'],
         prepTime: '12 horas',
         cookTime: '45 minutos',
         servings: 6,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.9
+        category: 'Prato Principal'
       },
       {
         id: 'ackee-saltfish',
         name: 'Ackee and Saltfish',
-        description: 'Prato nacional jamaicano com fruta ackee e bacalhau.',
-        ingredients: ['Ackee em lata', 'Bacalhau salgado', 'Cebola', 'Tomate', 'Pimentão', 'Scotch bonnet', 'Tomilho'],
-        instructions: ['Dessalgue bacalhau', 'Refogue cebola e pimentão', 'Adicione bacalhau desfiado', 'Adicione ackee delicadamente', 'Tempere com tomilho', 'Sirva com bammy ou pão'],
-        prepTime: '12 horas',
+        description: 'Prato nacional com ackee (fruta) e bacalhau salgado.',
+        ingredients: ['Ackee em lata', 'Bacalhau salgado', 'Cebola', 'Tomate', 'Pimentão', 'Pimenta scotch bonnet', 'Tomilho', 'Alho'],
+        instructions: ['Dessalgue bacalhau', 'Desfie o bacalhau', 'Refogue cebola, tomate e pimentão', 'Adicione bacalhau', 'Adicione ackee delicadamente', 'Tempere com tomilho e pimenta', 'Sirva com bammy ou dumplings'],
+        prepTime: '24 horas',
         cookTime: '20 minutos',
         servings: 4,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.6
+        category: 'Prato Principal'
       },
       {
         id: 'curry-goat',
         name: 'Curry Goat',
-        description: 'Cabrito em curry jamaicano com batata.',
-        ingredients: ['Cabrito', 'Curry em pó', 'Cebola', 'Alho', 'Gengibre', 'Scotch bonnet', 'Batata', 'Tomilho'],
-        instructions: ['Marine cabrito com curry', 'Doure a carne', 'Adicione cebola e especiarias', 'Adicione água', 'Cozinhe por 2 horas', 'Adicione batata', 'Cozinhe até macio'],
+        description: 'Curry jamaicano de carne de cabra.',
+        ingredients: ['1kg carne de cabra', 'Curry em pó', 'Pimenta da Jamaica', 'Tomilho', 'Cebola', 'Alho', 'Gengibre', 'Pimenta scotch bonnet', 'Batata', 'Cenoura'],
+        instructions: ['Marine carne com curry e especiarias', 'Doure a carne', 'Adicione cebola, alho e gengibre', 'Adicione água', 'Cozinhe por 2 horas', 'Adicione batata e cenoura', 'Cozinhe até macio', 'Sirva com arroz'],
         prepTime: '2 horas',
         cookTime: '2h30',
         servings: 6,
         difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.7
+        image: 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800&h=600&fit=crop',
+        category: 'Prato Principal'
       },
       {
-        id: 'patties',
-        name: 'Jamaican Patties',
-        description: 'Pastéis jamaicanos com recheio de carne temperada.',
-        ingredients: ['Massa: farinha, manteiga, açafrão, água', 'Recheio: carne moída, cebola, scotch bonnet, curry, pão ralado'],
-        instructions: ['Prepare massa com açafrão', 'Refogue carne com temperos', 'Abra discos de massa', 'Recheie e feche', 'Asse até dourar'],
-        prepTime: '45 minutos',
-        cookTime: '30 minutos',
+        id: 'festival',
+        name: 'Festival',
+        description: 'Pão frito doce jamaicano.',
+        ingredients: ['Farinha', 'Fubá', 'Açúcar', 'Fermento', 'Sal', 'Baunilha', 'Leite', 'Óleo para fritar'],
+        instructions: ['Misture ingredientes secos', 'Adicione leite e baunilha', 'Sove até formar massa', 'Modele em formato oval', 'Frite até dourar', 'Escorra', 'Sirva com jerk chicken'],
+        prepTime: '15 minutos',
+        cookTime: '20 minutos',
         servings: 12,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 8.5
+        difficulty: 'Fácil',
+        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
+        category: 'Pão'
       },
       {
         id: 'rum-cake',
         name: 'Rum Cake',
-        description: 'Bolo jamaicano embebido em rum.',
-        ingredients: ['Farinha', 'Açúcar', 'Manteiga', 'Ovos', 'Frutas secas', 'Rum escuro', 'Especiarias'],
-        instructions: ['Macere frutas em rum', 'Prepare massa de bolo', 'Adicione frutas', 'Asse', 'Embeba com mais rum', 'Deixe maturar'],
+        description: 'Bolo embebido em rum jamaicano.',
+        ingredients: ['Farinha', 'Açúcar', 'Manteiga', 'Ovos', 'Frutas secas', 'Rum escuro', 'Baunilha', 'Especiarias', 'Fermento'],
+        instructions: ['Deixe frutas de molho em rum por 24 horas', 'Bata manteiga com açúcar', 'Adicione ovos', 'Adicione farinha e especiarias', 'Adicione frutas', 'Asse por 1 hora', 'Embeba com mais rum', 'Deixe maturar por 1 semana'],
         prepTime: '24 horas',
         cookTime: '1 hora',
         servings: 12,
         difficulty: 'Médio',
         image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.8
-      }
-    ]
-  },
-  {
-    id: 'irlanda',
-    name: 'Irlanda',
-    flag: '🇮🇪',
-    description: 'Culinária reconfortante com batatas, carne e cerveja stout.',
-    cuisineRanking: 28,
-    recipes: [
-      {
-        id: 'irish-stew',
-        name: 'Irish Stew',
-        description: 'Ensopado tradicional irlandês com cordeiro, batata e cebola.',
-        ingredients: ['Cordeiro', 'Batata', 'Cebola', 'Cenoura', 'Tomilho', 'Louro', 'Sal', 'Pimenta'],
-        instructions: ['Doure cordeiro', 'Adicione cebola', 'Adicione batata e cenoura', 'Cubra com água', 'Adicione ervas', 'Cozinhe por 2 horas', 'Sirva com pão'],
-        prepTime: '20 minutos',
-        cookTime: '2 horas',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.6
-      },
-      {
-        id: 'colcannon',
-        name: 'Colcannon',
-        description: 'Purê de batata com couve e cebolinha.',
-        ingredients: ['Batata', 'Couve', 'Cebolinha', 'Manteiga', 'Leite', 'Sal', 'Pimenta'],
-        instructions: ['Cozinhe batatas', 'Cozinhe couve', 'Amasse batatas com manteiga e leite', 'Misture couve e cebolinha', 'Tempere', 'Sirva com manteiga derretida no centro'],
-        prepTime: '15 minutos',
-        cookTime: '30 minutos',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Acompanhamento',
-        rating: 8.3
-      },
-      {
-        id: 'guinness-beef-stew',
-        name: 'Guinness Beef Stew',
-        description: 'Ensopado de carne com cerveja Guinness.',
-        ingredients: ['Carne bovina', 'Guinness', 'Cebola', 'Cenoura', 'Batata', 'Alho', 'Tomilho', 'Farinha'],
-        instructions: ['Doure carne enfarinhada', 'Refogue cebola e alho', 'Adicione Guinness', 'Adicione caldo', 'Adicione legumes', 'Cozinhe por 2 horas', 'Engrosse se necessário'],
-        prepTime: '20 minutos',
-        cookTime: '2h30',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
-      },
-      {
-        id: 'soda-bread',
-        name: 'Irish Soda Bread',
-        description: 'Pão irlandês rápido feito com bicarbonato.',
-        ingredients: ['Farinha', 'Bicarbonato', 'Sal', 'Buttermilk'],
-        instructions: ['Misture ingredientes secos', 'Adicione buttermilk', 'Sove levemente', 'Modele bola', 'Corte cruz no topo', 'Asse a 200°C por 40 minutos'],
-        prepTime: '10 minutos',
-        cookTime: '40 minutos',
-        servings: 8,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
-        category: 'Pão',
-        rating: 8.4
-      },
-      {
-        id: 'baileys-cheesecake',
-        name: 'Baileys Cheesecake',
-        description: 'Cheesecake irlandês com licor Baileys.',
-        ingredients: ['Cream cheese', 'Açúcar', 'Ovos', 'Baileys', 'Biscoito', 'Manteiga', 'Chocolate'],
-        instructions: ['Prepare base de biscoito', 'Bata cream cheese com açúcar', 'Adicione ovos e Baileys', 'Despeje sobre base', 'Asse em banho-maria', 'Decore com chocolate'],
-        prepTime: '30 minutos',
-        cookTime: '1 hora',
-        servings: 12,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.9
-      }
-    ]
-  },
-  {
-    id: 'polonia',
-    name: 'Polônia',
-    flag: '🇵🇱',
-    description: 'Culinária reconfortante com pierogi, sopas e carnes.',
-    cuisineRanking: 29,
-    recipes: [
-      {
-        id: 'pierogi',
-        name: 'Pierogi',
-        description: 'Pastéis poloneses recheados com batata, queijo ou carne.',
-        ingredients: ['Massa: farinha, ovo, água', 'Recheio: batata, queijo cottage, cebola', 'Manteiga', 'Cebola frita'],
-        instructions: ['Prepare massa', 'Prepare recheio de batata e queijo', 'Abra massa fina', 'Corte círculos', 'Recheie e feche', 'Cozinhe em água fervente', 'Frite em manteiga com cebola'],
-        prepTime: '1 hora',
-        cookTime: '30 minutos',
-        servings: 40,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
-      },
-      {
-        id: 'bigos',
-        name: 'Bigos',
-        description: 'Ensopado de chucrute com carnes variadas, prato nacional polonês.',
-        ingredients: ['Chucrute', 'Repolho fresco', 'Carne de porco', 'Linguiça', 'Bacon', 'Cogumelos secos', 'Tomate', 'Vinho tinto'],
-        instructions: ['Refogue carnes', 'Adicione chucrute e repolho', 'Adicione cogumelos hidratados', 'Adicione tomate e vinho', 'Cozinhe por 2 horas', 'Melhor no dia seguinte'],
-        prepTime: '30 minutos',
-        cookTime: '2 horas',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.7
-      },
-      {
-        id: 'zurek',
-        name: 'Żurek',
-        description: 'Sopa azeda polonesa com linguiça e ovo.',
-        ingredients: ['Żur (fermento de centeio)', 'Linguiça', 'Bacon', 'Batata', 'Ovo', 'Alho', 'Marjoram', 'Creme de leite'],
-        instructions: ['Refogue bacon', 'Adicione żur e água', 'Adicione batata', 'Adicione linguiça', 'Tempere com alho e marjoram', 'Sirva com ovo cozido e creme'],
-        prepTime: '15 minutos',
-        cookTime: '40 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
-        category: 'Sopa',
-        rating: 8.5
-      },
-      {
-        id: 'golabki',
-        name: 'Gołąbki',
-        description: 'Rolinhos de repolho recheados com carne e arroz.',
-        ingredients: ['Repolho', 'Carne moída', 'Arroz', 'Cebola', 'Tomate', 'Creme de leite'],
-        instructions: ['Cozinhe folhas de repolho', 'Refogue carne com cebola', 'Misture com arroz', 'Recheie folhas', 'Enrole', 'Disponha em refratário', 'Cubra com molho de tomate', 'Asse por 1 hora'],
-        prepTime: '45 minutos',
-        cookTime: '1 hora',
-        servings: 12,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.6
-      },
-      {
-        id: 'paczki',
-        name: 'Pączki',
-        description: 'Donuts poloneses recheados com geleia.',
-        ingredients: ['Farinha', 'Fermento', 'Leite', 'Ovos', 'Manteiga', 'Açúcar', 'Geleia', 'Açúcar de confeiteiro'],
-        instructions: ['Prepare massa doce', 'Deixe crescer', 'Abra e corte círculos', 'Deixe crescer novamente', 'Frite em óleo', 'Recheie com geleia', 'Polvilhe açúcar'],
-        prepTime: '3 horas',
-        cookTime: '20 minutos',
-        servings: 20,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.7
-      }
-    ]
-  },
-  {
-    id: 'belgica',
-    name: 'Bélgica',
-    flag: '🇧🇪',
-    description: 'Famosa por waffles, chocolate, batatas fritas e cerveja.',
-    cuisineRanking: 30,
-    recipes: [
-      {
-        id: 'moules-frites',
-        name: 'Moules-Frites',
-        description: 'Mexilhões cozidos em vinho branco servidos com batatas fritas.',
-        ingredients: ['2kg mexilhões', 'Vinho branco', 'Cebola', 'Alho', 'Salsa', 'Manteiga', 'Batatas'],
-        instructions: ['Limpe mexilhões', 'Refogue cebola e alho', 'Adicione vinho', 'Adicione mexilhões', 'Cozinhe até abrir', 'Frite batatas em óleo quente', 'Sirva junto'],
-        prepTime: '30 minutos',
-        cookTime: '20 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.9
-      },
-      {
-        id: 'waffles-belgas',
-        name: 'Waffles Belgas',
-        description: 'Waffles grossos e crocantes, doces ou salgados.',
-        ingredients: ['Farinha', 'Fermento', 'Leite', 'Ovos', 'Manteiga', 'Açúcar', 'Baunilha'],
-        instructions: ['Misture ingredientes secos', 'Adicione líquidos', 'Deixe descansar', 'Asse em máquina de waffle', 'Sirva com frutas, chantilly ou chocolate'],
-        prepTime: '15 minutos',
-        cookTime: '20 minutos',
-        servings: 8,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.0
-      },
-      {
-        id: 'carbonnade',
-        name: 'Carbonnade Flamande',
-        description: 'Ensopado de carne com cerveja belga e pão de especiarias.',
-        ingredients: ['Carne bovina', 'Cerveja escura belga', 'Cebola', 'Pão de especiarias', 'Mostarda', 'Açúcar mascavo', 'Tomilho'],
-        instructions: ['Doure carne', 'Caramelize cebola', 'Adicione cerveja', 'Adicione pão de especiarias', 'Adicione mostarda e açúcar', 'Cozinhe por 2 horas', 'Sirva com batatas'],
-        prepTime: '20 minutos',
-        cookTime: '2h30',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.8
-      },
-      {
-        id: 'speculoos',
-        name: 'Speculoos',
-        description: 'Biscoitos belgas de especiarias.',
-        ingredients: ['Farinha', 'Açúcar mascavo', 'Manteiga', 'Canela', 'Noz-moscada', 'Cravo', 'Gengibre'],
-        instructions: ['Misture manteiga com açúcar', 'Adicione especiarias', 'Adicione farinha', 'Deixe descansar', 'Abra massa', 'Corte biscoitos', 'Asse até dourar'],
-        prepTime: '2 horas',
-        cookTime: '15 minutos',
-        servings: 40,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.6
-      },
-      {
-        id: 'chocolate-belga',
-        name: 'Trufas de Chocolate Belga',
-        description: 'Trufas de chocolate belga de alta qualidade.',
-        ingredients: ['Chocolate belga', 'Creme de leite', 'Manteiga', 'Cacau em pó', 'Licor (opcional)'],
-        instructions: ['Derreta chocolate com creme', 'Adicione manteiga', 'Adicione licor se desejar', 'Deixe esfriar', 'Faça bolinhas', 'Passe em cacau'],
-        prepTime: '30 minutos',
-        cookTime: '10 minutos',
-        servings: 30,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 9.1
-      }
-    ]
-  },
-  {
-    id: 'canada',
-    name: 'Canadá',
-    flag: '🇨🇦',
-    description: 'Culinária diversificada com poutine, xarope de maple e influências multiculturais.',
-    cuisineRanking: 31,
-    recipes: [
-      {
-        id: 'poutine',
-        name: 'Poutine',
-        description: 'Batatas fritas com queijo coalho e molho gravy, prato icônico canadense.',
-        ingredients: ['Batatas', 'Queijo coalho', 'Molho gravy', 'Óleo para fritar'],
-        instructions: ['Frite batatas até dourar', 'Prepare gravy', 'Coloque batatas em prato', 'Adicione queijo coalho', 'Despeje gravy quente', 'Sirva imediatamente'],
-        prepTime: '15 minutos',
-        cookTime: '20 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1565299543923-37dd37887442?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.7
-      },
-      {
-        id: 'tourtiere',
-        name: 'Tourtière',
-        description: 'Torta de carne temperada, tradicional do Quebec.',
-        ingredients: ['Massa: farinha, manteiga, água', 'Recheio: carne moída, cebola, batata, especiarias'],
-        instructions: ['Refogue carne com cebola', 'Adicione batata e especiarias', 'Forre forma com massa', 'Adicione recheio', 'Cubra com massa', 'Asse até dourar'],
-        prepTime: '30 minutos',
-        cookTime: '45 minutos',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.6
-      },
-      {
-        id: 'butter-tarts',
-        name: 'Butter Tarts',
-        description: 'Tortinhas doces canadenses com recheio de manteiga e açúcar.',
-        ingredients: ['Massa quebrada', 'Manteiga', 'Açúcar mascavo', 'Ovos', 'Xarope de milho', 'Baunilha', 'Nozes (opcional)'],
-        instructions: ['Forre forminhas com massa', 'Misture manteiga, açúcar e ovos', 'Adicione xarope e baunilha', 'Adicione nozes se desejar', 'Despeje em forminhas', 'Asse até dourar'],
-        prepTime: '20 minutos',
-        cookTime: '20 minutos',
-        servings: 12,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.8
-      },
-      {
-        id: 'maple-salmon',
-        name: 'Salmão com Maple Syrup',
-        description: 'Salmão glaceado com xarope de maple.',
-        ingredients: ['Filés de salmão', 'Xarope de maple', 'Molho de soja', 'Alho', 'Gengibre', 'Limão'],
-        instructions: ['Misture xarope, molho de soja, alho e gengibre', 'Marine salmão por 30 minutos', 'Asse ou grelhe', 'Pincele com marinada', 'Finalize com limão'],
-        prepTime: '35 minutos',
-        cookTime: '15 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.9
-      },
-      {
-        id: 'nanaimo-bars',
-        name: 'Nanaimo Bars',
-        description: 'Sobremesa canadense em camadas sem forno.',
-        ingredients: ['Base: biscoito, coco, cacau, manteiga', 'Meio: manteiga, creme, açúcar de confeiteiro', 'Cobertura: chocolate'],
-        instructions: ['Misture ingredientes da base', 'Pressione em forma', 'Prepare creme do meio', 'Espalhe sobre base', 'Derreta chocolate', 'Cubra', 'Leve à geladeira'],
-        prepTime: '30 minutos',
-        cookTime: '0 minutos',
-        servings: 16,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.8
-      }
-    ]
-  },
-  {
-    id: 'suecia',
-    name: 'Suécia',
-    flag: '🇸🇪',
-    description: 'Culinária escandinava com almôndegas, salmão e doces.',
-    cuisineRanking: 32,
-    recipes: [
-      {
-        id: 'kottbullar',
-        name: 'Köttbullar',
-        description: 'Almôndegas suecas com molho cremoso.',
-        ingredients: ['Carne moída', 'Cebola', 'Pão ralado', 'Ovo', 'Creme de leite', 'Caldo de carne', 'Geleia de lingonberry'],
-        instructions: ['Misture carne com cebola, pão e ovo', 'Faça almôndegas pequenas', 'Frite até dourar', 'Prepare molho com creme e caldo', 'Sirva com purê e geleia'],
-        prepTime: '20 minutos',
-        cookTime: '25 minutos',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.7
-      },
-      {
-        id: 'gravlax',
-        name: 'Gravlax',
-        description: 'Salmão curado com sal, açúcar e endro.',
-        ingredients: ['Salmão fresco', 'Sal', 'Açúcar', 'Endro', 'Pimenta', 'Mostarda e endro para molho'],
-        instructions: ['Misture sal, açúcar e endro', 'Cubra salmão com mistura', 'Pressione e leve à geladeira por 48 horas', 'Vire a cada 12 horas', 'Fatie fino', 'Sirva com molho de mostarda'],
-        prepTime: '48 horas',
-        cookTime: '0 minutos',
-        servings: 12,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 8.9
-      },
-      {
-        id: 'kanelbullar',
-        name: 'Kanelbullar',
-        description: 'Rolinhos de canela suecos.',
-        ingredients: ['Farinha', 'Fermento', 'Leite', 'Manteiga', 'Açúcar', 'Cardamomo', 'Canela'],
-        instructions: ['Prepare massa doce', 'Deixe crescer', 'Abra retângulo', 'Espalhe manteiga e canela', 'Enrole e corte', 'Deixe crescer', 'Asse até dourar'],
-        prepTime: '2 horas',
-        cookTime: '15 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.8
-      },
-      {
-        id: 'janssons-frestelse',
-        name: 'Janssons Frestelse',
-        description: 'Gratinado de batata com anchovas e creme.',
-        ingredients: ['Batatas', 'Anchovas', 'Cebola', 'Creme de leite', 'Manteiga', 'Pão ralado'],
-        instructions: ['Fatie batatas em palito', 'Refogue cebola', 'Monte camadas: batata, cebola, anchovas', 'Despeje creme', 'Cubra com pão ralado', 'Asse até dourar'],
-        prepTime: '20 minutos',
-        cookTime: '1 hora',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.5
-      },
-      {
-        id: 'princess-cake',
-        name: 'Prinsesstårta',
-        description: 'Bolo sueco coberto com marzipan verde.',
-        ingredients: ['Pão de ló', 'Creme de baunilha', 'Geleia de framboesa', 'Chantilly', 'Marzipan verde'],
-        instructions: ['Corte pão de ló em 3 camadas', 'Recheie com creme e geleia', 'Cubra com chantilly em formato de cúpula', 'Cubra com marzipan verde', 'Decore com rosa de marzipan'],
-        prepTime: '1 hora',
-        cookTime: '30 minutos',
-        servings: 12,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.9
-      }
-    ]
-  },
-  {
-    id: 'russia',
-    name: 'Rússia',
-    flag: '🇷🇺',
-    description: 'Culinária robusta com borscht, blini e pratos reconfortantes.',
-    cuisineRanking: 33,
-    recipes: [
-      {
-        id: 'borscht',
-        name: 'Borscht',
-        description: 'Sopa de beterraba com carne e creme azedo.',
-        ingredients: ['Beterraba', 'Carne bovina', 'Repolho', 'Batata', 'Cenoura', 'Cebola', 'Tomate', 'Creme azedo', 'Endro'],
-        instructions: ['Cozinhe carne em caldo', 'Adicione beterraba ralada', 'Adicione legumes', 'Adicione repolho', 'Tempere', 'Sirva com creme azedo e endro'],
-        prepTime: '20 minutos',
-        cookTime: '2 horas',
-        servings: 8,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=800&h=600&fit=crop',
-        category: 'Sopa',
-        rating: 8.7
-      },
-      {
-        id: 'blini',
-        name: 'Blini',
-        description: 'Panquecas russas servidas com caviar ou creme azedo.',
-        ingredients: ['Farinha', 'Leite', 'Ovos', 'Fermento', 'Açúcar', 'Sal', 'Manteiga'],
-        instructions: ['Misture ingredientes', 'Deixe descansar', 'Frite pequenas panquecas', 'Sirva com caviar, salmão defumado ou creme azedo'],
-        prepTime: '1 hora',
-        cookTime: '30 minutos',
-        servings: 20,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop',
-        category: 'Entrada',
-        rating: 8.6
-      },
-      {
-        id: 'beef-stroganoff',
-        name: 'Beef Stroganoff',
-        description: 'Carne em tiras com molho cremoso de cogumelos.',
-        ingredients: ['Filé mignon', 'Cogumelos', 'Cebola', 'Creme azedo', 'Mostarda', 'Vinho branco', 'Manteiga'],
-        instructions: ['Corte carne em tiras', 'Doure rapidamente', 'Refogue cogumelos e cebola', 'Adicione vinho', 'Adicione creme azedo e mostarda', 'Retorne carne', 'Sirva com arroz'],
-        prepTime: '15 minutos',
-        cookTime: '20 minutos',
-        servings: 4,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.9
-      },
-      {
-        id: 'pelmeni',
-        name: 'Pelmeni',
-        description: 'Pastéis russos recheados com carne.',
-        ingredients: ['Massa: farinha, ovo, água', 'Recheio: carne moída, cebola, especiarias'],
-        instructions: ['Prepare massa', 'Prepare recheio', 'Abra massa fina', 'Corte círculos', 'Recheie e feche', 'Cozinhe em água fervente', 'Sirva com creme azedo'],
-        prepTime: '1 hora',
-        cookTime: '15 minutos',
-        servings: 60,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.7
-      },
-      {
-        id: 'medovik',
-        name: 'Medovik',
-        description: 'Bolo de mel russo em camadas.',
-        ingredients: ['Mel', 'Açúcar', 'Ovos', 'Farinha', 'Bicarbonato', 'Creme azedo', 'Açúcar de confeiteiro'],
-        instructions: ['Prepare massa com mel', 'Asse camadas finas', 'Prepare creme de creme azedo', 'Monte camadas alternadas', 'Deixe descansar por 12 horas', 'Decore'],
-        prepTime: '1 hora',
-        cookTime: '40 minutos',
-        servings: 12,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.8
-      }
-    ]
-  },
-  {
-    id: 'israel',
-    name: 'Israel',
-    flag: '🇮🇱',
-    description: 'Culinária mediterrânea com influências do Oriente Médio.',
-    cuisineRanking: 34,
-    recipes: [
-      {
-        id: 'shakshuka',
-        name: 'Shakshuka',
-        description: 'Ovos pochê em molho de tomate picante.',
-        ingredients: ['Tomate', 'Pimentão', 'Cebola', 'Alho', 'Cominho', 'Páprica', 'Ovos', 'Coentro', 'Queijo feta'],
-        instructions: ['Refogue cebola, alho e pimentão', 'Adicione tomate e especiarias', 'Cozinhe até engrossar', 'Faça cavidades no molho', 'Quebre ovos nas cavidades', 'Cozinhe até ovos ficarem no ponto', 'Finalize com queijo e coentro'],
-        prepTime: '15 minutos',
-        cookTime: '25 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1587411768941-6dc7f0e3e2d8?w=800&h=600&fit=crop',
-        category: 'Café da Manhã',
-        rating: 8.9
-      },
-      {
-        id: 'falafel',
-        name: 'Falafel',
-        description: 'Bolinhos fritos de grão-de-bico temperado.',
-        ingredients: ['Grão-de-bico seco', 'Cebola', 'Alho', 'Salsa', 'Coentro', 'Cominho', 'Bicarbonato', 'Óleo para fritar'],
-        instructions: ['Deixe grão-de-bico de molho por 12 horas', 'Bata com cebola, alho e ervas', 'Adicione especiarias e bicarbonato', 'Faça bolinhas', 'Frite até dourar', 'Sirva em pita com tahine'],
-        prepTime: '12 horas',
-        cookTime: '20 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 8.8
-      },
-      {
-        id: 'sabich',
-        name: 'Sabich',
-        description: 'Sanduíche de pita com berinjela frita, ovo e tahine.',
-        ingredients: ['Pita', 'Berinjela', 'Ovo cozido', 'Tahine', 'Homus', 'Salada israelense', 'Picles', 'Amba'],
-        instructions: ['Frite berinjela', 'Cozinhe ovos', 'Aqueça pita', 'Monte com todos os ingredientes', 'Adicione tahine e amba'],
-        prepTime: '20 minutos',
-        cookTime: '20 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 8.7
-      },
-      {
-        id: 'israeli-salad',
-        name: 'Salada Israelense',
-        description: 'Salada fresca de tomate, pepino e cebola.',
-        ingredients: ['Tomate', 'Pepino', 'Cebola', 'Salsa', 'Limão', 'Azeite', 'Sal'],
-        instructions: ['Pique tudo em cubos pequenos', 'Misture', 'Tempere com limão, azeite e sal', 'Sirva fresca'],
-        prepTime: '15 minutos',
-        cookTime: '0 minutos',
-        servings: 4,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop',
-        category: 'Salada',
-        rating: 8.5
-      },
-      {
-        id: 'sufganiyot',
-        name: 'Sufganiyot',
-        description: 'Donuts recheados com geleia, tradicionais de Hanukkah.',
-        ingredients: ['Farinha', 'Fermento', 'Leite', 'Ovos', 'Açúcar', 'Geleia', 'Açúcar de confeiteiro'],
-        instructions: ['Prepare massa doce', 'Deixe crescer', 'Corte círculos', 'Deixe crescer novamente', 'Frite', 'Recheie com geleia', 'Polvilhe açúcar'],
-        prepTime: '3 horas',
-        cookTime: '20 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.8
-      }
-    ]
-  },
-  {
-    id: 'egito',
-    name: 'Egito',
-    flag: '🇪🇬',
-    description: 'Culinária milenar com legumes, grãos e especiarias.',
-    cuisineRanking: 35,
-    recipes: [
-      {
-        id: 'koshari',
-        name: 'Koshari',
-        description: 'Prato nacional egípcio com arroz, lentilha, macarrão e molho de tomate.',
-        ingredients: ['Arroz', 'Lentilha', 'Macarrão', 'Grão-de-bico', 'Cebola frita', 'Molho de tomate', 'Vinagre', 'Cominho'],
-        instructions: ['Cozinhe arroz, lentilha e macarrão separadamente', 'Prepare molho de tomate picante', 'Frite cebola até crocante', 'Monte camadas em prato', 'Cubra com molho e cebola'],
-        prepTime: '20 minutos',
-        cookTime: '40 minutos',
-        servings: 6,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.6
-      },
-      {
-        id: 'ful-medames',
-        name: 'Ful Medames',
-        description: 'Fava cozida lentamente com alho, limão e cominho.',
-        ingredients: ['Fava', 'Alho', 'Limão', 'Cominho', 'Azeite', 'Sal', 'Ovos cozidos'],
-        instructions: ['Cozinhe fava até macia', 'Amasse parcialmente', 'Tempere com alho, limão e cominho', 'Regue com azeite', 'Sirva com ovo e pão'],
-        prepTime: '12 horas',
-        cookTime: '2 horas',
-        servings: 6,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Café da Manhã',
-        rating: 8.4
-      },
-      {
-        id: 'mahshi',
-        name: 'Mahshi',
-        description: 'Legumes recheados com arroz e carne.',
-        ingredients: ['Abobrinha', 'Berinjela', 'Pimentão', 'Arroz', 'Carne moída', 'Tomate', 'Especiarias'],
-        instructions: ['Esvazie legumes', 'Prepare recheio de arroz e carne', 'Recheie legumes', 'Disponha em panela', 'Cubra com molho de tomate', 'Cozinhe por 1 hora'],
-        prepTime: '45 minutos',
-        cookTime: '1 hora',
-        servings: 8,
-        difficulty: 'Difícil',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&h=600&fit=crop',
-        category: 'Prato Principal',
-        rating: 8.7
-      },
-      {
-        id: 'taameya',
-        name: 'Taameya',
-        description: 'Falafel egípcio feito com fava.',
-        ingredients: ['Fava seca', 'Cebola', 'Alho', 'Coentro', 'Salsa', 'Cominho', 'Bicarbonato'],
-        instructions: ['Deixe fava de molho', 'Bata com ervas e especiarias', 'Faça bolinhas achatadas', 'Frite até dourar', 'Sirva em pita'],
-        prepTime: '12 horas',
-        cookTime: '20 minutos',
-        servings: 20,
-        difficulty: 'Médio',
-        image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=800&h=600&fit=crop',
-        category: 'Lanche',
-        rating: 8.5
-      },
-      {
-        id: 'basbousa',
-        name: 'Basbousa',
-        description: 'Bolo de semolina embebido em calda.',
-        ingredients: ['Semolina', 'Açúcar', 'Iogurte', 'Manteiga', 'Coco', 'Amêndoas', 'Calda de açúcar'],
-        instructions: ['Misture ingredientes secos', 'Adicione iogurte e manteiga', 'Asse até dourar', 'Corte em losangos', 'Despeje calda quente', 'Decore com amêndoas'],
-        prepTime: '15 minutos',
-        cookTime: '35 minutos',
-        servings: 16,
-        difficulty: 'Fácil',
-        image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800&h=600&fit=crop',
-        category: 'Sobremesa',
-        rating: 8.6
+        category: 'Sobremesa'
       }
     ]
   }

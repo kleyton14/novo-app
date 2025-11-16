@@ -21,7 +21,15 @@ export function AuthButton() {
 
   useEffect(() => {
     // Verificar usuário atual
-    getCurrentUser().then(setUser).catch(console.error).finally(() => setLoading(false));
+    getCurrentUser()
+      .then(setUser)
+      .catch((error) => {
+        // Ignorar erro de sessão ausente no carregamento inicial
+        if (error?.message !== 'Auth session missing!') {
+          console.error('Erro ao obter usuário:', error);
+        }
+      })
+      .finally(() => setLoading(false));
 
     // Escutar mudanças de autenticação
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
